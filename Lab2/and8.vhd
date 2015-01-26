@@ -1,13 +1,13 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.all;
 
-entity andg is
+entity and8 is
     Port ( a, b : in STD_LOGIC_VECTOR(7 DOWNTO 0);
-           z    : out STD_LOGIC_VECTOR(7 DOWNTO 0)
+           f    : out STD_LOGIC_VECTOR(7 DOWNTO 0)
          );
- end andg;
+ end and8;
 
-architecture structure of andg is
+architecture dataflow of and8 is
 begin
-    z <= a and b;
-end structure;
+    f <= a and b;
+end dataflow;
