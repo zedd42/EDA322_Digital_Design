@@ -25,9 +25,9 @@ BEGIN
     BEGIN
         IF rising_edge(CLK) THEN
             IF WE = '1' THEN
-                <MEM_SIGNAL>(to_integer(unsigned(ADDR))) := DATAIN;
+                MEM_SIGNAL(to_integer(unsigned(ADDR))) := DATAIN;
             ELSE
-                OUTPUT <= <MEM_SIGNAL>(to_integer(unsigned(ADDR)));
+                OUTPUT <= MEM_SIGNAL(to_integer(unsigned(ADDR)));
             END IF;
         END IF;
     END PROCESS;

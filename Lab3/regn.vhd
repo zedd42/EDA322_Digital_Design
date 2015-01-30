@@ -11,7 +11,7 @@ END regn;
 
 ARCHITECTURE behavioral OF regn IS
 BEGIN
-    PROCESS (ARESETN, CLK)
+    PROCESS(ARESETN, CLK)
     BEGIN
         IF ARESETN = '0' THEN
             res <= (OTHERS => '0');
