@@ -1,12 +1,12 @@
 LIBRARY ieee;
 USE ieee.STD_LOGIC_1164.all;
-USE ieee.STD_NUMERIC_STD.all;
-USE ieee.STD.TEXTIO.all;
+USE ieee.NUMERIC_STD.all;
+USE STD.TEXTIO.all;
 
 ENTITY mem_array is
     GENERIC ( DATA_WIDTH    :   INTEGER := 12;
               ADDR_WIDTH    :   INTEGER := 8;
-              INIT_FILE     :   STRING  := "inst_mem.mif"
+              INIT_FILE     :   STRING  := "mem_init_func"
           );
     PORT ( ADDR     :   IN  STD_LOGIC_VECTOR(ADDR_WIDTH-1 DOWNTO 0);
            DATAIN   :   IN  STD_LOGIC_VECTOR(DATA_WIDTH-1 DOWNTO 0);
