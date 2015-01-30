@@ -18,6 +18,21 @@ end mem_array;
 ARCHITECTURE arch of mem_array is
 
     TYPE MEMORY_ARRAY IS ARRAY (ADDR_WIDTH-1 DOWNTO 0) OF STD_LOGIC_VECTOR(DATA_WIDTH-1 DOWNTO 0);
+
+    impure function init_memory_wfile(mif_file_name : in string) return MEMORY_ARRAY is
+        file mif_file : text open read_mode is mif_file_name;
+        variable mif_line : line;
+        variable temp_bv : bit_vector(DATA_WIDTH-1 downto 0);
+        variable temp_mem : MEMORY_ARRAY;
+    begin
+        for i in MEMORY_ARRAY'range loop
+            readline(mif_file, mif_line);
+            read(mif_line, temp_bv);
+            temp_mem(i) := to_stdlogicvector(temp_bv);
+        end loop;
+        return temp_mem;
+    end function;    
+    
     SIGNAL MEM_SIGNAL : MEMORY_ARRAY := init_memory_wfile(INIT_FILE);
 
 BEGIN
