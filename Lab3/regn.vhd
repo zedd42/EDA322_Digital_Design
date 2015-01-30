@@ -3,7 +3,7 @@ USE ieee.std_logic_1164.all ;
 
 ENTITY regn IS
     GENERIC( N : INTEGER := 8 );
-    PORT( in                        : IN STD_LOGIC_VECTOR(N-1 DOWNTO 0);
+    PORT( input                     : IN STD_LOGIC_VECTOR(N-1 DOWNTO 0);
           loadEnable, ARESETN, CLK  : IN STD_LOGIC;
           res                       : OUT STD_LOGIC_VECTOR(N-1 DOWNTO 0) 
         );
@@ -14,10 +14,10 @@ BEGIN
     PROCESS (ARESETN, CLK)
     BEGIN
         IF ARESETN = '0' THEN
-            Q <= (OTHERS => '0');
+            res <= (OTHERS => '0');
        ELSIF rising_edge(CLK) THEN
-           IF Enable = '1' THEN
-               Q <= D;
+           IF loadEnable = '1' THEN
+               res <= input;
            END IF;
        END IF;
    END PROCESS;
