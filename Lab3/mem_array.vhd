@@ -6,7 +6,7 @@ USE STD.TEXTIO.all;
 ENTITY mem_array is
     GENERIC ( DATA_WIDTH    :   INTEGER := 12;
               ADDR_WIDTH    :   INTEGER := 8;
-              INIT_FILE     :   STRING  := "mem_init_func"
+              INIT_FILE     :   STRING  := "inst_mem.mif"
           );
     PORT ( ADDR     :   IN  STD_LOGIC_VECTOR(ADDR_WIDTH-1 DOWNTO 0);
            DATAIN   :   IN  STD_LOGIC_VECTOR(DATA_WIDTH-1 DOWNTO 0);
@@ -17,7 +17,7 @@ ENTITY mem_array is
 end mem_array;
 ARCHITECTURE arch of mem_array is
 
-    TYPE MEMORY_ARRAY IS ARRAY (ADDR_WIDTH-1 DOWNTO 0) OF STD_LOGIC_VECTOR(DATA_WIDTH-1 DOWNTO 0);
+    TYPE MEMORY_ARRAY IS ARRAY (2**ADDR_WIDTH-1 DOWNTO 0) OF STD_LOGIC_VECTOR(DATA_WIDTH-1 DOWNTO 0);
 
     impure function init_memory_wfile(mif_file_name : in string) return MEMORY_ARRAY is
         file mif_file : text open read_mode is mif_file_name;
@@ -34,16 +34,17 @@ ARCHITECTURE arch of mem_array is
     end function;    
     
     SIGNAL MEM_SIGNAL : MEMORY_ARRAY := init_memory_wfile(INIT_FILE);
+    SIGNAL READ_ADDRESS : STD_LOGIC_VECTOR(ADDR_WIDTH-1 DOWNTO 0);
 
 BEGIN
-    PROCESS (CLK)
+    RW: PROCESS (CLK)
     BEGIN
         IF rising_edge(CLK) THEN
             IF WE = '1' THEN
-                MEM_SIGNAL(to_integer(unsigned(ADDR))) := DATAIN;
+                MEM_SIGNAL(to_integer(unsigned(ADDR))) <= DATAIN;
             ELSE
                 OUTPUT <= MEM_SIGNAL(to_integer(unsigned(ADDR)));
             END IF;
         END IF;
-    END PROCESS;
+    END PROCESS RW;
 END arch;
