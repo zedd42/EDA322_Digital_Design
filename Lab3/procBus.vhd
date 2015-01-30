@@ -23,9 +23,10 @@ BEGIN
     sel(0) <= instrSEL OR dataSEL;
     sel(1) <= instrSEL OR accSEL;
     
-    xERR   <= (instrSEL XOR dataSEL XOR accSEL XOR extdataSEL);
-    nERR   <= (instrSEL NAND dataSEL NAND accSEL NAND extdataSEL);
-    ERR    <= xERR NAND nERR;
+    xERR   <= (((instrSEL XOR dataSEL) XOR accSEL) XOR extdataSEL);
+    nERR   <= (((instrSEL NOR dataSEL) NOR accSEL) NOR extdataSEL);
+    ERR    <= xERR NOR nERR;
+
 
     WITH sel SELECT
         OUTPUT <= INSTRUCTION   when "11",
