@@ -22,11 +22,9 @@ ARCHITECTURE arch OF procBus IS
 BEGIN
     sel(0) <= instrSEL OR dataSEL;
     sel(1) <= instrSEL OR accSEL;
-    
-    xERR   <= (((instrSEL XOR dataSEL) XOR accSEL) XOR extdataSEL);
-    nERR   <= (((instrSEL NOR dataSEL) NOR accSEL) NOR extdataSEL);
-    ERR    <= xERR NOR nERR;
 
+    ERR <= (instrSEL AND dataSEL) OR (instrSEL AND accSEL) OR (instrSEL AND extdataSEL) OR 
+           (dataSEL AND accSEL) OR (dataSEL AND extdataSEL) OR (accSEL AND extdataSEL);
 
     WITH sel SELECT
         OUTPUT <= INSTRUCTION   when "11",
