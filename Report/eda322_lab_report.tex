@@ -1,0 +1,153 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{fancyhdr}
+\usepackage[utf8]{inputenc}
+%\setlength{\headheight}{11pt}
+
+\lhead
+\rhead
+%\parskip 1em
+%\parindent 0em
+
+\begin{document}
+\pagestyle{empty}
+%-----------------------------------------------------------
+\begin{titlepage}
+
+\title{\Huge{Lab report} \\[0.1cm] \Large{Digital Design (EDA322)} \\ [0.4cm] \Large{ \emph{Writing Guidelines}} \\[0.4cm]}
+\author{\large{\emph{Group 01}} \\[0.2cm] Erik Thorsell1 \\[0.05cm] Robert Gustafsson \\[0.1cm]}
+\maketitle
+\thispagestyle{empty}
+\end{titlepage}
+\clearpage
+%-----------------------------------------------------------
+\pagestyle{fancyplain}
+\pagenumbering{roman}
+\tableofcontents
+\clearpage
+%%%%%%%%%%%%%%%%
+% Introduction
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\section{Introduction}
+(max: 1 page)
+\\\\
+This part will introduce the reader to the report. 
+
+At the beginning, describe what the purpose of this lab report is. Then describe briefly what each section discusses and finally summarize the most important conclusions. 
+
+\section{Method}
+\subsection{Arithmetic and Logic Unit (ALU)}
+The ALU (Arithmetic and Logic Unit) is one of the core components in a CPU 
+(Central Processing Unit). As the name vouches the ALU is in control of the 
+operations between operands. An ordinary ALU does arithmetic as well as logic 
+operations, however the ChAcc (Chalmers Accumulator) processor comes with a 
+slightly reduced set of instructions. Because of this the ChAcc ALU is limited 
+to the operations: addition, subtraction as well as the logical operations nand 
+(not and), not, aswell as a comparison operation. One should also note that 
+the operations are only supported for unsigned numbers.\\\\
+\noindent
+The purpose of the laboration was to implement the ALU, mentioned above, in 
+VHDL. Broken into several stages the first one was to implement an RCA (Ripple 
+Carry Adder), composed of multiple full adders. Briefly, an RCA is a simple 
+adder that can easily be scaled to handle input of various sizes. This is since 
+an RCA is simply a chain of full adders that each takes three bits as input 
+and returns the sum of them aswell as a carry out. These inputs are the two 
+bits that are to be added aswell as a carry in. In our case the inputs to the 
+ALU are composed of two eight bit, unsigned, numbers leaving us with total 
+of eight full adders in the chain.\\\\
+\noindent
+Using the dataflow design for our full adders the logic was pretty straight 
+forward. The truth table, given in the laboration description, for a full 
+adder speaks for itself and after minimizing the table we moved onto the more 
+interesting part of the laboration, the RCA.\\\\
+\noindent
+The structural design style of VHDL lets one create instances of already 
+programmed components and was used to create the RCA. After creating eight 
+instances of the full adder it was simply a matter of passing the right 
+arguments to each of the full adders. The least significant bit of each input 
+gets send to the first full adder, along with the carry in, which returns the 
+least significant bit of the sum as well as a first carry out. The second to 
+least significant bits of each input is then send to the second full adder 
+along with the carry out from the first full adder. This is repeated eight 
+times and the carry out of the eigth full adder is the carry out of the RCA. 
+The correctness of the RCA was easily verified by the use of a ''do-file''.\\\\
+\noindent
+The comparison operation compares two operands and calculates wether or not 
+they are equal. When this is done the corresponding flag (Equal, EQ or Not 
+Equal, NEQ) is asserted. Implementing the component was straight forward and 
+since the instructions specifies one must not use the behavioral design style 
+we opted to use the dataflow style. A {\it for .. generate} statement was used 
+to improve readability aswell as reduce the amount of code in the file. A 
+bitwise comparison checks if the {\it n:th} bit of any input differs by the 
+use of an xor gate. For every iteration of the loop, the output of the gate is 
+stored in a temporary signal which is then also used in the loop by the use 
+of an or operation which is done with the new result and the old.\\\\
+\noindent
+When the loop is done the temporary signal is asserted to the EQ flag, and it 
+is a simpe matter of inverting the signal to get the NEQ flag.\\\\
+\noindent
+The third task of the laboration was composed of writing the implementation 
+for the subtraction, the not and nand operations, as well as an {\it isOutZero} 
+signal. Ofcourse one also has to be able to choose between the 
+operations, this ability  was implemented using a 4-to-1 multiplexer.\\\\
+\noindent
+The subtraction operation was simply a matter of performing an addition with 
+one of the operands {\it two complements representation}. This is achieved by 
+inverting the operand and then add 1 to it. An xor with eight ones with one of 
+the operands as well as adding a carry in to the RCA input solves this. The 
+nand operation is self explained and is achieved by inverting an and with the 
+two operands. The not operation returns the first operand ({\it ALU\_inA}) 
+inverted. {\it isOutZero} is done by performing a bitwise or of the output 
+from the multiplexer.\\\\
+\noindent
+
+(max: 2 pages)
+\\\\
+Describe what you did in lab 2 and what you have learnt. In addition, discuss your findings and observations during this lab. Summarize your answers to the questions in the lab PM and present the block diagrams that you have drawn. Furthermore, describe how your ALU performs subtraction using an adder. Remember to always explain your design choices and mention any assumptions. Finally, make use of figures and tables. 
+
+\subsection{Top-level Design}
+(max: 2 pages)
+\\\\
+Describe what you did in lab 3. In addition, describe how you implemented the bus using the mux and any extra logic or the tri-state buffers. Describe briefly how you implemented the storage elements that are used by the ChAcc processor. Show one snapshot of the simulation waveform where you write something to a memory location and then read from it. Remember to always explain your design choices and mention any assumptions. Finally, make use of figures and tables. 
+
+\subsection{Controller}
+(max: 2 pages)
+\\\\
+Describe what you did in lab4. More specifically, show the \emph{Finite-state machine} (FSM) of the controller by presenting the diagram you drew. Which design decisions did you make and why? Also include few waveforms, where you show that the controller runs correctly for some particular instructions using the provided testbench. Remember to always explain your design choices and mention any assumptions. Finally, make use of figures and tables. 
+
+\subsection{Processor's Testbench}
+(max: 2 pages)
+\\\\
+Describe what you did in lab5. More specifically, describe how you made the testbench to verify that your processor design was functionally correct. For example, you can specify how you generated inputs to the processor during the testing, how you were reading the expected outputs and how you compare the expected outputs with the actual outputs. Also mention if your processor design was working correctly from the beginning and if not describe how you backtrack the bugs. Remember to always explain your design choices and mention any assumptions. Finally, make use of figures and tables. 
+
+\subsection{ChAcc on Nexys 3 board \emph{(Optional)}}
+(max: 2 pages)
+\\\\
+Describe how you verified the correctness of your FPGA implementation. Note that the code that is executed on the implementation is the same code used for testing in Lab 5. You should compare sequences of values on various signals observed on the seven-segment displays to values seen in Modelsim simulation of the design. Please include in the report the sequence of program counter (PC) and display register values you observed during a successful execution on the FPGA. 
+
+\subsection{Performance, Area and Power Analysis \emph{(Optional)}}
+(max: 2 pages)
+\\\\
+To be announced in the Lab7PM.
+
+\section{Analysis}
+(max: 1 page)
+\\\\
+Summarize your results after performing all the labs (2, 3, 4 and 5).
+
+Mention and discuss interesting findings and observations, as well as difficulties in completing some of the tasks of the four last labs.
+
+After looking at your results, draw conclusions and describe briefly the learning outcome, that is what have you learnt by performing these labs?  
+
+% Appendix
+\newpage
+\begin{appendix}
+
+\section{Appendix}
+(max: 4 pages)
+\\\\
+In the appendix, you can include extra figures or tables that don't fit in the main body of the lab report. 
+
+\end{appendix}
+
+\end{document}
