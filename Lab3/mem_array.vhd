@@ -12,7 +12,7 @@ ENTITY mem_array is
            DATAIN   :   IN  STD_LOGIC_VECTOR(DATA_WIDTH-1 DOWNTO 0);
            CLK      :   IN  STD_LOGIC;
            WE       :   IN  STD_LOGIC;
-           OUTPUT   :   OUT STD_LOGIC_VECTOR(DATA_WIDTH-1 DOWNTO 0)
+           OUTMEM   :   OUT STD_LOGIC_VECTOR(DATA_WIDTH-1 DOWNTO 0)
        );
 end mem_array;
 ARCHITECTURE arch of mem_array is
@@ -43,7 +43,7 @@ BEGIN
             IF WE = '1' THEN
                 MEM_SIGNAL(to_integer(unsigned(ADDR))) <= DATAIN;
             ELSE
-                OUTPUT <= MEM_SIGNAL(to_integer(unsigned(ADDR)));
+                OUTMEM <= MEM_SIGNAL(to_integer(unsigned(ADDR)));
             END IF;
         END IF;
     END PROCESS RW;
