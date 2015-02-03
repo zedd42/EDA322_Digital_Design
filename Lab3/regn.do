@@ -1,5 +1,5 @@
 restart -f -nowave
-add wave input, loadenable, aresetn, clk, res
+add wave input loadEnable ARESETN clk res
 
 force clk 0 0, 1 50ns -repeat 100ns
 force aresetn 0

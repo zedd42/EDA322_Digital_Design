@@ -1,5 +1,6 @@
 LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.all;
+USE STD.TEXTIO.all;
 
 ENTITY EDA322_processor IS
     Port ( externalIn         : IN  STD_LOGIC_VECTOR(7 DOWNTO 0);
@@ -90,7 +91,8 @@ ARCHITECTURE arch OF EDA322_processor IS
     
     COMPONENT mem_array IS
         GENERIC ( DATA_WIDTH : INTEGER;
-                  ADDR_WIDTH : INTEGER
+                  ADDR_WIDTH : INTEGER;
+                  INIT_FILE  : STRING
                 ); 
         Port    ( ADDR       : IN  STD_LOGIC_VECTOR(ADDR_WIDTH-1 DOWNTO 0);
                   DATAIN     : IN  STD_LOGIC_VECTOR(DATA_WIDTH-1 DOWNTO 0);
@@ -145,8 +147,8 @@ Disp  : regn generic map (N => 8) port map (OutFromAcc, dispLd, ARESETN, CLK, di
 Freg  : regn generic map (N => 4) port map (FlagInp, flagLd, ARESETN, CLK, flag2seg);
 
 -- Memoriezz
-inst_mem : mem_array generic map (DATA_WIDTH => 12, ADDR_WIDTH => 8) port map (pc, zeroVector_12, CLK, zeroLogic, InstrMemOut);
-data_mem : mem_array generic map (DATA_WIDTH => 8, ADDR_WIDTH => 8) port map (Addr, BusOut, CLK, dmWr, MemDataOut);
+inst_mem : mem_array generic map (DATA_WIDTH => 12, ADDR_WIDTH => 8, INIT_FILE => "inst_mem.mif") port map (pc, zeroVector_12, CLK, zeroLogic, InstrMemOut);
+data_mem : mem_array generic map (DATA_WIDTH => 8, ADDR_WIDTH => 8, INIT_FILE => "data_mem.mif") port map (Addr, BusOut, CLK, dmWr, MemDataOut);
 
 -- ALUZUZU
 alu : alu_wRCA port map (OutFromAcc, BusOut, aluMd, aluOut, aluToFlag(3), aluToFlag(2), aluToFlag(1), aluToFlag(0));
