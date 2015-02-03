@@ -24,16 +24,16 @@ END EDA322_processor;
 
 ARCHITECTURE arch OF EDA322_processor IS
     
-    SIGNAL nxtpc, pc, addFromInstruction, Addr, BusOut, MemDataOut : STD_LOGIC_VECTOR(7 DOWNTO 0);
+    SIGNAL Instruction, InstrMemOut, zeroVector_12 : STD_LOGIC_VECTOR(11 DOWNTO 0);
+    SIGNAL nxtpc, pc, addFromInstruction, Addr, BusOut, MemDataOut, oneVector_8 : STD_LOGIC_VECTOR(7 DOWNTO 0);
     SIGNAL MemDataOutReged, OutFromAcc, inAcc, PCIncrOut, OUTPUT, aluOut : STD_LOGIC_VECTOR(7 DOWNTO 0);
-    SIGNAL neq, eq, pcSel, pcLd, instrLd, addrMd, dmWr, dataLd, flagLd, accSel, accLd, im2bus, dmRd, acc2bus, ext2bus, dispLd : STD_LOGIC;
-    SIGNAL Instruction, InstrMemOut : STD_LOGIC_VECTOR(11 DOWNTO 0);
-    SIGNAL opcode, FlagInp : STD_LOGIC_VECTOR(3 DOWNTO 0);
+    SIGNAL opcode, FlagInp, aluToFlag : STD_LOGIC_VECTOR(3 DOWNTO 0);
     SIGNAL aluMd : STD_LOGIC_VECTOR(1 DOWNTO 0);
-    SIGNAL zeroLogic : STD_LOGIC;
+    SIGNAL neq, eq, pcSel, pcLd, instrLd, addrMd, dmWr, dataLd, flagLd, accSel : STD_LOGIC;
+    SIGNAL accLd, im2bus, dmRd, acc2bus, ext2bus, dispLd, zeroLogic, oneLogic : STD_LOGIC;
 
     COMPONENT procController IS
-        Port ( 	master_load_enable: in STD_LOGIC;
+        Port ( 	master_load_enable : in STD_LOGIC;
 				opcode : in  STD_LOGIC_VECTOR (3 downto 0);
 				neq : in STD_LOGIC;
 				eq : in STD_LOGIC; 
@@ -76,7 +76,7 @@ ARCHITECTURE arch OF EDA322_processor IS
                Operation        : IN  STD_LOGIC_VECTOR(1 DOWNTO 0);
                ALU_out          : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
                Carry, isOutZero : OUT STD_LOGIC;
-               NoEq, Eq         : OUT STD_LOGIC
+               NotEq, Eq         : OUT STD_LOGIC
              );
     END COMPONENT alu_wRCA;
     
@@ -89,8 +89,8 @@ ARCHITECTURE arch OF EDA322_processor IS
     END COMPONENT RCA;
     
     COMPONENT mem_array IS
-        GENERIC ( DATA_WIDTH : INTEGER := 12;
-                  ADDR_WIDTH : INTEGER := 8
+        GENERIC ( DATA_WIDTH : INTEGER;
+                  ADDR_WIDTH : INTEGER
                 ); 
         Port    ( ADDR       : IN  STD_LOGIC_VECTOR(ADDR_WIDTH-1 DOWNTO 0);
                   DATAIN     : IN  STD_LOGIC_VECTOR(DATA_WIDTH-1 DOWNTO 0);
@@ -123,9 +123,14 @@ ARCHITECTURE arch OF EDA322_processor IS
     END COMPONENT regn;
     
 BEGIN
+oneLogic <= '1';
+zeroLogic <= '0';
+oneVector_8 <= "00000001";
+zeroVector_12 <= "000000000000";
+
 -- Multiplexorzz
 muxPCInc : mux2to1 port map (PCIncrOut, OUTPUT, pcSel, nxtpc);
-muxAddr  : mux2to1 port map (Instruction, MemDataOutReged, addrMd, Addr);
+muxAddr  : mux2to1 port map (Instruction(7 DOWNTO 0), MemDataOutReged, addrMd, Addr);
 muxAlu   : mux2to1 port map (aluOut, BusOut, accSel, inAcc);
 
 -- Buzz
@@ -140,16 +145,16 @@ Disp  : regn generic map (N => 8) port map (OutFromAcc, dispLd, ARESETN, CLK, di
 Freg  : regn generic map (N => 4) port map (FlagInp, flagLd, ARESETN, CLK, flag2seg);
 
 -- Memoriezz
-inst_mem : mem_array generic map (DATA_WIDTH => 12, ADDR_WIDTH => 8) port map (pc, DATAIN, CLK, zeroLogic, InstrMemOut);
+inst_mem : mem_array generic map (DATA_WIDTH => 12, ADDR_WIDTH => 8) port map (pc, zeroVector_12, CLK, zeroLogic, InstrMemOut);
 data_mem : mem_array generic map (DATA_WIDTH => 8, ADDR_WIDTH => 8) port map (Addr, BusOut, CLK, dmWr, MemDataOut);
 
 -- ALUZUZU
 alu : alu_wRCA port map (OutFromAcc, BusOut, aluMd, aluOut, aluToFlag(3), aluToFlag(2), aluToFlag(1), aluToFlag(0));
 
 -- RCA
-adder : RCA port map (pc, 1, zeroLogic, PCIncrOut, null);
+adder : RCA port map (pc, oneVector_8, zeroLogic, PCIncrOut, zeroLogic);
 
 -- MOTTHA CONTROLLER!
-pController : procController port map (master_load_enable, opcode, neq, eq, CLK, ARESETN, pcSel, pcLd, instrLd, addrMd, dmWr, dataLd, flagLd, accSel, accLd, im2bus, dmRd, acc2bus, ext2bus, dispLd, aluMd);
+pController : procController port map (master_load_enable, Instruction(11 DOWNTO 8), neq, eq, CLK, ARESETN, pcSel, pcLd, instrLd, addrMd, dmWr, dataLd, flagLd, accSel, accLd, im2bus, dmRd, acc2bus, ext2bus, dispLd, aluMd);
 
 END arch;
