@@ -1,0 +1,18 @@
+pcSel       0
+pcLd        1
+instrLd     2
+addrMd      3
+dmWr        4
+dataLd      5
+flagLd      6
+accSel      7
+accLd       8
+im2bus      9
+dmRd        10
+acc2bus     11
+ext2bus     12
+dispLd      13
+aluMd(1)    14
+aluMd(0)    15
+
+

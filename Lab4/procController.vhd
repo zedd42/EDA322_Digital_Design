@@ -27,17 +27,14 @@ end procController;
 
 architecture Behavioral of procController is
 
-signal tmp1_out, tmp2_out, tmp_out_in, tmp_out : std_logic;
+    type state_type is (FE, DE, DES, EX, ME);
+    signal current_state, next_state : state_type;
 
 begin
-
-tmp1_out <= opcode(3) or opcode(2) or opcode(1) or opcode(0);
-tmp2_out <= neq xor eq;
-tmp_out_in <= tmp1_out xnor tmp2_out;
 
 process(CLK, ARESETN)
 begin
-if ARESETN='0' then
+if ARESETN = '0' then
 	current_state <= FE;
 else
     if rising_edge(clk) then
@@ -49,48 +46,210 @@ end if;
 end process;
 
 process(current_state, opcode)
-    variable tmpcode := opcode;
+    variable A, B, C, D : STD_LOGIC; 
 begin
+    A := opcode(3);
+    B := opcode(2);
+    C := opcode(1);
+    D := opcode(0);
+    
     case current_state is
         when FE =>
-            case opcode is
-                if((not opcode(3) and not opcode(2)) 
-                    or (not opcode(3) and not opcode(1)) 
-                    or (not opcode(3) and not opcode(0))
-                    or (not opcode(2) and not opcode(1))
-                    or (not opcode(1) and not opcode(0)) then
-                    dataLd <= '1';
-                    pcSel, pcLd, instrLd, addrMd, dmWr, osv <= '0';
-                end if;
             next_state <= DE;
         when DE =>
-
+            if(((A and not B) and not C) or ((A and not B) and not D)) then
+                    next_state <= DES;
+            elsif((not A and not B) or (not A and not C) or 
+                  (not A and not D) or (A and B and C and D)) then
+                    next_state <= EX;
+             elsif((((not A and B) and C) and D)) then
+                    next_state <= ME;
+            end if;
         when DES =>
-
+            if((A and not B) and not C) then
+                next_state <= EX;
+            elsif(((A and not B) and C) and not D) then
+                next_state <= ME;
+            end if;
         when EX =>
-
+            next_state <= FE;
         when ME =>
-
+            next_state <= FE;
     end case;
 end process;
 
+process(current_state, opcode)
+    variable A, B, C, D : STD_LOGIC;
+    variable v_control : STD_LOGIC_VECTOR(15 DOWNTO 0);
+begin
+    A := opcode(3);
+    B := opcode(2);
+    C := opcode(1);
+    D := opcode(0);
 
-pcSel <= tmp_out;
-pcLd <= tmp_out;
-instrLd <= tmp_out; 
-addrMd <= tmp_out;
-dmWr <= tmp_out;
-dataLd <= tmp_out;
-flagLd <= tmp_out;
-accSel  <= tmp_out;
-accLd <= tmp_out;
-im2bus <= tmp_out;
-dmRd <= tmp_out;
-acc2bus <= tmp_out;
-ext2bus <= tmp_out;
-dispLd <= tmp_out;
-aluMd(1) <= tmp_out;
-aluMd(0) <= not tmp_out;
+    v_control <= pcSEL & pcLD & instrLD & addrMD & dmWR & dataLD & flagLD & 
+                 accSEL & accLD & im2bus & dmRD & acc2bus & ext2bus & 
+                 dispLD & aluMD(1) & aluMD(0);
+
+    case opcode is
+        when "0000" =>
+            case current_state is
+                when FE =>
+                    v_control(2 => '1', others => '0');
+                when DE =>
+                    v_control(2, 5 => '1', others => '0');
+                when EX =>
+                    v_control(1, 2, 6, 8, 10 => '1', others => '0');
+            end case;
+        when "0001" =>
+            case current_state is
+                when FE =>
+                    v_control(2 => '1', others => '0');
+                when DE =>
+                    v_control(2, 5 => '1', others => '0');
+                when EX =>
+                    v_control(1, 2, 6, 8, 10 => '1', others => '0');
+            end case;
+
+       when "0010" =>
+            case current_state is
+                when FE =>
+                    v_control(2, 15 => '1', others => '0');
+                when DE =>
+                    v_control(2, 5, 15=> '1', others => '0');
+                when EX =>
+                    v_control(1, 2, 6, 8, 10, 15 => '1', others => '0');
+            end case;
+
+       when "0011" =>
+            case current_state is
+                when FE =>
+                    v_control(2, 14 => '1', others => '0');
+                when DE =>
+                    v_control(2, 5, 14 => '1', others => '0');
+                when EX =>
+                    v_control(1, 2, 6, 8, 10, 14 => '1', others => '0');
+            end case;
+
+       when "0100" =>
+            case current_state is
+                when FE =>
+                    v_control(2, 14, 15 => '1', others => '0');
+                when DE =>
+                    v_control(2, 5, 14, 15 => '1', others => '0');
+                when EX =>
+                    v_control(1, 2, 6, 8, 10, 14, 15 => '1', others => '0');
+            end case;
+
+       when "0101" =>
+            case current_state is
+                when FE =>
+                    v_control(2 => '1', others => '0');
+                when DE =>
+                    v_control(2, 5 => '1', others => '0');
+                when EX =>
+                    v_control(1, 2, 6, 10 => '1', others => '0');
+            end case;
+
+       when "0110" =>
+            case current_state is
+                when FE =>
+                    v_control(2 => '1', others => '0');
+                when DE =>
+                    v_control(2, 5 => '1', others => '0');
+                when EX =>
+                    v_control(1, 2, 7, 8, 10 => '1', others => '0');
+            end case;
+
+       when "0111" =>
+            case current_state is
+                when FE =>
+                    v_control(2, 11 => '1', others => '0');
+                when DE =>
+                    v_control(2, 11 => '1', others => '0');
+                when ME =>
+                    v_control(1, 4, 2, 11 => '1', others => '0');
+            end case;
+
+       when "1000" =>
+            case current_state is
+                when FE =>
+                    v_control(2 => '1', others => '0');
+                when DE =>
+                    v_control(2, 5 => '1', others => '0');
+                when DES =>
+                    v_control(2, 3, 6 => '1', others => '0');
+                when EX =>
+                    v_control(2, 3, 6 => '1', others => '0');
+            end case;
+
+       when "1001" =>
+            case current_state is
+                when FE =>
+                    v_control(2 => '1', others => '0');
+                when DE =>
+                    v_control(2, 5 => '1', others => '0');
+                when DES =>
+                    v_control(2, 3, 6 => '1', others => '0');
+                when EX =>
+                    v_control(2, 3, 6 => '1', others => '0');
+            end case;
+
+       when "1010" =>
+            case current_state is
+                when FE =>
+                    v_control(2, 11 => '1', others => '0');
+                when DE =>
+                    v_control(2, 5, 11 => '1', others => '0');
+                when DES =>
+                    v_control(2, 11 => '1', others => '0');
+                when ME =>
+                    v_control(1, 2, 3, 4, 11 => '1', others => '0');
+            end case;
+
+       when "1011" =>
+            case current_state is
+                when FE =>
+                    v_control(2, 12 => '1', others => '0');
+                when DE =>
+                    v_control(1, 4, 12 => '1', others => '0');
+            end case;
+
+       when "1100" =>
+            case current_state is
+                when FE =>
+                    v_control(2, 9 => '1', others => '0');
+                when DE =>
+                    v_control(0, 1, 2, 9 => '1', others => '0');
+            end case;
+
+       when "1101" =>
+            case current_state is
+                when FE =>
+                    v_control(2, 9 => '1', others => '0');
+                when DE =>
+                    v_control(0, 1, 2, 9 => '1', others => '0');
+            end case;
+
+       when "1110" =>
+            case current_state is
+                when FE =>
+                    v_control(2, 9 => '1', others => '0');
+                when DE =>
+                    v_control(0, 1, 2, 9 => '1', others => '0');
+            end case;
+
+       when "1111" =>
+            case current_state is
+                when FE =>
+                    v_control(2 => '1', others => '0');
+                when DE =>
+                    v_control(2 => '1', others => '0');
+                when EX =>
+                    v_control(1, 2, 13 => '1', others => '0');
+            end case;
+    end case; 
+end process;
 
 end Behavioral;
 
