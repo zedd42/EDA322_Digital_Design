@@ -31,7 +31,7 @@ ARCHITECTURE arch OF EDA322_processor IS
     SIGNAL opcode, FlagInp, aluToFlag : STD_LOGIC_VECTOR(3 DOWNTO 0);
     SIGNAL aluMd : STD_LOGIC_VECTOR(1 DOWNTO 0);
     SIGNAL neq, eq, pcSel, pcLd, instrLd, addrMd, dmWr, dataLd, flagLd, accSel : STD_LOGIC;
-    SIGNAL accLd, im2bus, dmRd, acc2bus, ext2bus, dispLd, zeroLogic, oneLogic : STD_LOGIC;
+    SIGNAL accLd, im2bus, dmRd, acc2bus, ext2bus, dispLd, zeroLogic, oneLogic, dummy : STD_LOGIC;
 
     COMPONENT procController IS
         Port ( 	master_load_enable : in STD_LOGIC;
@@ -154,9 +154,18 @@ data_mem : mem_array generic map (DATA_WIDTH => 8, ADDR_WIDTH => 8, INIT_FILE =>
 alu : alu_wRCA port map (OutFromAcc, BusOut, aluMd, aluOut, aluToFlag(3), aluToFlag(2), aluToFlag(1), aluToFlag(0));
 
 -- RCA
-adder : RCA port map (pc, oneVector_8, zeroLogic, PCIncrOut, zeroLogic);
+adder : RCA port map (pc, oneVector_8, zeroLogic, PCIncrOut, dummy);
 
 -- MOTTHA CONTROLLER!
 pController : procController port map (master_load_enable, Instruction(11 DOWNTO 8), neq, eq, CLK, ARESETN, pcSel, pcLd, instrLd, addrMd, dmWr, dataLd, flagLd, accSel, accLd, im2bus, dmRd, acc2bus, ext2bus, dispLd, aluMd);
+
+-- Zigzag dizzplayzz
+pc2seg <= pc;
+instr2seg <= instruction;
+addr2seg <= addr;
+dmemout2seg <= memdataoutreged;
+aluOut2seg <= aluout;
+acc2seg <= outfromacc;
+busout2seg <= busout;
 
 END arch;

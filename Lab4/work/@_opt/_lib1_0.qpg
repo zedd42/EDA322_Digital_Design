@@ -9,14 +9,14 @@ cModel Technology Builtin Library
 !i10d 8192
 !i10e 25
 !i10f 100
-Z0 d/u/qa/buildsites/10.3a/builds/linux/modeltech
+Z0 d/u/qa/buildsites/10.3c/builds/linux/modeltech
 Pfixed_float_types
-Z1 OL;C;10.3a;59
+Z1 OL;C;10.3c;59
 33
-Z2 !s110 1397447955
+Z2 !s110 1405743229
 !i10b 1
-Z3 OP;C;10.3a;59
-Z4 w1395258984
+Z3 OP;C;10.3c;59
+Z4 w1405031218
 Z5 d$MODEL_TECH/..
 8vhdl_src/ieee/fixed_float_types.vhdl
 Fvhdl_src/ieee/fixed_float_types.vhdl
@@ -24,12 +24,12 @@ l0
 L40
 VJoVc:0L4XeXcaE?c:FVe62
 !s100 JoVc:0L4XeXcaE?c:FVe62
-Z6 OE;C;10.3a;59
-!s108 1397447955.754983
-!s90 -2008|-work|ieee|-dirpath|$MODEL_TECH/..|-nowarn|3|vhdl_src/ieee/fixed_float_types.vhdl|
+Z6 OE;C;10.3c;59
+!s108 1405743229.869485
+!s90 -debug|-2008|-work|ieee|-dirpath|$MODEL_TECH/..|-nowarn|3|vhdl_src/ieee/fixed_float_types.vhdl|
 !s107 vhdl_src/ieee/fixed_float_types.vhdl|
 !i113 1
-Z7 o-2008 -work ieee -dirpath {$MODEL_TECH/..} -nowarn 3
+Z7 o-debug -2008 -work ieee -dirpath {$MODEL_TECH/..} -nowarn 3
 Z8 tExplicit 1
 Pfixed_generic_pkg
 Z9 DPx4 ieee 17 fixed_float_types 0 22 JoVc:0L4XeXcaE?c:FVe62
@@ -40,7 +40,7 @@ R1
 33
 b1
 !i109 1
-R2
+Z13 !s110 1405743230
 !i10b 1
 R3
 R4
@@ -52,15 +52,15 @@ L46
 V`=cI_4Mf07Y0RE[dTgE=F2
 !s100 `=cI_4Mf07Y0RE[dTgE=F2
 R6
-!s108 1397447955.823506
-!s90 -2008|-work|ieee|-dirpath|$MODEL_TECH/..|-nowarn|3|vhdl_src/ieee/fixed_generic_pkg.vhdl|
+!s108 1405743229.988507
+!s90 -debug|-2008|-work|ieee|-dirpath|$MODEL_TECH/..|-nowarn|3|vhdl_src/ieee/fixed_generic_pkg.vhdl|
 !s107 vhdl_src/ieee/fixed_generic_pkg.vhdl|
 !i113 1
 R7
 R8
 Bbody
 DPx4 work 17 fixed_generic_pkg 0 22 `=cI_4Mf07Y0RE[dTgE=F2
-Z13 DPx4 ieee 9 math_real 0 22 Sk6CSihbPL<f[^Shm]=KX0
+Z14 DPx4 ieee 9 math_real 0 22 Sk6CSihbPL<f[^Shm]=KX0
 R9
 R10
 R11
@@ -68,7 +68,7 @@ R12
 R1
 33
 !i109 1
-Z14 !s110 1397447956
+R13
 !i10b 1
 R3
 8vhdl_src/ieee/fixed_generic_pkg-body.vhdl
@@ -78,8 +78,8 @@ L43
 V1OB>@cS:GBkHTK^gK1Nzm1
 !s100 1OB>@cS:GBkHTK^gK1Nzm1
 R6
-!s108 1397447955.914249
-!s90 -2008|-work|ieee|-dirpath|$MODEL_TECH/..|-nowarn|3|vhdl_src/ieee/fixed_generic_pkg-body.vhdl|
+!s108 1405743230.092301
+!s90 -debug|-2008|-work|ieee|-dirpath|$MODEL_TECH/..|-nowarn|3|vhdl_src/ieee/fixed_generic_pkg-body.vhdl|
 !s107 vhdl_src/ieee/fixed_generic_pkg-body.vhdl|
 !i113 1
 R7
@@ -94,7 +94,7 @@ Z16 DBx4 ieee 17 fixed_generic_pkg 4 body 22 1OB>@cS:GBkHTK^gK1Nzm1
 R1
 33
 !i109 2
-R14
+R13
 !i10b 1
 R3
 R4
@@ -106,8 +106,8 @@ L42
 V6nURH]dUY5@T6S0eLDXJe2
 !s100 6nURH]dUY5@T6S0eLDXJe2
 R6
-!s108 1397447956.132475
-!s90 -2008|-work|ieee|-dirpath|$MODEL_TECH/..|-nowarn|3|vhdl_src/ieee/fixed_pkg.vhdl|
+!s108 1405743230.297272
+!s90 -debug|-2008|-work|ieee|-dirpath|$MODEL_TECH/..|-nowarn|3|vhdl_src/ieee/fixed_pkg.vhdl|
 !s107 vhdl_src/ieee/fixed_pkg.vhdl|
 !i113 1
 R7
@@ -122,7 +122,7 @@ R1
 33
 b1
 !i109 1
-R14
+R13
 !i10b 1
 R3
 R4
@@ -134,8 +134,8 @@ L46
 VH9F2dgFW`hn13SQYDoo_R2
 !s100 H9F2dgFW`hn13SQYDoo_R2
 R6
-!s108 1397447956.291507
-!s90 -2008|-work|ieee|-dirpath|$MODEL_TECH/..|-nowarn|3|vhdl_src/ieee/float_generic_pkg.vhdl|
+!s108 1405743230.506660
+!s90 -debug|-2008|-work|ieee|-dirpath|$MODEL_TECH/..|-nowarn|3|vhdl_src/ieee/float_generic_pkg.vhdl|
 !s107 vhdl_src/ieee/float_generic_pkg.vhdl|
 !i113 1
 R7
@@ -150,7 +150,7 @@ R12
 R1
 33
 !i109 1
-R14
+R13
 !i10b 1
 R3
 8vhdl_src/ieee/float_generic_pkg-body.vhdl
@@ -160,8 +160,8 @@ L40
 VWN9:YIQ]Fc2f32ANi3<g`0
 !s100 WN9:YIQ]Fc2f32ANi3<g`0
 R6
-!s108 1397447956.395100
-!s90 -2008|-work|ieee|-dirpath|$MODEL_TECH/..|-nowarn|3|vhdl_src/ieee/float_generic_pkg-body.vhdl|
+!s108 1405743230.709278
+!s90 -debug|-2008|-work|ieee|-dirpath|$MODEL_TECH/..|-nowarn|3|vhdl_src/ieee/float_generic_pkg-body.vhdl|
 !s107 vhdl_src/ieee/float_generic_pkg-body.vhdl|
 !i113 1
 R7
@@ -178,7 +178,7 @@ DBx4 ieee 17 float_generic_pkg 4 body 22 WN9:YIQ]Fc2f32ANi3<g`0
 R1
 33
 !i109 2
-R14
+Z17 !s110 1405743231
 !i10b 1
 R3
 R4
@@ -190,8 +190,8 @@ L42
 VZ81QOO3@T3iYBM^RlCZFZ1
 !s100 Z81QOO3@T3iYBM^RlCZFZ1
 R6
-!s108 1397447956.599794
-!s90 -2008|-work|ieee|-dirpath|$MODEL_TECH/..|-nowarn|3|vhdl_src/ieee/float_pkg.vhdl|
+!s108 1405743230.964818
+!s90 -debug|-2008|-work|ieee|-dirpath|$MODEL_TECH/..|-nowarn|3|vhdl_src/ieee/float_pkg.vhdl|
 !s107 vhdl_src/ieee/float_pkg.vhdl|
 !i113 1
 R7
@@ -199,10 +199,10 @@ R8
 ^#ieee_bit_context
 R1
 33
-Z17 !s110 1397447958
+Z18 !s110 1405743232
 !i10b 0
 R3
-Z18 w1397446067
+Z19 w1405740947
 R5
 8vhdl_src/ieee/ieee_bit_context.vhd
 Fvhdl_src/ieee/ieee_bit_context.vhd
@@ -211,19 +211,19 @@ L1
 V8;nmf^<<Q;TXX7lB^BofF3
 !s100 8;nmf^<<Q;TXX7lB^BofF3
 R6
-!s108 1397447958.045824
-!s90 -2008|-work|ieee|-dirpath|$MODEL_TECH/..|vhdl_src/ieee/ieee_bit_context.vhd|
+!s108 1405743232.611031
+!s90 -debug|-2008|-work|ieee|-dirpath|$MODEL_TECH/..|vhdl_src/ieee/ieee_bit_context.vhd|
 !s107 vhdl_src/ieee/ieee_bit_context.vhd|
 !i113 1
-Z19 o-2008 -work ieee -dirpath {$MODEL_TECH/..}
+Z20 o-debug -2008 -work ieee -dirpath {$MODEL_TECH/..}
 R8
 ^#ieee_std_context
 R1
 33
-R17
+R18
 !i10b 0
 R3
-R18
+R19
 R5
 8vhdl_src/ieee/ieee_std_context.vhd
 Fvhdl_src/ieee/ieee_std_context.vhd
@@ -232,38 +232,38 @@ L1
 V7m;SE_P[R@HSc<;N29LfO0
 !s100 7m;SE_P[R@HSc<;N29LfO0
 R6
-!s108 1397447958.105823
-!s90 -2008|-work|ieee|-dirpath|$MODEL_TECH/..|vhdl_src/ieee/ieee_std_context.vhd|
+!s108 1405743232.676930
+!s90 -debug|-2008|-work|ieee|-dirpath|$MODEL_TECH/..|vhdl_src/ieee/ieee_std_context.vhd|
 !s107 vhdl_src/ieee/ieee_std_context.vhd|
 !i113 1
-R19
+R20
 R8
 Pmath_complex
-R13
+R14
 R1
 33
 b1
 R2
 !i10b 1
 R3
-Z20 w1395258978
+Z21 w1405031212
 R5
-Z21 8vhdl_src/ieee/1076-2code.vhd
-Z22 Fvhdl_src/ieee/1076-2code.vhd
+Z22 8vhdl_src/ieee/1076-2code.vhd
+Z23 Fvhdl_src/ieee/1076-2code.vhd
 l0
 L671
-Z23 V5i:;_e<WQ2;?b7>BdkGQL0
+Z24 V5i:;_e<WQ2;?b7>BdkGQL0
 !s100 5i:;_e<WQ2;?b7>BdkGQL0
 R6
-Z24 !s108 1397447955.501417
-Z25 !s90 -2008|-mixedsvvh|-work|ieee|-dirpath|$MODEL_TECH/..|-nowarn|3|vhdl_src/ieee/1076-2code.vhd|
-Z26 !s107 vhdl_src/ieee/1076-2code.vhd|
+Z25 !s108 1405743229.592054
+Z26 !s90 -debug|-2008|-mixedsvvh|-work|ieee|-dirpath|$MODEL_TECH/..|-nowarn|3|vhdl_src/ieee/1076-2code.vhd|
+Z27 !s107 vhdl_src/ieee/1076-2code.vhd|
 !i113 1
-Z27 o-2008 -mixedsvvh -work ieee -dirpath {$MODEL_TECH/..} -nowarn 3
+Z28 o-debug -2008 -mixedsvvh -work ieee -dirpath {$MODEL_TECH/..} -nowarn 3
 R8
 Bbody
 DPx4 work 12 math_complex 0 22 5i:;_e<WQ2;?b7>BdkGQL0
-R13
+R14
 R1
 33
 R2
@@ -274,35 +274,37 @@ L3683
 Vk=aHPM3BcE3h<U`ln^fSk0
 !s100 k=aHPM3BcE3h<U`ln^fSk0
 R6
-R24
 R25
 R26
-!i113 1
 R27
+!i113 1
+R28
 R8
 R15
-Xmath_complex__mti__sv__equiv__implct__pack
-Z28 DXx6 sv_std 3 std 0 22 <EOTafDcUY:cQeO^ICn]m3
+XMATH_COMPLEX__mti__sv__equiv__implct__pack
+Z29 DXx6 sv_std 3 std 0 22 <EOTafDcUY:cQeO^ICn]m3
 !i10b 1
-R23
-Z29 OL;L;10.3a;59
+R24
+Z30 OL;L;10.3c;59
 r1
 !s85 0
 31
-Z30 OP;L;10.3a;59
+Z31 OP;L;10.3c;59
+R23
 I5i:;_e<WQ2;?b7>BdkGQL0
-!s100 PQcz9j5hJoa:YzSG7dd=a3
+!s100 9G[dihSTf1^Gi`M;:HA;61
 S1
 R0
-Z31 w1397447955
-8/u/qa/buildsites/10.3a/builds/linux/modeltech/ieee/_data/exempttbzfjm
+Z32 w1405743229
+8/u/qa/buildsites/10.3c/builds/linux/modeltech/ieee/_data/exemptbVD1nX
 L0 1
-Z32 OE;L;10.3a;59
-!s108 1397447955.680327
-!s107 /u/qa/buildsites/10.3a/builds/linux/modeltech/ieee/_data/exempttbzfjm|
-!s90 -sv|/u/qa/buildsites/10.3a/builds/linux/modeltech/ieee/_data/exempttbzfjm|-quiet|-work|ieee|-s|-novopt|-nolock|
+Z33 OE;L;10.3c;59
+!s108 1405743229.781624
+!s107 /u/qa/buildsites/10.3c/builds/linux/modeltech/ieee/_data/exemptbVD1nX|
+!s90 -sv|/u/qa/buildsites/10.3c/builds/linux/modeltech/ieee/_data/exemptbVD1nX|-quiet|-work|ieee|-s|-novopt|-nolock|
 !i113 1
-Z33 o-quiet -sv -work ieee -s -nolock -L mtiAvm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+Z34 o-quiet -sv -work ieee -s -nolock -L mtiAvm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+n@m@a@t@h_@c@o@m@p@l@e@x__mti__sv__equiv__implct__pack
 Pmath_real
 R1
 33
@@ -310,20 +312,20 @@ b1
 R2
 !i10b 1
 R3
-R20
-R5
 R21
+R5
 R22
+R23
 l0
 L48
-Z34 VSk6CSihbPL<f[^Shm]=KX0
+Z35 VSk6CSihbPL<f[^Shm]=KX0
 !s100 Sk6CSihbPL<f[^Shm]=KX0
 R6
-R24
 R25
 R26
-!i113 1
 R27
+!i113 1
+R28
 R8
 Bbody
 DPx4 work 9 math_real 0 22 Sk6CSihbPL<f[^Shm]=KX0
@@ -337,35 +339,37 @@ L1750
 VJnC;TOd;fnn0cn=h>4Pz<0
 !s100 JnC;TOd;fnn0cn=h>4Pz<0
 R6
-R24
 R25
 R26
-!i113 1
 R27
+!i113 1
+R28
 R8
 R15
-Xmath_real__mti__sv__equiv__implct__pack
-R28
-!i10b 1
-R34
+XMATH_REAL__mti__sv__equiv__implct__pack
 R29
+!i10b 1
+R35
+R30
 r1
 !s85 0
 31
-R30
+R31
+R23
 ISk6CSihbPL<f[^Shm]=KX0
-!s100 c?aGClEz34SR]8SeDlK`k1
+!s100 fhmc_]PSSQ21LCVP;MoMG3
 S1
 R0
-R31
-8/u/qa/buildsites/10.3a/builds/linux/modeltech/ieee/_data/exempt2kqwgX
-L0 1
 R32
-!s108 1397447955.621449
-!s107 /u/qa/buildsites/10.3a/builds/linux/modeltech/ieee/_data/exempt2kqwgX|
-!s90 -sv|/u/qa/buildsites/10.3a/builds/linux/modeltech/ieee/_data/exempt2kqwgX|-quiet|-work|ieee|-s|-novopt|-nolock|
-!i113 1
+8/u/qa/buildsites/10.3c/builds/linux/modeltech/ieee/_data/exempt1NSwjb
+L0 1
 R33
+!s108 1405743229.715623
+!s107 /u/qa/buildsites/10.3c/builds/linux/modeltech/ieee/_data/exempt1NSwjb|
+!s90 -sv|/u/qa/buildsites/10.3c/builds/linux/modeltech/ieee/_data/exempt1NSwjb|-quiet|-work|ieee|-s|-novopt|-nolock|
+!i113 1
+R34
+n@m@a@t@h_@r@e@a@l__mti__sv__equiv__implct__pack
 Pnumeric_bit
 R12
 R1
@@ -374,18 +378,18 @@ b1
 R2
 !i10b 1
 R3
-Z35 w1395258985
+Z36 w1405031219
 R5
-Z36 8vhdl_src/ieee/mti_numeric_bit.vhd
-Z37 Fvhdl_src/ieee/mti_numeric_bit.vhd
+Z37 8vhdl_src/ieee/mti_numeric_bit.vhd
+Z38 Fvhdl_src/ieee/mti_numeric_bit.vhd
 l0
 L56
 Vd<O?S;AIQfOzoHU3FDK]23
 !s100 d<O?S;AIQfOzoHU3FDK]23
 R6
-Z38 !s108 1397447954.984771
-Z39 !s90 -2008|-work|ieee|-dirpath|$MODEL_TECH/..|-nowarn|3|vhdl_src/ieee/mti_numeric_bit.vhd|
-Z40 !s107 vhdl_src/ieee/mti_numeric_bit.vhd|
+Z39 !s108 1405743229.026250
+Z40 !s90 -debug|-2008|-work|ieee|-dirpath|$MODEL_TECH/..|-nowarn|3|vhdl_src/ieee/mti_numeric_bit.vhd|
+Z41 !s107 vhdl_src/ieee/mti_numeric_bit.vhd|
 !i113 1
 R7
 R8
@@ -402,9 +406,9 @@ L2076
 V8D_eM[?N8NzQ87WdZSVDh1
 !s100 8D_eM[?N8NzQ87WdZSVDh1
 R6
-R38
 R39
 R40
+R41
 !i113 1
 R7
 R8
@@ -416,25 +420,25 @@ b1
 R2
 !i10b 1
 R3
-R35
+R36
 R5
-Z41 8vhdl_src/ieee/mti_numeric_bit_unsigned.vhd
-Z42 Fvhdl_src/ieee/mti_numeric_bit_unsigned.vhd
+Z42 8vhdl_src/ieee/mti_numeric_bit_unsigned.vhd
+Z43 Fvhdl_src/ieee/mti_numeric_bit_unsigned.vhd
 l0
 L50
 VUo=_FXbo@j4IMIikZfQ=:3
 !s100 Uo=_FXbo@j4IMIikZfQ=:3
 R6
-Z43 !s108 1397447955.310691
-Z44 !s90 -2008|-work|ieee|-dirpath|$MODEL_TECH/..|-nowarn|3|vhdl_src/ieee/mti_numeric_bit_unsigned.vhd|
-Z45 !s107 vhdl_src/ieee/mti_numeric_bit_unsigned.vhd|
+Z44 !s108 1405743229.390015
+Z45 !s90 -debug|-2008|-work|ieee|-dirpath|$MODEL_TECH/..|-nowarn|3|vhdl_src/ieee/mti_numeric_bit_unsigned.vhd|
+Z46 !s107 vhdl_src/ieee/mti_numeric_bit_unsigned.vhd|
 !i113 1
 R7
 R8
 Bbody
 DPx4 work 20 numeric_bit_unsigned 0 22 Uo=_FXbo@j4IMIikZfQ=:3
 R12
-Z46 DPx4 ieee 11 numeric_bit 0 22 d<O?S;AIQfOzoHU3FDK]23
+Z47 DPx4 ieee 11 numeric_bit 0 22 d<O?S;AIQfOzoHU3FDK]23
 R1
 33
 R2
@@ -445,9 +449,9 @@ L834
 V[<KjB60[O3ILRz<IeWCKo0
 !s100 [<KjB60[O3ILRz<IeWCKo0
 R6
-R43
 R44
 R45
+R46
 !i113 1
 R7
 R8
@@ -461,55 +465,23 @@ b1
 R2
 !i10b 1
 R3
-R35
+R36
 R5
-Z47 8vhdl_src/ieee/mti_numeric_std.vhd
-Z48 Fvhdl_src/ieee/mti_numeric_std.vhd
+Z48 8vhdl_src/ieee/mti_numeric_std.vhd
+Z49 Fvhdl_src/ieee/mti_numeric_std.vhd
 l0
 L66
 V:ASDNFgHXf_ih3J@9F3Ze1
 !s100 :ASDNFgHXf_ih3J@9F3Ze1
 R6
-Z49 !s108 1397447955.135879
-Z50 !s90 -2008|-work|ieee|-dirpath|$MODEL_TECH/..|-nowarn|3|vhdl_src/ieee/mti_numeric_std.vhd|
-Z51 !s107 vhdl_src/ieee/mti_numeric_std.vhd|
+Z50 !s108 1405743229.195789
+Z51 !s90 -debug|-2008|-work|ieee|-dirpath|$MODEL_TECH/..|-nowarn|3|vhdl_src/ieee/mti_numeric_std.vhd|
+Z52 !s107 vhdl_src/ieee/mti_numeric_std.vhd|
 !i113 1
 R7
 R8
 Bbody
-DPx4 work 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
-R11
-R12
-R1
-33
-R2
-!i10b 1
-R3
-l0
-L2207
-VI914AMN_?Qk;P<9Bm[VT=2
-!s100 I914AMN_?Qk;P<9Bm[VT=2
-R6
-R49
-R50
-R51
-!i113 1
-R7
-R8
-R15
-Pnumeric_std_unsigned
-R12
-R11
-R1
-33
-b1
-R2
-!i10b 1
-R3
-R35
-R5
-Z52 8vhdl_src/ieee/mti_numeric_std_unsigned.vhd
-Z53 Fvhdl_m255
+DPx4 work 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1m255
 K4
 z2
 13
@@ -520,139 +492,139 @@ z2
 cModel Technology
 Z0 dZ:/.win/My Documents/XILINX/New folder
 T_opt
-!s110 1423129867
-VSXT0cXIUf>Ho1<jbHeM=c1
-Z1 04 4 6 work prep behave 1
-=1-782bcb9b9d2f-54d33d0a-73-ac
-Z2 o-quiet -auto_acc_if_foreign -work work +acc
+!s110 1423151046
+V_6NA^Nlb>;YOj>zZeo0R`3
+04 4 10 work regn behavioral 1
+=1-0026b975603d-54d38fc5-2bb-b94
+Z1 o-quiet -auto_acc_if_foreign -work work +acc
 n@_opt
-Z3 OL;O;10.3a;59
+Z2 OL;O;10.3c;59
 T_opt1
-!s110 1423129283
-VdjK=fieiX:Ui6YdJ4R@b=3
+!s110 1423148387
+VV^I_ezLUaK[gbjD8E7PgU2
+04 16 4 work eda322_processor arch 1
+=1-0026b975603d-54d38562-371-1394
 R1
-=1-782bcb9b9d2f-54d33ac2-291-13fc
-o-quiet -auto_acc_if_foreign -work work
 n@_opt1
-R3
+R2
 R0
 T_opt2
-!s110 1423129860
-V=`C]_Te_jjj:L@IkFhTHD2
+!s110 1423150894
+VKDe=g2ADT@CC`8ij5SbT72
+04 13 10 work testbenchlab4 behavioral 1
+=1-0026b975603d-54d38f2c-7c-12e8
 R1
-=1-782bcb9b9d2f-54d33d03-19b-160c
-R2
 n@_opt2
-R3
+R2
 R0
 Ealu_wrca
-Z4 w1422886705
-Z5 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
-Z6 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
-Z7 dZ:/.win/git/digitaldesign/Lab4
-Z8 8Z:/.win/git/digitaldesign/Lab4/alu_wRCA.vhd
-Z9 FZ:/.win/git/digitaldesign/Lab4/alu_wRCA.vhd
+Z3 w1422886705
+Z4 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z5 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
+Z6 dZ:/.win/git/digitaldesign/Lab4
+Z7 8Z:\.win\git\digitaldesign\Lab4\alu_wRCA.vhd
+Z8 FZ:\.win\git\digitaldesign\Lab4\alu_wRCA.vhd
 l0
 L4
 VXV;L:MF7jNc@oY9>5H7OM0
 !s100 C_ME9kA7mj6gzJ_H6zKem1
-Z10 OL;C;10.3a;59
+Z9 OL;C;10.3c;59
 32
-Z11 !s110 1423124974
+Z10 !s110 1423151031
 !i10b 1
-Z12 !s108 1423124974.035000
-Z13 !s90 -reportprogress|300|-stats=none|-work|work|-2002|-explicit|-vopt|Z:/.win/git/digitaldesign/Lab4/alu_wRCA.vhd|
-Z14 !s107 Z:/.win/git/digitaldesign/Lab4/alu_wRCA.vhd|
+Z11 !s108 1423151031.781000
+Z12 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|Z:\.win\git\digitaldesign\Lab4\alu_wRCA.vhd|
+Z13 !s107 Z:\.win\git\digitaldesign\Lab4\alu_wRCA.vhd|
 !i113 0
-Z15 o-work work -2002 -explicit
-Z16 tExplicit 1
+Z14 o-work work -2002 -explicit
+Z15 tExplicit 1
 Aarch
+R4
 R5
-R6
 DEx4 work 8 alu_wrca 0 22 XV;L:MF7jNc@oY9>5H7OM0
 l36
 L13
 VoOZGfmT^CGJ<SRH^V570C3
 !s100 Z9Mc]L4C:UTiXjKz@3Wh63
-R10
+R9
 32
-R11
+R10
 !i10b 1
+R11
 R12
 R13
-R14
 !i113 0
+R14
 R15
-R16
 Eand8
+R3
 R4
 R5
 R6
-R7
-Z17 8Z:/.win/git/digitaldesign/Lab4/and8.vhd
-Z18 FZ:/.win/git/digitaldesign/Lab4/and8.vhd
+Z16 8Z:/.win/git/digitaldesign/Lab4/and8.vhd
+Z17 FZ:/.win/git/digitaldesign/Lab4/and8.vhd
 l0
 L4
 V4=WMKKY`A8HC[S__IcV;@2
 !s100 jmA9WVhkQLfzIT;8nBM:R1
-R10
+R9
 32
-R11
+Z18 !s110 1423151032
 !i10b 1
-Z19 !s108 1423124974.725000
-Z20 !s90 -reportprogress|300|-stats=none|-work|work|-2002|-explicit|-vopt|Z:/.win/git/digitaldesign/Lab4/and8.vhd|
+Z19 !s108 1423151032.568000
+Z20 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|Z:/.win/git/digitaldesign/Lab4/and8.vhd|
 Z21 !s107 Z:/.win/git/digitaldesign/Lab4/and8.vhd|
 !i113 0
+R14
 R15
-R16
 Adataflow
+R4
 R5
-R6
 DEx4 work 4 and8 0 22 4=WMKKY`A8HC[S__IcV;@2
 l11
 L10
 Vk<j@jGfi:oS>mVfNfg7zo2
 !s100 ASM8Hb2GgKJQ?D3M21mRd0
-R10
+R9
 32
-R11
+R18
 !i10b 1
 R19
 R20
 R21
 !i113 0
+R14
 R15
-R16
 Ecmp
+R3
 R4
 R5
 R6
-R7
 Z22 8Z:/.win/git/digitaldesign/Lab4/cmp.vhd
 Z23 FZ:/.win/git/digitaldesign/Lab4/cmp.vhd
 l0
 L4
 VK;n0UV3R]IjjJ:ZOLL4;o3
 !s100 [iBn^0gUE[JNTe80h:Ji_0
-R10
+R9
 32
-Z24 !s110 1423124975
+Z24 !s110 1423151033
 !i10b 1
-Z25 !s108 1423124975.346000
-Z26 !s90 -reportprogress|300|-stats=none|-work|work|-2002|-explicit|-vopt|Z:/.win/git/digitaldesign/Lab4/cmp.vhd|
+Z25 !s108 1423151033.201000
+Z26 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|Z:/.win/git/digitaldesign/Lab4/cmp.vhd|
 Z27 !s107 Z:/.win/git/digitaldesign/Lab4/cmp.vhd|
 !i113 0
+R14
 R15
-R16
 Adataflow
+R4
 R5
-R6
 DEx4 work 3 cmp 0 22 K;n0UV3R]IjjJ:ZOLL4;o3
 l13
 L10
 VE3KDSgBPKV`QA5Ie12hCc3
 !s100 =jl;KE4_[o5P]GDWTHGhK0
-R10
+R9
 32
 R24
 !i10b 1
@@ -660,375 +632,375 @@ R25
 R26
 R27
 !i113 0
+R14
 R15
-R16
 Eeda322_processor
-Z28 w1422971254
+Z28 w1423150609
+R4
 R5
 R6
-R7
-Z29 8Z:/.win/git/digitaldesign/Lab4/EDA322_processor.vhd
-Z30 FZ:/.win/git/digitaldesign/Lab4/EDA322_processor.vhd
+Z29 8Z:\.win\git\digitaldesign\Lab4\EDA322_processor.vhd
+Z30 FZ:\.win\git\digitaldesign\Lab4\EDA322_processor.vhd
 l0
 L5
 V2A0:aE7L4mf?JLA6?F9QF1
 !s100 R<jXTE4@69JejYO1a6NVJ0
-R10
+R9
 32
-Z31 !s110 1423124976
+R24
 !i10b 1
-Z32 !s108 1423124975.996000
-Z33 !s90 -reportprogress|300|-stats=none|-work|work|-2002|-explicit|-vopt|Z:/.win/git/digitaldesign/Lab4/EDA322_processor.vhd|
-Z34 !s107 Z:/.win/git/digitaldesign/Lab4/EDA322_processor.vhd|
+Z31 !s108 1423151033.594000
+Z32 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|Z:\.win\git\digitaldesign\Lab4\EDA322_processor.vhd|
+Z33 !s107 Z:\.win\git\digitaldesign\Lab4\EDA322_processor.vhd|
 !i113 0
+R14
 R15
-R16
 Aarch
+R4
 R5
-R6
 DEx4 work 16 eda322_processor 0 22 2A0:aE7L4mf?JLA6?F9QF1
 l127
 L26
-VLj9SR`ZaObXVYMH6aI]WO0
-!s100 gb^2[6O0m`UHHOTmS`aBf2
-R10
+V1MY25>QSjTNLe]dPOM]jD2
+!s100 m5<Y^ABTbE1_`L]IZYeBc2
+R9
 32
-R31
+R24
 !i10b 1
+R31
 R32
 R33
-R34
 !i113 0
+R14
 R15
-R16
 Efa
+R3
 R4
 R5
 R6
-R7
-Z35 8Z:/.win/git/digitaldesign/Lab4/FA.vhd
-Z36 FZ:/.win/git/digitaldesign/Lab4/FA.vhd
+Z34 8Z:/.win/git/digitaldesign/Lab4/FA.vhd
+Z35 FZ:/.win/git/digitaldesign/Lab4/FA.vhd
 l0
 L4
 VPkR0aIo`Eig5_BYeIl;da2
 !s100 MNJ@UHMTnzCjTdfZeGAf42
-R10
+R9
 32
-R31
+Z36 !s110 1423151034
 !i10b 1
-Z37 !s108 1423124976.636000
-Z38 !s90 -reportprogress|300|-stats=none|-work|work|-2002|-explicit|-vopt|Z:/.win/git/digitaldesign/Lab4/FA.vhd|
+Z37 !s108 1423151033.997000
+Z38 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|Z:/.win/git/digitaldesign/Lab4/FA.vhd|
 Z39 !s107 Z:/.win/git/digitaldesign/Lab4/FA.vhd|
 !i113 0
+R14
 R15
-R16
 Adataflow
+R4
 R5
-R6
 DEx4 work 2 fa 0 22 PkR0aIo`Eig5_BYeIl;da2
 l11
 L10
 V3YAM4l::hfNoT7W7R2I9j3
 !s100 :K3BlL8QcnL>5N>ijPUo@2
-R10
+R9
 32
-R31
+R36
 !i10b 1
 R37
 R38
 R39
 !i113 0
+R14
 R15
-R16
 Emem_array
 Z40 w1422970885
 Z41 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
+R4
 R5
 R6
-R7
-Z42 8Z:/.win/git/digitaldesign/Lab4/mem_array.vhd
-Z43 FZ:/.win/git/digitaldesign/Lab4/mem_array.vhd
+Z42 8Z:\.win\git\digitaldesign\Lab4\mem_array.vhd
+Z43 FZ:\.win\git\digitaldesign\Lab4\mem_array.vhd
 l0
 L6
 VVTL9eUBOU_<zKg=U23Caj3
 !s100 Phg`mVD@MR4Gm^[VA_TP;2
-R10
+R9
 32
-Z44 !s110 1423124977
+R36
 !i10b 1
-Z45 !s108 1423124977.286000
-Z46 !s90 -reportprogress|300|-stats=none|-work|work|-2002|-explicit|-vopt|Z:/.win/git/digitaldesign/Lab4/mem_array.vhd|
-Z47 !s107 Z:/.win/git/digitaldesign/Lab4/mem_array.vhd|
+Z44 !s108 1423151034.375000
+Z45 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|Z:\.win\git\digitaldesign\Lab4\mem_array.vhd|
+Z46 !s107 Z:\.win\git\digitaldesign\Lab4\mem_array.vhd|
 !i113 0
+R14
 R15
-R16
 Aarch
 R41
+R4
 R5
-R6
 DEx4 work 9 mem_array 0 22 VTL9eUBOU_<zKg=U23Caj3
 l39
 L18
 VM?;cc7;;KT0S]l[J5JDh?1
 !s100 @dkSR:VfkDnibcb;52A3C3
-R10
+R9
 32
-R44
+R36
 !i10b 1
+R44
 R45
 R46
-R47
 !i113 0
+R14
 R15
-R16
 Emux2to1
+R3
 R4
 R5
 R6
-R7
-Z48 8Z:/.win/git/digitaldesign/Lab4/mux2to1.vhd
-Z49 FZ:/.win/git/digitaldesign/Lab4/mux2to1.vhd
+Z47 8Z:\.win\git\digitaldesign\Lab4\mux2to1.vhd
+Z48 FZ:\.win\git\digitaldesign\Lab4\mux2to1.vhd
 l0
 L4
 VJF:oBSzNFQ4ATHjEn`e`22
 !s100 m1=6h:QJ]0Z_h=:i>UgJ41
-R10
+R9
 32
-Z50 !s110 1423124978
+R36
 !i10b 1
-Z51 !s108 1423124977.916000
-Z52 !s90 -reportprogress|300|-stats=none|-work|work|-2002|-explicit|-vopt|Z:/.win/git/digitaldesign/Lab4/mux2to1.vhd|
-Z53 !s107 Z:/.win/git/digitaldesign/Lab4/mux2to1.vhd|
+Z49 !s108 1423151034.772000
+Z50 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|Z:\.win\git\digitaldesign\Lab4\mux2to1.vhd|
+Z51 !s107 Z:\.win\git\digitaldesign\Lab4\mux2to1.vhd|
 !i113 0
+R14
 R15
-R16
 Astructure
+R4
 R5
-R6
 DEx4 work 7 mux2to1 0 22 JF:oBSzNFQ4ATHjEn`e`22
 l33
 L11
 VD;aaUQ5B3Wo_0cNfjC<B;3
 !s100 1_?g]ZCHeXzcLN3^lZ<_53
-R10
+R9
 32
-R50
+R36
 !i10b 1
+R49
+R50
 R51
-R52
-R53
 !i113 0
+R14
 R15
-R16
 Emux4to1
+R3
 R4
 R5
 R6
-R7
-Z54 8Z:/.win/git/digitaldesign/Lab4/mux4to1.vhd
-Z55 FZ:/.win/git/digitaldesign/Lab4/mux4to1.vhd
+Z52 8Z:\.win\git\digitaldesign\Lab4\mux4to1.vhd
+Z53 FZ:\.win\git\digitaldesign\Lab4\mux4to1.vhd
 l0
 L4
 V>8z3OkJUXkjKTCgUT7Lhj3
 !s100 jZ<@=WoVT`=ZQGbe>@XX?1
-R10
+R9
 32
-R50
+Z54 !s110 1423151035
 !i10b 1
-Z56 !s108 1423124978.566000
-Z57 !s90 -reportprogress|300|-stats=none|-work|work|-2002|-explicit|-vopt|Z:/.win/git/digitaldesign/Lab4/mux4to1.vhd|
-Z58 !s107 Z:/.win/git/digitaldesign/Lab4/mux4to1.vhd|
+Z55 !s108 1423151035.167000
+Z56 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|Z:\.win\git\digitaldesign\Lab4\mux4to1.vhd|
+Z57 !s107 Z:\.win\git\digitaldesign\Lab4\mux4to1.vhd|
 !i113 0
+R14
 R15
-R16
 Astructural
+R4
 R5
-R6
 DEx4 work 7 mux4to1 0 22 >8z3OkJUXkjKTCgUT7Lhj3
 l21
 L11
 VeQD[03ziLlD^J2`HEdCB;2
 !s100 IaSaDL0L;@hCdBSNOiJja2
-R10
+R9
 32
-R50
+R54
 !i10b 1
+R55
 R56
 R57
-R58
 !i113 0
+R14
 R15
-R16
 Enot8
+R3
 R4
 R5
 R6
-R7
-Z59 8Z:/.win/git/digitaldesign/Lab4/not8.vhd
-Z60 FZ:/.win/git/digitaldesign/Lab4/not8.vhd
+Z58 8Z:/.win/git/digitaldesign/Lab4/not8.vhd
+Z59 FZ:/.win/git/digitaldesign/Lab4/not8.vhd
 l0
 L4
 VR[6URc1?b=f3f`OH`GbgD3
 !s100 _EKeGTi:_h90S9kmi:RYk0
-R10
+R9
 32
-Z61 !s110 1423124979
+R54
 !i10b 1
-Z62 !s108 1423124979.186000
-Z63 !s90 -reportprogress|300|-stats=none|-work|work|-2002|-explicit|-vopt|Z:/.win/git/digitaldesign/Lab4/not8.vhd|
-Z64 !s107 Z:/.win/git/digitaldesign/Lab4/not8.vhd|
+Z60 !s108 1423151035.551000
+Z61 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|Z:/.win/git/digitaldesign/Lab4/not8.vhd|
+Z62 !s107 Z:/.win/git/digitaldesign/Lab4/not8.vhd|
 !i113 0
+R14
 R15
-R16
 Adataflow
+R4
 R5
-R6
 DEx4 work 4 not8 0 22 R[6URc1?b=f3f`OH`GbgD3
 l11
 L10
 VhYcngA1>i>_;fDjk3E6fo2
 !s100 gcgL=^^R3UQ`en4_>?<R;3
-R10
+R9
 32
-R61
+R54
 !i10b 1
+R60
+R61
 R62
-R63
-R64
 !i113 0
+R14
 R15
-R16
 Eor8
+R3
 R4
 R5
 R6
-R7
-Z65 8Z:/.win/git/digitaldesign/Lab4/or8.vhd
-Z66 FZ:/.win/git/digitaldesign/Lab4/or8.vhd
+Z63 8Z:/.win/git/digitaldesign/Lab4/or8.vhd
+Z64 FZ:/.win/git/digitaldesign/Lab4/or8.vhd
 l0
 L4
 V=kUJm:da]O5F;eHJOf5V63
 !s100 VKPBQi:z^^?:>B<B4e];43
-R10
+R9
 32
-Z67 !s110 1423124980
+Z65 !s110 1423151036
 !i10b 1
-Z68 !s108 1423124979.816000
-Z69 !s90 -reportprogress|300|-stats=none|-work|work|-2002|-explicit|-vopt|Z:/.win/git/digitaldesign/Lab4/or8.vhd|
-Z70 !s107 Z:/.win/git/digitaldesign/Lab4/or8.vhd|
+Z66 !s108 1423151035.945000
+Z67 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|Z:/.win/git/digitaldesign/Lab4/or8.vhd|
+Z68 !s107 Z:/.win/git/digitaldesign/Lab4/or8.vhd|
 !i113 0
+R14
 R15
-R16
 Adataflow
+R4
 R5
-R6
 DEx4 work 3 or8 0 22 =kUJm:da]O5F;eHJOf5V63
 l11
 L10
 VYEUYO`dml0:GcMA_l0J;W0
 !s100 X2HUbE1CNUS3oTTbXk5823
-R10
+R9
 32
-R67
+R65
 !i10b 1
+R66
+R67
 R68
-R69
-R70
 !i113 0
+R14
 R15
-R16
 Eprep
-Z71 w1423129844
+Z69 w1423130043
+R4
 R5
 R6
-R7
-Z72 8Z:\.win\git\digitaldesign\Lab4\prep.vhd
-Z73 FZ:\.win\git\digitaldesign\Lab4\prep.vhd
+Z70 8Z:/.win/git/digitaldesign/Lab4/prep.vhd
+Z71 FZ:/.win/git/digitaldesign/Lab4/prep.vhd
 l0
 L3
 VW>5Vj47NHSPCPh09V65?62
 !s100 kddTTFH[AYlJ6zZSoA>RZ0
-R10
+R9
 32
-Z74 !s110 1423129855
+Z72 !s110 1423151037
 !i10b 1
-Z75 !s108 1423129854.912000
-Z76 !s90 -reportprogress|300|-stats=none|-work|work|-2002|-explicit|-vopt|Z:\.win\git\digitaldesign\Lab4\prep.vhd|
-Z77 !s107 Z:\.win\git\digitaldesign\Lab4\prep.vhd|
+Z73 !s108 1423151037.461000
+Z74 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|Z:/.win/git/digitaldesign/Lab4/prep.vhd|
+Z75 !s107 Z:/.win/git/digitaldesign/Lab4/prep.vhd|
 !i113 0
+R14
 R15
-R16
 Abehave
+R4
 R5
-R6
 DEx4 work 4 prep 0 22 W>5Vj47NHSPCPh09V65?62
 l10
 L8
-VNX<1fFNL<WV86KJNn`]oO3
-!s100 FjfU_Q;YGa`]J<LmIQci20
-R10
+VIchFhaR:`h4jnDXdM31[c3
+!s100 HfnkT0^gzo6;T@C_:m?g50
+R9
 32
-R74
+R72
 !i10b 1
+R73
+R74
 R75
-R76
-R77
 !i113 0
+R14
 R15
-R16
 Eprocbus
+R3
 R4
 R5
 R6
-R7
-Z78 8Z:/.win/git/digitaldesign/Lab4/procBus.vhd
-Z79 FZ:/.win/git/digitaldesign/Lab4/procBus.vhd
+Z76 8Z:/.win/git/digitaldesign/Lab4/procBus.vhd
+Z77 FZ:/.win/git/digitaldesign/Lab4/procBus.vhd
 l0
 L4
 V^?mo4ja?9o7P5DDKF]>g00
 !s100 i=0lXE6T4A6fgZAG>Y4F_1
-R10
+R9
 32
-R67
+R65
 !i10b 1
-Z80 !s108 1423124980.466000
-Z81 !s90 -reportprogress|300|-stats=none|-work|work|-2002|-explicit|-vopt|Z:/.win/git/digitaldesign/Lab4/procBus.vhd|
-Z82 !s107 Z:/.win/git/digitaldesign/Lab4/procBus.vhd|
+Z78 !s108 1423151036.319000
+Z79 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|Z:/.win/git/digitaldesign/Lab4/procBus.vhd|
+Z80 !s107 Z:/.win/git/digitaldesign/Lab4/procBus.vhd|
 !i113 0
+R14
 R15
-R16
 Aarch
+R4
 R5
-R6
 DEx4 work 7 procbus 0 22 ^?mo4ja?9o7P5DDKF]>g00
 l22
 L18
 VU[aF_l;HQ4zBj[N:Q0fcd0
 !s100 S>VGGk^j9L]4Z_SMFe=E?3
-R10
+R9
 32
-R67
+R65
 !i10b 1
+R78
+R79
 R80
-R81
-R82
 !i113 0
+R14
 R15
-R16
 Eproccontroller
-Z83 w1422266378
+Z81 w1423150860
+R4
 R5
 R6
-R7
-Z84 8Z:/.win/git/digitaldesign/Lab4/procController.vhd
-Z85 FZ:/.win/git/digitaldesign/Lab4/procController.vhd
+Z82 8Z:\.win\git\digitaldesign\Lab4\procController.vhd
+Z83 FZ:\.win\git\digitaldesign\Lab4\procController.vhd
 l0
 L4
-V::kJ0ABMk4J0COLRYAF2A3
+VO:]?<lK4gPZ1?Jo0eR:U<2
 !s100 NG71Xg432TJma1QAaKE5Z3
-R10
-32
-Z86 !s110 1423124981
+R9
+33
+R65
 !i10b 1
-Z87 !s108 1423124981.086000
-Z88 !s90 -reportprogress|30
+Z84 !s108 1423151036.709000
+Z85 !s90 -reportprogress|300|-work|work|-2008|-e
