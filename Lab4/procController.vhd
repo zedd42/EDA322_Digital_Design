@@ -38,15 +38,42 @@ tmp_out_in <= tmp1_out xnor tmp2_out;
 process(CLK, ARESETN)
 begin
 if ARESETN='0' then
-	tmp_out <= '0';
+	current_state <= FE;
 else
-  if rising_edge(clk) then
-   	 if master_load_enable = '1' then
-		    tmp_out <= tmp_out_in;
-	   end if;
-  end if;
+    if rising_edge(clk) then
+        if master_load_enable = '1' then
+		    current_state <= next_state;
+        end if;
+    end if;
 end if;
 end process;
+
+process(current_state, opcode)
+    variable tmpcode := opcode;
+begin
+    case current_state is
+        when FE =>
+            case opcode is
+                if((not opcode(3) and not opcode(2)) 
+                    or (not opcode(3) and not opcode(1)) 
+                    or (not opcode(3) and not opcode(0))
+                    or (not opcode(2) and not opcode(1))
+                    or (not opcode(1) and not opcode(0)) then
+                    dataLd <= '1';
+                    pcSel, pcLd, instrLd, addrMd, dmWr, osv <= '0';
+                end if;
+            next_state <= DE;
+        when DE =>
+
+        when DES =>
+
+        when EX =>
+
+        when ME =>
+
+    end case;
+end process;
+
 
 pcSel <= tmp_out;
 pcLd <= tmp_out;

@@ -22,14 +22,6 @@ QuestaSim-64 vcom 10.3a Compiler 2014.04 Apr 14 2014
 -- Compiling entity procBus
 -- Compiling architecture arch of procBus
 
-} {} {}} Z:/.win/git/digitaldesign/Lab4/procController.vhd {1 {vcom -stats=none -work work -2002 -explicit -vopt Z:/.win/git/digitaldesign/Lab4/procController.vhd
-QuestaSim-64 vcom 10.3a Compiler 2014.04 Apr 14 2014
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Compiling entity procController
--- Compiling architecture Behavioral of procController
-
 } {} {}} Z:/.win/git/digitaldesign/Lab4/EDA322_processor.vhd {1 {vcom -stats=none -work work -2002 -explicit -vopt Z:/.win/git/digitaldesign/Lab4/EDA322_processor.vhd
 QuestaSim-64 vcom 10.3a Compiler 2014.04 Apr 14 2014
 -- Loading package STANDARD
