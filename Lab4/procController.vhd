@@ -39,16 +39,23 @@ begin
     C <= opcode(1);
     D <= opcode(0);
 
-    pcsel <= v_control(0);
-    pcld <= v_control(1);
+    pcsel    <= v_control(0);
+    pcld     <= v_control(1);
+    instrld  <= v_control(2);
+    addrmd   <= v_control(3);
+    dmwr     <= v_control(4);
+    datald   <= v_control(5);
+    flagld   <= v_control(6);
+    accsel   <= v_control(7);
+    accld    <= v_control(8);
+    im2bus   <= v_control(9);
+    dmrd     <= v_control(10);
+    acc2bus  <= v_control(11);
+    ext2bus  <= v_control(12);
+    displd   <= v_control(13);
+    alumd(1) <= v_control(14);
+    alumd(0) <= v_control(15);
 
---    aluMD(0) & aluMD(1) & dispLD & ext2bus & acc2bus & dmrd &
---                 im2bus & accld & accsel & flagld & datald & dmwr & addrmd &
---                 instrld & pcld & pcsel => v_control;
-
---    v_control <= pcSEL & pcLD & instrLD & addrMD & dmWR & dataLD & flagLD & 
---                 accSEL & accLD & im2bus & dmRD & acc2bus & ext2bus & 
---                 dispLD & aluMD(1) & aluMD(0);
 
 process(CLK, ARESETN)
 begin
@@ -102,7 +109,7 @@ begin
                 when DE =>
                     v_control <= (2 => '1', 5 => '1', others => '0');
                 when EX =>
-                    v_control <= (1 => '1', 2 => '1', 6 => '1', 8 => '1', 10 => '1', others => '0');
+                    v_control <= (1 | 2 | 6 | 8 | 10 => '1', others => '0');
                 when others =>
             end case;
         when "0001" =>
@@ -110,27 +117,27 @@ begin
                 when FE =>
                     v_control <= (2 => '1', others => '0');
                 when DE =>
-                    v_control <= (2 => '1', 5 => '1', others => '0');
+                    v_control <= (2 | 5 => '1', others => '0');
                 when EX =>
-                    v_control <= (1 => '1', 2 => '1', 6 => '1', 8 => '1', 10 => '1', others => '0');
+                    v_control <= (1 | 2 | 6 | 8 | 10 => '1', others => '0');
                 when others =>
             end case;
 
        when "0010" =>
             case current_state is
                 when FE =>
-                    v_control <= (2 => '1', 15 => '1', others => '0');
+                    v_control <= (2 | 15 => '1', others => '0');
                 when DE =>
-                    v_control <= (2 => '1', 5 => '1', 15=> '1', others => '0');
+                    v_control <= (2 | 5 | 15=> '1', others => '0');
                 when EX =>
-                    v_control <= (1 => '1', 2 => '1', 6 => '1', 8 => '1', 10 => '1', 15 => '1', others => '0');
+                    v_control <= (1 | 2 | 6 | 8 | 10 | 15 => '1', others => '0');
                 when others =>
             end case;
 
        when "0011" =>
             case current_state is
                 when FE =>
-                    v_control <= (2 => '1', 14 => '1', others => '0');
+                    v_control <= (2 | 14 => '1', others => '0');
                 when DE =>
                     v_control <= (2 | 5 | 14 => '1', others => '0');
                 when EX =>
