@@ -1,0 +1,623 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dZ:/.win/My Documents/XILINX/New folder
+T_opt
+!s110 1423129867
+VSXT0cXIUf>Ho1<jbHeM=c1
+Z1 04 4 6 work prep behave 1
+=1-782bcb9b9d2f-54d33d0a-73-ac
+Z2 o-quiet -auto_acc_if_foreign -work work +acc
+n@_opt
+Z3 OL;O;10.3a;59
+T_opt1
+!s110 1423129283
+VdjK=fieiX:Ui6YdJ4R@b=3
+R1
+=1-782bcb9b9d2f-54d33ac2-291-13fc
+o-quiet -auto_acc_if_foreign -work work
+n@_opt1
+R3
+R0
+T_opt2
+!s110 1423129860
+V=`C]_Te_jjj:L@IkFhTHD2
+R1
+=1-782bcb9b9d2f-54d33d03-19b-160c
+R2
+n@_opt2
+R3
+R0
+Ealu_wrca
+Z4 w1422886705
+Z5 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z6 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
+Z7 dZ:/.win/git/digitaldesign/Lab4
+Z8 8Z:/.win/git/digitaldesign/Lab4/alu_wRCA.vhd
+Z9 FZ:/.win/git/digitaldesign/Lab4/alu_wRCA.vhd
+l0
+L4
+VXV;L:MF7jNc@oY9>5H7OM0
+!s100 C_ME9kA7mj6gzJ_H6zKem1
+Z10 OL;C;10.3a;59
+32
+Z11 !s110 1423124974
+!i10b 1
+Z12 !s108 1423124974.035000
+Z13 !s90 -reportprogress|300|-stats=none|-work|work|-2002|-explicit|-vopt|Z:/.win/git/digitaldesign/Lab4/alu_wRCA.vhd|
+Z14 !s107 Z:/.win/git/digitaldesign/Lab4/alu_wRCA.vhd|
+!i113 0
+Z15 o-work work -2002 -explicit
+Z16 tExplicit 1
+Aarch
+R5
+R6
+DEx4 work 8 alu_wrca 0 22 XV;L:MF7jNc@oY9>5H7OM0
+l36
+L13
+VoOZGfmT^CGJ<SRH^V570C3
+!s100 Z9Mc]L4C:UTiXjKz@3Wh63
+R10
+32
+R11
+!i10b 1
+R12
+R13
+R14
+!i113 0
+R15
+R16
+Eand8
+R4
+R5
+R6
+R7
+Z17 8Z:/.win/git/digitaldesign/Lab4/and8.vhd
+Z18 FZ:/.win/git/digitaldesign/Lab4/and8.vhd
+l0
+L4
+V4=WMKKY`A8HC[S__IcV;@2
+!s100 jmA9WVhkQLfzIT;8nBM:R1
+R10
+32
+R11
+!i10b 1
+Z19 !s108 1423124974.725000
+Z20 !s90 -reportprogress|300|-stats=none|-work|work|-2002|-explicit|-vopt|Z:/.win/git/digitaldesign/Lab4/and8.vhd|
+Z21 !s107 Z:/.win/git/digitaldesign/Lab4/and8.vhd|
+!i113 0
+R15
+R16
+Adataflow
+R5
+R6
+DEx4 work 4 and8 0 22 4=WMKKY`A8HC[S__IcV;@2
+l11
+L10
+Vk<j@jGfi:oS>mVfNfg7zo2
+!s100 ASM8Hb2GgKJQ?D3M21mRd0
+R10
+32
+R11
+!i10b 1
+R19
+R20
+R21
+!i113 0
+R15
+R16
+Ecmp
+R4
+R5
+R6
+R7
+Z22 8Z:/.win/git/digitaldesign/Lab4/cmp.vhd
+Z23 FZ:/.win/git/digitaldesign/Lab4/cmp.vhd
+l0
+L4
+VK;n0UV3R]IjjJ:ZOLL4;o3
+!s100 [iBn^0gUE[JNTe80h:Ji_0
+R10
+32
+Z24 !s110 1423124975
+!i10b 1
+Z25 !s108 1423124975.346000
+Z26 !s90 -reportprogress|300|-stats=none|-work|work|-2002|-explicit|-vopt|Z:/.win/git/digitaldesign/Lab4/cmp.vhd|
+Z27 !s107 Z:/.win/git/digitaldesign/Lab4/cmp.vhd|
+!i113 0
+R15
+R16
+Adataflow
+R5
+R6
+DEx4 work 3 cmp 0 22 K;n0UV3R]IjjJ:ZOLL4;o3
+l13
+L10
+VE3KDSgBPKV`QA5Ie12hCc3
+!s100 =jl;KE4_[o5P]GDWTHGhK0
+R10
+32
+R24
+!i10b 1
+R25
+R26
+R27
+!i113 0
+R15
+R16
+Eeda322_processor
+Z28 w1422971254
+R5
+R6
+R7
+Z29 8Z:/.win/git/digitaldesign/Lab4/EDA322_processor.vhd
+Z30 FZ:/.win/git/digitaldesign/Lab4/EDA322_processor.vhd
+l0
+L5
+V2A0:aE7L4mf?JLA6?F9QF1
+!s100 R<jXTE4@69JejYO1a6NVJ0
+R10
+32
+Z31 !s110 1423124976
+!i10b 1
+Z32 !s108 1423124975.996000
+Z33 !s90 -reportprogress|300|-stats=none|-work|work|-2002|-explicit|-vopt|Z:/.win/git/digitaldesign/Lab4/EDA322_processor.vhd|
+Z34 !s107 Z:/.win/git/digitaldesign/Lab4/EDA322_processor.vhd|
+!i113 0
+R15
+R16
+Aarch
+R5
+R6
+DEx4 work 16 eda322_processor 0 22 2A0:aE7L4mf?JLA6?F9QF1
+l127
+L26
+VLj9SR`ZaObXVYMH6aI]WO0
+!s100 gb^2[6O0m`UHHOTmS`aBf2
+R10
+32
+R31
+!i10b 1
+R32
+R33
+R34
+!i113 0
+R15
+R16
+Efa
+R4
+R5
+R6
+R7
+Z35 8Z:/.win/git/digitaldesign/Lab4/FA.vhd
+Z36 FZ:/.win/git/digitaldesign/Lab4/FA.vhd
+l0
+L4
+VPkR0aIo`Eig5_BYeIl;da2
+!s100 MNJ@UHMTnzCjTdfZeGAf42
+R10
+32
+R31
+!i10b 1
+Z37 !s108 1423124976.636000
+Z38 !s90 -reportprogress|300|-stats=none|-work|work|-2002|-explicit|-vopt|Z:/.win/git/digitaldesign/Lab4/FA.vhd|
+Z39 !s107 Z:/.win/git/digitaldesign/Lab4/FA.vhd|
+!i113 0
+R15
+R16
+Adataflow
+R5
+R6
+DEx4 work 2 fa 0 22 PkR0aIo`Eig5_BYeIl;da2
+l11
+L10
+V3YAM4l::hfNoT7W7R2I9j3
+!s100 :K3BlL8QcnL>5N>ijPUo@2
+R10
+32
+R31
+!i10b 1
+R37
+R38
+R39
+!i113 0
+R15
+R16
+Emem_array
+Z40 w1422970885
+Z41 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
+R5
+R6
+R7
+Z42 8Z:/.win/git/digitaldesign/Lab4/mem_array.vhd
+Z43 FZ:/.win/git/digitaldesign/Lab4/mem_array.vhd
+l0
+L6
+VVTL9eUBOU_<zKg=U23Caj3
+!s100 Phg`mVD@MR4Gm^[VA_TP;2
+R10
+32
+Z44 !s110 1423124977
+!i10b 1
+Z45 !s108 1423124977.286000
+Z46 !s90 -reportprogress|300|-stats=none|-work|work|-2002|-explicit|-vopt|Z:/.win/git/digitaldesign/Lab4/mem_array.vhd|
+Z47 !s107 Z:/.win/git/digitaldesign/Lab4/mem_array.vhd|
+!i113 0
+R15
+R16
+Aarch
+R41
+R5
+R6
+DEx4 work 9 mem_array 0 22 VTL9eUBOU_<zKg=U23Caj3
+l39
+L18
+VM?;cc7;;KT0S]l[J5JDh?1
+!s100 @dkSR:VfkDnibcb;52A3C3
+R10
+32
+R44
+!i10b 1
+R45
+R46
+R47
+!i113 0
+R15
+R16
+Emux2to1
+R4
+R5
+R6
+R7
+Z48 8Z:/.win/git/digitaldesign/Lab4/mux2to1.vhd
+Z49 FZ:/.win/git/digitaldesign/Lab4/mux2to1.vhd
+l0
+L4
+VJF:oBSzNFQ4ATHjEn`e`22
+!s100 m1=6h:QJ]0Z_h=:i>UgJ41
+R10
+32
+Z50 !s110 1423124978
+!i10b 1
+Z51 !s108 1423124977.916000
+Z52 !s90 -reportprogress|300|-stats=none|-work|work|-2002|-explicit|-vopt|Z:/.win/git/digitaldesign/Lab4/mux2to1.vhd|
+Z53 !s107 Z:/.win/git/digitaldesign/Lab4/mux2to1.vhd|
+!i113 0
+R15
+R16
+Astructure
+R5
+R6
+DEx4 work 7 mux2to1 0 22 JF:oBSzNFQ4ATHjEn`e`22
+l33
+L11
+VD;aaUQ5B3Wo_0cNfjC<B;3
+!s100 1_?g]ZCHeXzcLN3^lZ<_53
+R10
+32
+R50
+!i10b 1
+R51
+R52
+R53
+!i113 0
+R15
+R16
+Emux4to1
+R4
+R5
+R6
+R7
+Z54 8Z:/.win/git/digitaldesign/Lab4/mux4to1.vhd
+Z55 FZ:/.win/git/digitaldesign/Lab4/mux4to1.vhd
+l0
+L4
+V>8z3OkJUXkjKTCgUT7Lhj3
+!s100 jZ<@=WoVT`=ZQGbe>@XX?1
+R10
+32
+R50
+!i10b 1
+Z56 !s108 1423124978.566000
+Z57 !s90 -reportprogress|300|-stats=none|-work|work|-2002|-explicit|-vopt|Z:/.win/git/digitaldesign/Lab4/mux4to1.vhd|
+Z58 !s107 Z:/.win/git/digitaldesign/Lab4/mux4to1.vhd|
+!i113 0
+R15
+R16
+Astructural
+R5
+R6
+DEx4 work 7 mux4to1 0 22 >8z3OkJUXkjKTCgUT7Lhj3
+l21
+L11
+VeQD[03ziLlD^J2`HEdCB;2
+!s100 IaSaDL0L;@hCdBSNOiJja2
+R10
+32
+R50
+!i10b 1
+R56
+R57
+R58
+!i113 0
+R15
+R16
+Enot8
+R4
+R5
+R6
+R7
+Z59 8Z:/.win/git/digitaldesign/Lab4/not8.vhd
+Z60 FZ:/.win/git/digitaldesign/Lab4/not8.vhd
+l0
+L4
+VR[6URc1?b=f3f`OH`GbgD3
+!s100 _EKeGTi:_h90S9kmi:RYk0
+R10
+32
+Z61 !s110 1423124979
+!i10b 1
+Z62 !s108 1423124979.186000
+Z63 !s90 -reportprogress|300|-stats=none|-work|work|-2002|-explicit|-vopt|Z:/.win/git/digitaldesign/Lab4/not8.vhd|
+Z64 !s107 Z:/.win/git/digitaldesign/Lab4/not8.vhd|
+!i113 0
+R15
+R16
+Adataflow
+R5
+R6
+DEx4 work 4 not8 0 22 R[6URc1?b=f3f`OH`GbgD3
+l11
+L10
+VhYcngA1>i>_;fDjk3E6fo2
+!s100 gcgL=^^R3UQ`en4_>?<R;3
+R10
+32
+R61
+!i10b 1
+R62
+R63
+R64
+!i113 0
+R15
+R16
+Eor8
+R4
+R5
+R6
+R7
+Z65 8Z:/.win/git/digitaldesign/Lab4/or8.vhd
+Z66 FZ:/.win/git/digitaldesign/Lab4/or8.vhd
+l0
+L4
+V=kUJm:da]O5F;eHJOf5V63
+!s100 VKPBQi:z^^?:>B<B4e];43
+R10
+32
+Z67 !s110 1423124980
+!i10b 1
+Z68 !s108 1423124979.816000
+Z69 !s90 -reportprogress|300|-stats=none|-work|work|-2002|-explicit|-vopt|Z:/.win/git/digitaldesign/Lab4/or8.vhd|
+Z70 !s107 Z:/.win/git/digitaldesign/Lab4/or8.vhd|
+!i113 0
+R15
+R16
+Adataflow
+R5
+R6
+DEx4 work 3 or8 0 22 =kUJm:da]O5F;eHJOf5V63
+l11
+L10
+VYEUYO`dml0:GcMA_l0J;W0
+!s100 X2HUbE1CNUS3oTTbXk5823
+R10
+32
+R67
+!i10b 1
+R68
+R69
+R70
+!i113 0
+R15
+R16
+Eprep
+Z71 w1423129844
+R5
+R6
+R7
+Z72 8Z:\.win\git\digitaldesign\Lab4\prep.vhd
+Z73 FZ:\.win\git\digitaldesign\Lab4\prep.vhd
+l0
+L3
+VW>5Vj47NHSPCPh09V65?62
+!s100 kddTTFH[AYlJ6zZSoA>RZ0
+R10
+32
+Z74 !s110 1423129855
+!i10b 1
+Z75 !s108 1423129854.912000
+Z76 !s90 -reportprogress|300|-stats=none|-work|work|-2002|-explicit|-vopt|Z:\.win\git\digitaldesign\Lab4\prep.vhd|
+Z77 !s107 Z:\.win\git\digitaldesign\Lab4\prep.vhd|
+!i113 0
+R15
+R16
+Abehave
+R5
+R6
+DEx4 work 4 prep 0 22 W>5Vj47NHSPCPh09V65?62
+l10
+L8
+VNX<1fFNL<WV86KJNn`]oO3
+!s100 FjfU_Q;YGa`]J<LmIQci20
+R10
+32
+R74
+!i10b 1
+R75
+R76
+R77
+!i113 0
+R15
+R16
+Eprocbus
+R4
+R5
+R6
+R7
+Z78 8Z:/.win/git/digitaldesign/Lab4/procBus.vhd
+Z79 FZ:/.win/git/digitaldesign/Lab4/procBus.vhd
+l0
+L4
+V^?mo4ja?9o7P5DDKF]>g00
+!s100 i=0lXE6T4A6fgZAG>Y4F_1
+R10
+32
+R67
+!i10b 1
+Z80 !s108 1423124980.466000
+Z81 !s90 -reportprogress|300|-stats=none|-work|work|-2002|-explicit|-vopt|Z:/.win/git/digitaldesign/Lab4/procBus.vhd|
+Z82 !s107 Z:/.win/git/digitaldesign/Lab4/procBus.vhd|
+!i113 0
+R15
+R16
+Aarch
+R5
+R6
+DEx4 work 7 procbus 0 22 ^?mo4ja?9o7P5DDKF]>g00
+l22
+L18
+VU[aF_l;HQ4zBj[N:Q0fcd0
+!s100 S>VGGk^j9L]4Z_SMFe=E?3
+R10
+32
+R67
+!i10b 1
+R80
+R81
+R82
+!i113 0
+R15
+R16
+Eproccontroller
+Z83 w1422266378
+R5
+R6
+R7
+Z84 8Z:/.win/git/digitaldesign/Lab4/procController.vhd
+Z85 FZ:/.win/git/digitaldesign/Lab4/procController.vhd
+l0
+L4
+V::kJ0ABMk4J0COLRYAF2A3
+!s100 NG71Xg432TJma1QAaKE5Z3
+R10
+32
+Z86 !s110 1423124981
+!i10b 1
+Z87 !s108 1423124981.086000
+Z88 !s90 -reportprogress|300|-stats=none|-work|work|-2002|-explicit|-vopt|Z:/.win/git/digitaldesign/Lab4/procController.vhd|
+Z89 !s107 Z:/.win/git/digitaldesign/Lab4/procController.vhd|
+!i113 0
+R15
+R16
+Abehavioral
+R5
+R6
+DEx4 work 14 proccontroller 0 22 ::kJ0ABMk4J0COLRYAF2A3
+l32
+L28
+VP7Eoj=TiHAIXPgj99Wf7O3
+!s100 Sh@o:B04[NejB745d`OQW0
+R10
+32
+R86
+!i10b 1
+R87
+R88
+R89
+!i113 0
+R15
+R16
+Erca
+Z90 w1422963544
+R5
+R6
+R7
+Z91 8Z:/.win/git/digitaldesign/Lab4/RCA.vhd
+Z92 FZ:/.win/git/digitaldesign/Lab4/RCA.vhd
+l0
+L4
+V<i>]W;;_X54BgblBYoPbE0
+!s100 WG44^i]dIW?nROk6IAcm^1
+R10
+32
+R86
+!i10b 1
+Z93 !s108 1423124981.726000
+Z94 !s90 -reportprogress|300|-stats=none|-work|work|-2002|-explicit|-vopt|Z:/.win/git/digitaldesign/Lab4/RCA.vhd|
+Z95 !s107 Z:/.win/git/digitaldesign/Lab4/RCA.vhd|
+!i113 0
+R15
+R16
+Astructural
+R5
+R6
+DEx4 work 3 rca 0 22 <i>]W;;_X54BgblBYoPbE0
+l20
+L12
+V>0QM:hhaZaGMU`XXSBaaz2
+!s100 ^<zY7WaAjI67<i7B<6mh?2
+R10
+32
+R86
+!i10b 1
+R93
+R94
+R95
+!i113 0
+R15
+R16
+Eregn
+Z96 w1422623981
+R5
+R6
+R7
+Z97 8Z:/.win/git/digitaldesign/Lab4/regn.vhd
+Z98 FZ:/.win/git/digitaldesign/Lab4/regn.vhd
+l0
+L4
+V8TfUNXiZH?lF7@mGX=KFP0
+!s100 84bh1m0JUUkZWEXNh5dlj2
+R10
+32
+Z99 !s110 1423124973
+!i10b 1
+Z100 !s108 1423124973.355000
+Z101 !s90 -reportprogress|300|-stats=none|-work|work|-2002|-explicit|-vopt|Z:/.win/git/digitaldesign/Lab4/regn.vhd|
+Z102 !s107 Z:/.win/git/digitaldesign/Lab4/regn.vhd|
+!i113 0
+R15
+R16
+Abehavioral
+R5
+R6
+DEx4 work 4 regn 0 22 8TfUNXiZH?lF7@mGX=KFP0
+l13
+L12
+Vh6zEE6bLBUn2V32lR?BAh1
+!s100 d8@<>Zebk1XLOn9B>_Az_0
+R10
+32
+R99
+!i10b 1
+R100
+R101
+R102
+!i113 0
+R15
+R16
