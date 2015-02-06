@@ -26,9 +26,9 @@ END EDA322_processor;
 ARCHITECTURE arch OF EDA322_processor IS
     
     SIGNAL Instruction, InstrMemOut, zeroVector_12 : STD_LOGIC_VECTOR(11 DOWNTO 0);
-    SIGNAL nxtpc, pc, addFromInstruction, Addr, BusOut, MemDataOut, oneVector_8 : STD_LOGIC_VECTOR(7 DOWNTO 0);
-    SIGNAL MemDataOutReged, OutFromAcc, inAcc, PCIncrOut, OUTPUT, aluOut : STD_LOGIC_VECTOR(7 DOWNTO 0);
-    SIGNAL opcode, FlagInp, aluToFlag : STD_LOGIC_VECTOR(3 DOWNTO 0);
+    SIGNAL nxtpc, pc, Addr, BusOut, MemDataOut, oneVector_8 : STD_LOGIC_VECTOR(7 DOWNTO 0);
+    SIGNAL MemDataOutReged, OutFromAcc, inAcc, PCIncrOut, aluOut : STD_LOGIC_VECTOR(7 DOWNTO 0);
+    SIGNAL aluToFlag, fregout : STD_LOGIC_VECTOR(3 DOWNTO 0);
     SIGNAL aluMd : STD_LOGIC_VECTOR(1 DOWNTO 0);
     SIGNAL neq, eq, pcSel, pcLd, instrLd, addrMd, dmWr, dataLd, flagLd, accSel : STD_LOGIC;
     SIGNAL accLd, im2bus, dmRd, acc2bus, ext2bus, dispLd, zeroLogic, oneLogic, dummy : STD_LOGIC;
@@ -131,12 +131,12 @@ oneVector_8 <= "00000001";
 zeroVector_12 <= "000000000000";
 
 -- Multiplexorzz
-muxPCInc : mux2to1 port map (PCIncrOut, OUTPUT, pcSel, nxtpc);
+muxPCInc : mux2to1 port map (PCIncrOut, busout, pcSel, nxtpc);
 muxAddr  : mux2to1 port map (Instruction(7 DOWNTO 0), MemDataOutReged, addrMd, Addr);
 muxAlu   : mux2to1 port map (aluOut, BusOut, accSel, inAcc);
 
 -- Buzz
-procBus1   : procBus port map (addFromInstruction, MemDataOutReged, OutFromAcc, externalIn, BusOut, im2bus, dmRd, acc2bus, ext2bus, errSig2Seg);
+procBus1   : procBus port map (Instruction(7 DOWNTO 0), MemDataOutReged, OutFromAcc, externalIn, BusOut, im2bus, dmRd, acc2bus, ext2bus, errSig2Seg);
 
 -- Registers
 fetch : regn generic map (N => 8) port map (nxtpc, pcLd, ARESETN, CLK, pc);
@@ -144,17 +144,17 @@ fede  : regn generic map (N => 12) port map (InstrMemOut, instrLd, ARESETN, CLK,
 deex  : regn generic map (N => 8) port map (MemDataOut, dataLd, ARESETN, CLK, MemDataOutReged);
 ACC   : regn generic map (N => 8) port map (inAcc, accLd, ARESETN, CLK, OutFromAcc);
 Disp  : regn generic map (N => 8) port map (OutFromAcc, dispLd, ARESETN, CLK, disp2seg);
-Freg  : regn generic map (N => 4) port map (FlagInp, flagLd, ARESETN, CLK, flag2seg);
+Freg  : regn generic map (N => 4) port map (alutoflag, flagLd, ARESETN, CLK, fregout);
 
 -- Memoriezz
-inst_mem : mem_array generic map (DATA_WIDTH => 12, ADDR_WIDTH => 8, INIT_FILE => "inst_mem.mif") port map (pc, zeroVector_12, CLK, zeroLogic, InstrMemOut);
+inst_mem : mem_array generic map (DATA_WIDTH => 12, ADDR_WIDTH => 8, INIT_FILE => "inst_mem.mif") port map (pc, "000000000000", CLK, '0', InstrMemOut);
 data_mem : mem_array generic map (DATA_WIDTH => 8, ADDR_WIDTH => 8, INIT_FILE => "data_mem.mif") port map (Addr, BusOut, CLK, dmWr, MemDataOut);
 
 -- ALUZUZU
 alu : alu_wRCA port map (OutFromAcc, BusOut, aluMd, aluOut, aluToFlag(3), aluToFlag(2), aluToFlag(1), aluToFlag(0));
 
 -- RCA
-adder : RCA port map (pc, oneVector_8, zeroLogic, PCIncrOut, dummy);
+adder : RCA port map (pc, "00000001", '0', PCIncrOut, dummy);
 
 -- MOTTHA CONTROLLER!
 pController : procController port map (master_load_enable, Instruction(11 DOWNTO 8), neq, eq, CLK, ARESETN, pcSel, pcLd, instrLd, addrMd, dmWr, dataLd, flagLd, accSel, accLd, im2bus, dmRd, acc2bus, ext2bus, dispLd, aluMd);
@@ -167,5 +167,10 @@ dmemout2seg <= memdataoutreged;
 aluOut2seg <= aluout;
 acc2seg <= outfromacc;
 busout2seg <= busout;
+flag2seg <= fregout;
+eq <= fregout(0);
+neq <= fregout(1);
+zero <= fregout(2);
+ovf <= fregout(3);
 
 END arch;

@@ -77,18 +77,18 @@ begin
         when FE =>
             next_state <= DE;
         when DE =>
-            if(((A and not B) and not C) or ((A and not B) and not D)) then
+            if(((A and not B) and not C) or ((A and not B) and not D)) = '1'  then
                     next_state <= DES;
-            elsif((not A and not B) or (not A and not C) or 
-                  (not A and not D) or (A and B and C and D)) then
+            elsif(((((not A and not B) or (not A and not C)) or 
+                  (not A and not D)) or (A and B and C and D))) = '1' then
                     next_state <= EX;
-             elsif((((not A and B) and C) and D)) then
+             elsif((((not A and B) and C) and D)) = '1' then
                     next_state <= ME;
             end if;
         when DES =>
-            if((A and not B) and not C) then
+            if((A and not B) and not C) = '1' then
                 next_state <= EX;
-            elsif(((A and not B) and C) and not D) then
+            elsif(((A and not B) and C) and not D) = '1' then
                 next_state <= ME;
             end if;
         when EX =>
@@ -251,7 +251,7 @@ begin
                 when FE =>
                     v_control <= (2 | 9 => '1', others => '0');
                 when DE =>
-                    v_control <= (0 | 1 | 2 | 9 => '1', others => '0');
+                    v_control <= (0 => eq, 1 | 2 | 9 => '1', others => '0');
                 when others =>
             end case;
 
@@ -260,7 +260,7 @@ begin
                 when FE =>
                     v_control <= (2 | 9 => '1', others => '0');
                 when DE =>
-                    v_control <= (0 | 1 | 2 | 9 => '1', others => '0');
+                    v_control <= (0 => neq, 1 | 2 | 9 => '1', others => '0');
                 when others =>
             end case;
 

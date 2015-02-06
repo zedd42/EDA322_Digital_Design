@@ -1,85 +1,85 @@
-Z:/.win/git/digitaldesign/Lab4/RCA.vhd {1 {vcom -work work -2002 -explicit -vopt -stats=none {Z:\.win\git\digitaldesign\Lab4\RCA.vhd}
-QuestaSim-64 vcom 10.3c Compiler 2014.07 Jul 19 2014
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Compiling entity RCA
--- Compiling architecture structural of RCA
-
-} {} {}} Z:/.win/git/digitaldesign/Lab4/alu_wRCA.vhd {1 {vcom -work work -2002 -explicit -vopt -stats=none {Z:\.win\git\digitaldesign\Lab4\alu_wRCA.vhd}
-QuestaSim-64 vcom 10.3c Compiler 2014.07 Jul 19 2014
+Z:/.win/git/digitaldesign/Lab4/alu_wRCA.vhd {1 {vcom -stats=none -work work -2002 -explicit -vopt Z:/.win/git/digitaldesign/Lab4/alu_wRCA.vhd
+QuestaSim-64 vcom 10.3a Compiler 2014.04 Apr 14 2014
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
 -- Compiling entity alu_wRCA
 -- Compiling architecture arch of alu_wRCA
 
-} {} {}} Z:/.win/git/digitaldesign/Lab4/procBus.vhd {1 {vcom -work work -2002 -explicit -vopt -stats=none Z:/.win/git/digitaldesign/Lab4/procBus.vhd
-QuestaSim-64 vcom 10.3c Compiler 2014.07 Jul 19 2014
+} {} {}} Z:/.win/git/digitaldesign/Lab4/RCA.vhd {1 {vcom -stats=none -work work -2002 -explicit -vopt Z:/.win/git/digitaldesign/Lab4/RCA.vhd
+QuestaSim-64 vcom 10.3a Compiler 2014.04 Apr 14 2014
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity RCA
+-- Compiling architecture structural of RCA
+
+} {} {}} Z:/.win/git/digitaldesign/Lab4/procBus.vhd {1 {vcom -stats=none -work work -2002 -explicit -vopt Z:/.win/git/digitaldesign/Lab4/procBus.vhd
+QuestaSim-64 vcom 10.3a Compiler 2014.04 Apr 14 2014
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
 -- Compiling entity procBus
 -- Compiling architecture arch of procBus
 
-} {} {}} Z:/.win/git/digitaldesign/Lab4/prep.vhd {1 {vcom -work work -2002 -explicit -vopt -stats=none Z:/.win/git/digitaldesign/Lab4/prep.vhd
-QuestaSim-64 vcom 10.3c Compiler 2014.07 Jul 19 2014
+} {} {}} Z:/.win/git/digitaldesign/Lab4/prep.vhd {1 {vcom -stats=none -work work -2002 -explicit -vopt Z:/.win/git/digitaldesign/Lab4/prep.vhd
+QuestaSim-64 vcom 10.3a Compiler 2014.04 Apr 14 2014
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
 -- Compiling entity prep
 -- Compiling architecture behave of prep
 
-} {} {}} Z:/.win/git/digitaldesign/Lab4/procController.vhd {1 {vcom -work work -2008 -explicit -vopt -stats=none {Z:\.win\git\digitaldesign\Lab4\procController.vhd}
-QuestaSim-64 vcom 10.3c Compiler 2014.07 Jul 19 2014
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Compiling entity procController
--- Compiling architecture Behavioral of procController
-
-} {} {}} Z:/.win/git/digitaldesign/Lab4/EDA322_processor.vhd {1 {vcom -work work -2002 -explicit -vopt -stats=none {Z:\.win\git\digitaldesign\Lab4\EDA322_processor.vhd}
-QuestaSim-64 vcom 10.3c Compiler 2014.07 Jul 19 2014
+} {} {}} Z:/.win/git/digitaldesign/Lab4/EDA322_processor.vhd {1 {vcom -stats=none -work work -2002 -explicit -vopt Z:/.win/git/digitaldesign/Lab4/EDA322_processor.vhd
+QuestaSim-64 vcom 10.3a Compiler 2014.04 Apr 14 2014
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
 -- Compiling entity EDA322_processor
 -- Compiling architecture arch of EDA322_processor
 
-} {} {}} Z:/.win/git/digitaldesign/Lab4/mux2to1.vhd {1 {vcom -work work -2002 -explicit -vopt -stats=none {Z:\.win\git\digitaldesign\Lab4\mux2to1.vhd}
-QuestaSim-64 vcom 10.3c Compiler 2014.07 Jul 19 2014
+} {} {}} Z:/.win/git/digitaldesign/Lab4/procController.vhd {1 {vcom -stats=none -work work -2008 -explicit -vopt Z:/.win/git/digitaldesign/Lab4/procController.vhd
+QuestaSim-64 vcom 10.3a Compiler 2014.04 Apr 14 2014
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity procController
+-- Compiling architecture Behavioral of procController
+
+} {} {}} Z:/.win/git/digitaldesign/Lab4/mux2to1.vhd {1 {vcom -stats=none -work work -2002 -explicit -vopt Z:/.win/git/digitaldesign/Lab4/mux2to1.vhd
+QuestaSim-64 vcom 10.3a Compiler 2014.04 Apr 14 2014
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
 -- Compiling entity mux2to1
 -- Compiling architecture structure of mux2to1
 
-} {} {}} Z:/.win/git/digitaldesign/Lab4/mux4to1.vhd {1 {vcom -work work -2002 -explicit -vopt -stats=none {Z:\.win\git\digitaldesign\Lab4\mux4to1.vhd}
-QuestaSim-64 vcom 10.3c Compiler 2014.07 Jul 19 2014
+} {} {}} Z:/.win/git/digitaldesign/Lab4/mux4to1.vhd {1 {vcom -stats=none -work work -2002 -explicit -vopt Z:/.win/git/digitaldesign/Lab4/mux4to1.vhd
+QuestaSim-64 vcom 10.3a Compiler 2014.04 Apr 14 2014
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
 -- Compiling entity mux4to1
 -- Compiling architecture structural of mux4to1
 
-} {} {}} Z:/.win/git/digitaldesign/Lab4/and8.vhd {1 {vcom -work work -2002 -explicit -vopt -stats=none Z:/.win/git/digitaldesign/Lab4/and8.vhd
-QuestaSim-64 vcom 10.3c Compiler 2014.07 Jul 19 2014
+} {} {}} Z:/.win/git/digitaldesign/Lab4/and8.vhd {1 {vcom -stats=none -work work -2002 -explicit -vopt Z:/.win/git/digitaldesign/Lab4/and8.vhd
+QuestaSim-64 vcom 10.3a Compiler 2014.04 Apr 14 2014
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
 -- Compiling entity and8
 -- Compiling architecture dataflow of and8
 
-} {} {}} Z:/.win/git/digitaldesign/Lab4/regn.vhd {1 {vcom -work work -2002 -explicit -vopt -stats=none {Z:\.win\git\digitaldesign\Lab4\regn.vhd}
-QuestaSim-64 vcom 10.3c Compiler 2014.07 Jul 19 2014
+} {} {}} Z:/.win/git/digitaldesign/Lab4/regn.vhd {1 {vcom -stats=none -work work -2002 -explicit -vopt Z:/.win/git/digitaldesign/Lab4/regn.vhd
+QuestaSim-64 vcom 10.3a Compiler 2014.04 Apr 14 2014
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
 -- Compiling entity regn
 -- Compiling architecture behavioral of regn
 
-} {} {}} Z:/.win/git/digitaldesign/Lab4/mem_array.vhd {1 {vcom -work work -2002 -explicit -vopt -stats=none {Z:\.win\git\digitaldesign\Lab4\mem_array.vhd}
-QuestaSim-64 vcom 10.3c Compiler 2014.07 Jul 19 2014
+} {} {}} Z:/.win/git/digitaldesign/Lab4/mem_array.vhd {1 {vcom -stats=none -work work -2002 -explicit -vopt Z:/.win/git/digitaldesign/Lab4/mem_array.vhd
+QuestaSim-64 vcom 10.3a Compiler 2014.04 Apr 14 2014
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
@@ -87,40 +87,40 @@ QuestaSim-64 vcom 10.3c Compiler 2014.07 Jul 19 2014
 -- Compiling entity mem_array
 -- Compiling architecture arch of mem_array
 
-} {} {}} Z:/.win/git/digitaldesign/Lab4/FA.vhd {1 {vcom -work work -2002 -explicit -vopt -stats=none Z:/.win/git/digitaldesign/Lab4/FA.vhd
-QuestaSim-64 vcom 10.3c Compiler 2014.07 Jul 19 2014
+} {} {}} Z:/.win/git/digitaldesign/Lab4/FA.vhd {1 {vcom -stats=none -work work -2002 -explicit -vopt Z:/.win/git/digitaldesign/Lab4/FA.vhd
+QuestaSim-64 vcom 10.3a Compiler 2014.04 Apr 14 2014
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
 -- Compiling entity FA
 -- Compiling architecture dataflow of FA
 
-} {} {}} Z:/.win/git/digitaldesign/Lab4/cmp.vhd {1 {vcom -work work -2002 -explicit -vopt -stats=none Z:/.win/git/digitaldesign/Lab4/cmp.vhd
-QuestaSim-64 vcom 10.3c Compiler 2014.07 Jul 19 2014
+} {} {}} Z:/.win/git/digitaldesign/Lab4/cmp.vhd {1 {vcom -stats=none -work work -2002 -explicit -vopt Z:/.win/git/digitaldesign/Lab4/cmp.vhd
+QuestaSim-64 vcom 10.3a Compiler 2014.04 Apr 14 2014
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
 -- Compiling entity cmp
 -- Compiling architecture dataflow of cmp
 
-} {} {}} Z:/.win/git/digitaldesign/Lab4/not8.vhd {1 {vcom -work work -2002 -explicit -vopt -stats=none Z:/.win/git/digitaldesign/Lab4/not8.vhd
-QuestaSim-64 vcom 10.3c Compiler 2014.07 Jul 19 2014
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Compiling entity not8
--- Compiling architecture dataflow of not8
-
-} {} {}} Z:/.win/git/digitaldesign/Lab4/or8.vhd {1 {vcom -work work -2002 -explicit -vopt -stats=none Z:/.win/git/digitaldesign/Lab4/or8.vhd
-QuestaSim-64 vcom 10.3c Compiler 2014.07 Jul 19 2014
+} {} {}} Z:/.win/git/digitaldesign/Lab4/or8.vhd {1 {vcom -stats=none -work work -2002 -explicit -vopt Z:/.win/git/digitaldesign/Lab4/or8.vhd
+QuestaSim-64 vcom 10.3a Compiler 2014.04 Apr 14 2014
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
 -- Compiling entity or8
 -- Compiling architecture dataflow of or8
 
-} {} {}} Z:/.win/git/digitaldesign/Lab4/Testbenchlab4.vhd {1 {vcom -work work -2002 -explicit -vopt -stats=none {Z:\.win\git\digitaldesign\Lab4\Testbenchlab4.vhd}
-QuestaSim-64 vcom 10.3c Compiler 2014.07 Jul 19 2014
+} {} {}} Z:/.win/git/digitaldesign/Lab4/not8.vhd {1 {vcom -stats=none -work work -2002 -explicit -vopt Z:/.win/git/digitaldesign/Lab4/not8.vhd
+QuestaSim-64 vcom 10.3a Compiler 2014.04 Apr 14 2014
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity not8
+-- Compiling architecture dataflow of not8
+
+} {} {}} Z:/.win/git/digitaldesign/Lab4/Testbenchlab4.vhd {1 {vcom -stats=none -work work -2002 -explicit -vopt Z:/.win/git/digitaldesign/Lab4/Testbenchlab4.vhd
+QuestaSim-64 vcom 10.3a Compiler 2014.04 Apr 14 2014
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164

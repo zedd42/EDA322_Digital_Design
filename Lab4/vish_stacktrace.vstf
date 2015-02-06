@@ -1,0 +1,34 @@
+# Current time Fri Feb 06 13:22:24 2015
+# QuestaSim Stack Trace
+# Program = vish
+# Id = "10.3a"
+# Version = "2014.04"
+# Date = "Apr 14 2014"
+# Platform = win64
+
+Exception c0000005 has occurred at address 403293b5. Traceback:
+# 0    0x403293b5: 'Ucdb_Init + 0x765a5'
+# 1    0x00229c50: '<unknown (@0x229c50)>'
+# 2    0x71ac692d: 'errno + 0x9'
+# 3    0x403213c1: 'Ucdb_Init + 0x6e5b1'
+# 4    0x09c2c540: '<unknown (@0x9c2c540)>'
+# 5    0x00000001: '<unknown (@0x1)>'
+# 6    0x00000001: '<unknown (@0x1)>'
+# 7    0x00000019: '<unknown (@0x19)>'
+# 8    0x00000001: '<unknown (@0x1)>'
+# 9    0x40379a78: 'Ucdb_Init + 0xc6c68'
+# 10   0x4037a20f: 'Ucdb_Init + 0xc73ff'
+# 11   0x4037ae8f: 'Ucdb_Init + 0xc807f'
+# 12   0x0a5fb5f8: '<unknown (@0xa5fb5f8)>'
+# 13   0x00000003: '<unknown (@0x3)>'
+# 14   0x0eca7001: '<unknown (@0xeca7001)>'
+# 15   0x000001d9: '<unknown (@0x1d9)>'
+# 16   0x00000003: '<unknown (@0x3)>'
+# 17   0x40377c65: 'Ucdb_Init + 0xc4e55'
+# 18   0x00000018: '<unknown (@0x18)>'
+# 19   0x0ac6a7a5: '<unknown (@0xac6a7a5)>'
+# 20   0x00229d20: '<unknown (@0x229d20)>'
+# 21   0x00229d28: '<unknown (@0x229d28)>'
+StackWalk failed 487
+# End of Stack Trace
+

@@ -34,7 +34,6 @@ ARCHITECTURE arch of mem_array is
     end function;    
     
     SIGNAL MEM_SIGNAL : MEMORY_ARRAY := init_memory_wfile(INIT_FILE);
-    SIGNAL READ_ADDRESS : STD_LOGIC_VECTOR(ADDR_WIDTH-1 DOWNTO 0);
 
 BEGIN
     RW: PROCESS (CLK)
