@@ -103,9 +103,33 @@ from the multiplexer.\\\\
 
 (max: 2 pages)
 \\\\
-Describe what you did in lab 2 and what you have learnt. In addition, discuss your findings and observations during this lab. Summarize your answers to the questions in the lab PM and present the block diagrams that you have drawn. Furthermore, describe how your ALU performs subtraction using an adder. Remember to always explain your design choices and mention any assumptions. Finally, make use of figures and tables. 
 
 \subsection{Top-level Design}
+Implementing the top-level design of the ChAcc processor included the 
+implementation of storage components, such as memory, registers and the 
+bus, as well as initializing the memory components, and connecting all the 
+datapath components together.\\\\
+\noindent
+Firstly we created a generic register with asynchronus reset making use 
+of the behavioral design in VHDL. A simple process, triggered by either 
+the clock or the reset signal, firstly checks if the register is to be reseted 
+or not. The register will be reset if and only if the reset signal is 0. 
+However if the reset signal is 1 the process checks if the clock signal was 
+caused by a rising edge and if that is the case the register will be written 
+to if, and only if, the registers load signal is 1.\\\\
+\noindent
+A register holds only one signal at the time so for larger portions of data 
+the ChAcc has two memories - one for the instructions and one for the data. 
+ChAcc has two memories instead of one since it follows the Hardvard 
+architecture. however making use of generics - as with the register - we only 
+had to implement one, and when implementing the top-level design we 
+instanciated the two memories with generic maps and different init files.\\\\
+\noindent
+The processor bus was implemented using a 4 to 1 multiplexer along with some 
+extra logic to incorperate the four control signals into one bit. We mimized 
+the expression with the four signals and opted to default to the EXTDATA 
+signal. Two or gates were needed to get the desired functionality.
+
 (max: 2 pages)
 \\\\
 Describe what you did in lab 3. In addition, describe how you implemented the bus using the mux and any extra logic or the tri-state buffers. Describe briefly how you implemented the storage elements that are used by the ChAcc processor. Show one snapshot of the simulation waveform where you write something to a memory location and then read from it. Remember to always explain your design choices and mention any assumptions. Finally, make use of figures and tables. 
