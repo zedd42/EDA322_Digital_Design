@@ -105,9 +105,8 @@ begin
             case current_state is
                 when FE =>
                     v_control <= (2 => '1', others => '0');
-                     
                 when DE =>
-                    v_control <= (2 => '1', 5 => '1', others => '0');
+                    v_control <= (2 | 5 => '1', others => '0');
                 when EX =>
                     v_control <= (1 | 2 | 6 | 8 | 10 => '1', others => '0');
                 when others =>
@@ -196,9 +195,9 @@ begin
                 when DE =>
                     v_control <= (2 | 5 => '1', others => '0');
                 when DES =>
-                    v_control <= (2 | 3 | 6 => '1', others => '0');
+                    v_control <= (2 | 3 | 5 => '1', others => '0');
                 when EX =>
-                    v_control <= (2 | 3 | 6 => '1', others => '0');
+                    v_control <= (1 | 2 | 6 | 8 | 10 => '1', others => '0');
                 when others =>
             end case;
 
@@ -209,9 +208,9 @@ begin
                 when DE =>
                     v_control <= (2 | 5 => '1', others => '0');
                 when DES =>
-                    v_control <= (2 | 3 | 6 => '1', others => '0');
+                    v_control <= (2 | 3 | 5 => '1', others => '0');
                 when EX =>
-                    v_control <= (2 | 3 | 6 => '1', others => '0');
+                    v_control <= (1 | 2 | 7 | 8 | 10 => '1', others => '0');
                 when others =>
             end case;
 
@@ -221,8 +220,6 @@ begin
                     v_control <= (2 | 11 => '1', others => '0');
                 when DE =>
                     v_control <= (2 | 5 | 11 => '1', others => '0');
-                when DES =>
-                    v_control <= (2 | 11 => '1', others => '0');
                 when ME =>
                     v_control <= (1 | 2 | 3 | 4 | 11 => '1', others => '0');
                 when others =>
@@ -233,7 +230,7 @@ begin
                 when FE =>
                     v_control <= (2 | 12 => '1', others => '0');
                 when DE =>
-                    v_control <= (1 | 4 | 12 => '1', others => '0');
+                    v_control <= (1 | 2 | 4 | 12 => '1', others => '0');
                 when others =>
             end case;
 

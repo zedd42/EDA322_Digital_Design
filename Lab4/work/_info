@@ -9,28 +9,28 @@ z2
 cModel Technology
 Z0 dZ:/.win/My Documents/XILINX/New folder
 T_opt
-!s110 1423229361
-VG^T2Cai2iOU;0F8GG?eB^1
+!s110 1423559259
+Vi7@z5R?;g_EoZ20AP3<`K2
 Z1 04 13 10 work testbenchlab4 behavioral 1
-=4-782bcb9b9d2f-54d4c1b0-53-334
-Z2 o-quiet -auto_acc_if_foreign -work work +acc
+=1-782bcb9ba159-54d9ca59-146-c8c
+Z2 o-quiet -auto_acc_if_foreign -work work
 n@_opt
 Z3 OL;O;10.3a;59
 R0
 T_opt1
-!s110 1423228237
-Vm1ZBf<7@?QkzL1L]bec^c1
+!s110 1423558103
+VXHUYNkBHenhI^LBZadVF00
 R1
-=1-782bcb9b9d2f-54d4bd4b-13c-b34
-o-quiet -auto_acc_if_foreign -work work
+=1-782bcb9ba159-54d9c5d5-df-118c
+R2
 n@_opt1
 R3
 R0
 T_opt2
-!s110 1423229378
-Vj1bo2gGYB7g^jY[NlfTof3
+!s110 1423559272
+VBCR<<[ZG_aohe>QKH]AKa1
 R1
-=5-782bcb9b9d2f-54d4c1c0-1a3-334
+=1-782bcb9ba159-54d9ca66-1fc-11b8
 R2
 n@_opt2
 R3
@@ -505,7 +505,7 @@ R86
 R15
 R16
 Eproccontroller
-Z87 w1423226985
+Z87 w1423559236
 R5
 R6
 R7
@@ -517,13 +517,13 @@ VO:]?<lK4gPZ1?Jo0eR:U<2
 !s100 NG71Xg432TJma1QAaKE5Z3
 R10
 33
-Z90 !s110 1423226992
+!s110 1423559242
 !i10b 1
-Z91 !s108 1423226992.266000
-Z92 !s90 -reportprogress|300|-stats=none|-work|work|-2008|-explicit|-vopt|Z:/.win/git/digitaldesign/Lab4/procController.vhd|
-Z93 !s107 Z:/.win/git/digitaldesign/Lab4/procController.vhd|
+Z90 !s108 1423559242.724000
+Z91 !s90 -reportprogress|300|-stats=none|-work|work|-2008|-explicit|-vopt|Z:/.win/git/digitaldesign/Lab4/procController.vhd|
+Z92 !s107 Z:/.win/git/digitaldesign/Lab4/procController.vhd|
 !i113 0
-Z94 o-work work -2008 -explicit
+Z93 o-work work -2008 -explicit
 R16
 Abehavioral
 R5
@@ -531,36 +531,36 @@ R6
 DEx4 work 14 proccontroller 0 22 O:]?<lK4gPZ1?Jo0eR:U<2
 l35
 L28
-VoDYPJQX@jj<KGA:FKLD<d3
-!s100 Q`AE]g=S2G7k5<V:fe5V_0
+VU`I[^mk@hiNL5`]GVAGYh3
+!s100 4`AgC=TaGO`^9JkS81zd30
 R10
 33
-R90
+!s110 1423559243
 !i10b 1
+R90
 R91
 R92
-R93
 !i113 0
-R94
+R93
 R16
 Erca
-Z95 w1422963544
+Z94 w1422963544
 R5
 R6
 R7
-Z96 8Z:/.win/git/digitaldesign/Lab4/RCA.vhd
-Z97 FZ:/.win/git/digitaldesign/Lab4/RCA.vhd
+Z95 8Z:/.win/git/digitaldesign/Lab4/RCA.vhd
+Z96 FZ:/.win/git/digitaldesign/Lab4/RCA.vhd
 l0
 L4
 V<i>]W;;_X54BgblBYoPbE0
 !s100 WG44^i]dIW?nROk6IAcm^1
 R10
 32
-Z98 !s110 1423225812
+Z97 !s110 1423225812
 !i10b 1
-Z99 !s108 1423225812.296000
-Z100 !s90 -reportprogress|300|-stats=none|-work|work|-2002|-explicit|-vopt|Z:/.win/git/digitaldesign/Lab4/RCA.vhd|
-Z101 !s107 Z:/.win/git/digitaldesign/Lab4/RCA.vhd|
+Z98 !s108 1423225812.296000
+Z99 !s90 -reportprogress|300|-stats=none|-work|work|-2002|-explicit|-vopt|Z:/.win/git/digitaldesign/Lab4/RCA.vhd|
+Z100 !s107 Z:/.win/git/digitaldesign/Lab4/RCA.vhd|
 !i113 0
 R15
 R16
@@ -574,32 +574,32 @@ V>0QM:hhaZaGMU`XXSBaaz2
 !s100 ^<zY7WaAjI67<i7B<6mh?2
 R10
 32
-R98
+R97
 !i10b 1
+R98
 R99
 R100
-R101
 !i113 0
 R15
 R16
 Eregn
-Z102 w1423151250
+Z101 w1423151250
 R5
 R6
 R7
-Z103 8Z:/.win/git/digitaldesign/Lab4/regn.vhd
-Z104 FZ:/.win/git/digitaldesign/Lab4/regn.vhd
+Z102 8Z:/.win/git/digitaldesign/Lab4/regn.vhd
+Z103 FZ:/.win/git/digitaldesign/Lab4/regn.vhd
 l0
 L4
 V8TfUNXiZH?lF7@mGX=KFP0
 !s100 84bh1m0JUUkZWEXNh5dlj2
 R10
 32
-Z105 !s110 1423225801
+Z104 !s110 1423225801
 !i10b 1
-Z106 !s108 1423225801.032000
-Z107 !s90 -reportprogress|300|-stats=none|-work|work|-2002|-explicit|-vopt|Z:/.win/git/digitaldesign/Lab4/regn.vhd|
-Z108 !s107 Z:/.win/git/digitaldesign/Lab4/regn.vhd|
+Z105 !s108 1423225801.032000
+Z106 !s90 -reportprogress|300|-stats=none|-work|work|-2002|-explicit|-vopt|Z:/.win/git/digitaldesign/Lab4/regn.vhd|
+Z107 !s107 Z:/.win/git/digitaldesign/Lab4/regn.vhd|
 !i113 0
 R15
 R16
@@ -613,24 +613,24 @@ Vh6zEE6bLBUn2V32lR?BAh1
 !s100 d8@<>Zebk1XLOn9B>_Az_0
 R10
 32
-R105
+R104
 !i10b 1
+R105
 R106
 R107
-R108
 !i113 0
 R15
 R16
 Etestbenchlab4
-Z109 w1423148281
-Z110 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
-Z111 DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
+Z108 w1423148281
+Z109 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
+Z110 DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
 R45
 R5
 R6
 R7
-Z112 8Z:/.win/git/digitaldesign/Lab4/Testbenchlab4.vhd
-Z113 FZ:/.win/git/digitaldesign/Lab4/Testbenchlab4.vhd
+Z111 8Z:/.win/git/digitaldesign/Lab4/Testbenchlab4.vhd
+Z112 FZ:/.win/git/digitaldesign/Lab4/Testbenchlab4.vhd
 l0
 L14
 Vo]RWGljF<]bd=fQ2A;6;h1
@@ -639,15 +639,15 @@ R10
 32
 R78
 !i10b 1
-Z114 !s108 1423225813.724000
-Z115 !s90 -reportprogress|300|-stats=none|-work|work|-2002|-explicit|-vopt|Z:/.win/git/digitaldesign/Lab4/Testbenchlab4.vhd|
-Z116 !s107 Z:/.win/git/digitaldesign/Lab4/Testbenchlab4.vhd|
+Z113 !s108 1423225813.724000
+Z114 !s90 -reportprogress|300|-stats=none|-work|work|-2002|-explicit|-vopt|Z:/.win/git/digitaldesign/Lab4/Testbenchlab4.vhd|
+Z115 !s107 Z:/.win/git/digitaldesign/Lab4/Testbenchlab4.vhd|
 !i113 0
 R15
 R16
 Abehavioral
+R109
 R110
-R111
 R45
 R5
 R6
@@ -660,9 +660,9 @@ R10
 32
 !s110 1423225814
 !i10b 1
+R113
 R114
 R115
-R116
 !i113 0
 R15
 R16

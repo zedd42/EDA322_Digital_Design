@@ -1,14 +1,34 @@
-vsim -voptargs=+acc work.testbenchlab4
-# vsim -voptargs="+acc" work.testbenchlab4
-# Start time: 14:22:25 on Feb 06,2015
+# Reading C:/Progs/questasim64_10.3a/tcl/vsim/pref.tcl
+# //  Questa Sim-64
+# //  Version 10.3a win64 Apr 14 2014
+# //
+# //  Copyright 1991-2014 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION
+# //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# //
+# OpenFile Z:/.win/git/digitaldesign/Lab4/Lab4.mpf
+# Loading project Lab4
+quit -sim
+vsim -gui work.testbenchlab4
+# vsim -gui work.testbenchlab4
+# Start time: 09:48:20 on Feb 10,2015
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# 
 # do_read(): BLOCKFILE ERROR (read): unexpected end-of-file
-# doVOpenFlatFile(): INTERNAL ERROR: page load failed for file Z:/.win/git/digitaldesign/Lab4/work/@_opt/_deps (1:1 1:1 35 1 14271 1423227535 0x53:0x1)
-# ** Warning: (vsim-56) Problem with optimized design dependency file "Z:/.win/git/digitaldesign/Lab4/work/@_opt/_deps" - file open failed.
+# ** Warning: (vsim-56) Problem with optimized design dependency file "Z:/.win/git/digitaldesign/Lab4/work/@_opt1/_deps" - file is corrupted.
 # 
-# No such file or directory. (errno = ENOENT)
+# Error loading design
+# End time: 09:48:26 on Feb 10,2015, Elapsed time: 0: 0: 6
+vsim -gui work.testbenchlab4
+# vsim -gui work.testbenchlab4
+# Start time: 09:48:50 on Feb 10,2015
+# do_read(): BLOCKFILE ERROR (read): unexpected end-of-file
+# ** Warning: (vsim-56) Problem with optimized design dependency file "Z:/.win/git/digitaldesign/Lab4/work/@_opt1/_deps" - file is corrupted.
+# 
 # ** Note: (vsim-3812) Design is being optimized...
-# 
-# ** Note: (vopt-143) Recognized 1 FSM in architecture body "procController(Behavioral)".
 # 
 # Loading std.standard
 # Loading std.textio(body)
@@ -18,21 +38,9 @@ vsim -voptargs=+acc work.testbenchlab4
 # Loading ieee.std_logic_unsigned(body)
 # Loading work.testbenchlab4(behavioral)#1
 # Loading work.eda322_processor(arch)#1
-# Loading work.mux2to1(structure)#1
-# Loading work.and8(dataflow)#1
-# Loading work.or8(dataflow)#1
-# Loading work.not8(dataflow)#1
-# Loading work.procbus(arch)#1
-# Loading work.regn(behavioral)#1
-# Loading work.regn(behavioral)#2
-# Loading work.regn(behavioral)#3
-# Loading work.mem_array(arch)#1
-# Loading work.mem_array(arch)#2
-# Loading work.alu_wrca(arch)#1
-# Loading work.rca(structural)#1
-# Loading work.fa(dataflow)#1
-# Loading work.cmp(dataflow)#1
-# Loading work.proccontroller(behavioral)#1
+run 700ns
+add wave -position insertpoint  \
+sim:/testbenchlab4/errSig2seg
 add wave -position insertpoint  \
 sim:/testbenchlab4/test_time_step \
 sim:/testbenchlab4/CLK \
@@ -50,210 +58,35 @@ sim:/testbenchlab4/disp2seg \
 sim:/testbenchlab4/errSig2seg \
 sim:/testbenchlab4/ovf \
 sim:/testbenchlab4/zero
-add wave -position insertpoint  \
-sim:/testbenchlab4/EDA322_dut/flag2seg
-add wave -position insertpoint  \
-sim:/testbenchlab4/EDA322_dut/externalIn \
-sim:/testbenchlab4/EDA322_dut/CLK \
-sim:/testbenchlab4/EDA322_dut/master_load_enable \
-sim:/testbenchlab4/EDA322_dut/ARESETN \
-sim:/testbenchlab4/EDA322_dut/pc2seg \
-sim:/testbenchlab4/EDA322_dut/instr2seg \
-sim:/testbenchlab4/EDA322_dut/Addr2seg \
-sim:/testbenchlab4/EDA322_dut/dMemOut2seg \
-sim:/testbenchlab4/EDA322_dut/aluOut2seg \
-sim:/testbenchlab4/EDA322_dut/acc2seg \
-sim:/testbenchlab4/EDA322_dut/flag2seg \
-sim:/testbenchlab4/EDA322_dut/busOut2seg \
-sim:/testbenchlab4/EDA322_dut/disp2seg \
-sim:/testbenchlab4/EDA322_dut/errSig2seg \
-sim:/testbenchlab4/EDA322_dut/ovf \
-sim:/testbenchlab4/EDA322_dut/zero \
-sim:/testbenchlab4/EDA322_dut/Instruction \
-sim:/testbenchlab4/EDA322_dut/InstrMemOut \
-sim:/testbenchlab4/EDA322_dut/zeroVector_12 \
-sim:/testbenchlab4/EDA322_dut/nxtpc \
-sim:/testbenchlab4/EDA322_dut/pc \
-sim:/testbenchlab4/EDA322_dut/addFromInstruction \
-sim:/testbenchlab4/EDA322_dut/Addr \
-sim:/testbenchlab4/EDA322_dut/BusOut \
-sim:/testbenchlab4/EDA322_dut/MemDataOut \
-sim:/testbenchlab4/EDA322_dut/oneVector_8 \
-sim:/testbenchlab4/EDA322_dut/MemDataOutReged \
-sim:/testbenchlab4/EDA322_dut/OutFromAcc \
-sim:/testbenchlab4/EDA322_dut/inAcc \
-sim:/testbenchlab4/EDA322_dut/PCIncrOut \
-sim:/testbenchlab4/EDA322_dut/outputpc \
-sim:/testbenchlab4/EDA322_dut/aluOut \
-sim:/testbenchlab4/EDA322_dut/opcode \
-sim:/testbenchlab4/EDA322_dut/FlagInp \
-sim:/testbenchlab4/EDA322_dut/aluToFlag \
-sim:/testbenchlab4/EDA322_dut/fregout \
-sim:/testbenchlab4/EDA322_dut/aluMd \
-sim:/testbenchlab4/EDA322_dut/neq \
-sim:/testbenchlab4/EDA322_dut/eq \
-sim:/testbenchlab4/EDA322_dut/pcSel \
-sim:/testbenchlab4/EDA322_dut/pcLd \
-sim:/testbenchlab4/EDA322_dut/instrLd \
-sim:/testbenchlab4/EDA322_dut/addrMd \
-sim:/testbenchlab4/EDA322_dut/dmWr \
-sim:/testbenchlab4/EDA322_dut/dataLd \
-sim:/testbenchlab4/EDA322_dut/flagLd \
-sim:/testbenchlab4/EDA322_dut/accSel \
-sim:/testbenchlab4/EDA322_dut/accLd \
-sim:/testbenchlab4/EDA322_dut/im2bus \
-sim:/testbenchlab4/EDA322_dut/dmRd \
-sim:/testbenchlab4/EDA322_dut/acc2bus \
-sim:/testbenchlab4/EDA322_dut/ext2bus \
-sim:/testbenchlab4/EDA322_dut/dispLd \
-sim:/testbenchlab4/EDA322_dut/zeroLogic \
-sim:/testbenchlab4/EDA322_dut/oneLogic \
-sim:/testbenchlab4/EDA322_dut/dummy
 restart
 # ** Note: (vsim-8009) Loading existing optimized design _opt
 # 
 run
 quit -sim
-# End time: 14:24:12 on Feb 06,2015, Elapsed time: 0: 1:47
-vsim -voptargs=+acc work.testbenchlab4
-# vsim -voptargs="+acc" work.testbenchlab4
-# Start time: 14:24:14 on Feb 06,2015
-# ** Note: (vsim-8009) Loading existing optimized design _opt
-# 
-# Loading std.standard
-# Loading std.textio(body)
-# Loading ieee.std_logic_1164(body)
-# Loading ieee.numeric_std(body)
-# Loading ieee.std_logic_arith(body)
-# Loading ieee.std_logic_unsigned(body)
-# Loading work.testbenchlab4(behavioral)#1
-# Loading work.eda322_processor(arch)#1
-# Loading work.mux2to1(structure)#1
-# Loading work.and8(dataflow)#1
-# Loading work.or8(dataflow)#1
-# Loading work.not8(dataflow)#1
-# Loading work.procbus(arch)#1
-# Loading work.regn(behavioral)#1
-# Loading work.regn(behavioral)#2
-# Loading work.regn(behavioral)#3
-# Loading work.mem_array(arch)#1
-# Loading work.mem_array(arch)#2
-# Loading work.alu_wrca(arch)#1
-# Loading work.rca(structural)#1
-# Loading work.fa(dataflow)#1
-# Loading work.cmp(dataflow)#1
-# Loading work.proccontroller(behavioral)#1
-add wave -position insertpoint  \
-sim:/testbenchlab4/EDA322_dut/externalIn \
-sim:/testbenchlab4/EDA322_dut/CLK \
-sim:/testbenchlab4/EDA322_dut/master_load_enable \
-sim:/testbenchlab4/EDA322_dut/ARESETN \
-sim:/testbenchlab4/EDA322_dut/pc2seg \
-sim:/testbenchlab4/EDA322_dut/instr2seg \
-sim:/testbenchlab4/EDA322_dut/Addr2seg \
-sim:/testbenchlab4/EDA322_dut/dMemOut2seg \
-sim:/testbenchlab4/EDA322_dut/aluOut2seg \
-sim:/testbenchlab4/EDA322_dut/acc2seg \
-sim:/testbenchlab4/EDA322_dut/flag2seg \
-sim:/testbenchlab4/EDA322_dut/busOut2seg \
-sim:/testbenchlab4/EDA322_dut/disp2seg \
-sim:/testbenchlab4/EDA322_dut/errSig2seg \
-sim:/testbenchlab4/EDA322_dut/ovf \
-sim:/testbenchlab4/EDA322_dut/zero \
-sim:/testbenchlab4/EDA322_dut/Instruction \
-sim:/testbenchlab4/EDA322_dut/InstrMemOut \
-sim:/testbenchlab4/EDA322_dut/zeroVector_12 \
-sim:/testbenchlab4/EDA322_dut/nxtpc \
-sim:/testbenchlab4/EDA322_dut/pc \
-sim:/testbenchlab4/EDA322_dut/addFromInstruction \
-sim:/testbenchlab4/EDA322_dut/Addr \
-sim:/testbenchlab4/EDA322_dut/BusOut \
-sim:/testbenchlab4/EDA322_dut/MemDataOut \
-sim:/testbenchlab4/EDA322_dut/oneVector_8 \
-sim:/testbenchlab4/EDA322_dut/MemDataOutReged \
-sim:/testbenchlab4/EDA322_dut/OutFromAcc \
-sim:/testbenchlab4/EDA322_dut/inAcc \
-sim:/testbenchlab4/EDA322_dut/PCIncrOut \
-sim:/testbenchlab4/EDA322_dut/outputpc \
-sim:/testbenchlab4/EDA322_dut/aluOut \
-sim:/testbenchlab4/EDA322_dut/opcode \
-sim:/testbenchlab4/EDA322_dut/FlagInp \
-sim:/testbenchlab4/EDA322_dut/aluToFlag \
-sim:/testbenchlab4/EDA322_dut/fregout \
-sim:/testbenchlab4/EDA322_dut/aluMd \
-sim:/testbenchlab4/EDA322_dut/neq \
-sim:/testbenchlab4/EDA322_dut/eq \
-sim:/testbenchlab4/EDA322_dut/pcSel \
-sim:/testbenchlab4/EDA322_dut/pcLd \
-sim:/testbenchlab4/EDA322_dut/instrLd \
-sim:/testbenchlab4/EDA322_dut/addrMd \
-sim:/testbenchlab4/EDA322_dut/dmWr \
-sim:/testbenchlab4/EDA322_dut/dataLd \
-sim:/testbenchlab4/EDA322_dut/flagLd \
-sim:/testbenchlab4/EDA322_dut/accSel \
-sim:/testbenchlab4/EDA322_dut/accLd \
-sim:/testbenchlab4/EDA322_dut/im2bus \
-sim:/testbenchlab4/EDA322_dut/dmRd \
-sim:/testbenchlab4/EDA322_dut/acc2bus \
-sim:/testbenchlab4/EDA322_dut/ext2bus \
-sim:/testbenchlab4/EDA322_dut/dispLd \
-sim:/testbenchlab4/EDA322_dut/zeroLogic \
-sim:/testbenchlab4/EDA322_dut/oneLogic \
-sim:/testbenchlab4/EDA322_dut/dummy
-run
-# Compile of EDA322_processor.vhd was successful.
-restart
-# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
-# 
-# Loading std.standard
-# Loading std.textio(body)
-# Loading ieee.std_logic_1164(body)
-# Loading ieee.numeric_std(body)
-# Loading ieee.std_logic_arith(body)
-# Loading ieee.std_logic_unsigned(body)
-# Loading work.testbenchlab4(behavioral)#1
-# Loading work.eda322_processor(arch)#1
-# Loading work.mux2to1(structure)#1
-# Loading work.and8(dataflow)#1
-# Loading work.or8(dataflow)#1
-# Loading work.not8(dataflow)#1
-# Loading work.procbus(arch)#1
-# Loading work.regn(behavioral)#1
-# Loading work.regn(behavioral)#2
-# Loading work.regn(behavioral)#3
-# Loading work.mem_array(arch)#1
-# Loading work.mem_array(arch)#2
-# Loading work.alu_wrca(arch)#1
-# Loading work.rca(structural)#1
-# Loading work.fa(dataflow)#1
-# Loading work.cmp(dataflow)#1
-# Loading work.proccontroller(behavioral)#1
-# Warning in wave window restart: (vish-4014) No objects found matching '/testbenchlab4/EDA322_dut/opcode'. 
-run
-restart
-# ** Note: (vsim-8009) Loading existing optimized design _opt
-# 
-# Compile of EDA322_processor.vhd was successful.
-run
-restart
+# End time: 09:50:45 on Feb 10,2015, Elapsed time: 0: 1:55
+quit -sim
+# Compile of procController.vhd was successful.
+vsim -gui work.testbenchlab4
+# vsim -gui work.testbenchlab4
+# Start time: 10:07:37 on Feb 10,2015
 # ** Note: (vsim-3813) Design is being optimized due to module recompilation...
 # 
 # do_read(): BLOCKFILE ERROR (read): unexpected end-of-file
-# doVOpenFlatFile(): INTERNAL ERROR: page load failed for file Z:/.win/git/digitaldesign/Lab4/work/@_opt/_deps (0:0 1:1 28 1 14273 1423229361 0x53:0x1)
-# ** Warning: (vsim-56) Problem with optimized design dependency file "Z:/.win/git/digitaldesign/Lab4/work/@_opt/_deps" - file open failed.
+# ** Warning: (vsim-56) Problem with optimized design dependency file "Z:/.win/git/digitaldesign/Lab4/work/@_opt/_deps" - file is corrupted.
 # 
-# No such file or directory. (errno = ENOENT)
-vsim -voptargs=+acc work.testbenchlab4
-# vsim -voptargs="+acc" work.testbenchlab4
+# Error loading design
+# End time: 10:07:42 on Feb 10,2015, Elapsed time: 0: 0: 5
+vsim -gui work.testbenchlab4
+# vsim -gui work.testbenchlab4
+# Start time: 10:07:50 on Feb 10,2015
 # do_read(): BLOCKFILE ERROR (read): unexpected end-of-file
-# doVOpenFlatFile(): INTERNAL ERROR: page load failed for file Z:/.win/git/digitaldesign/Lab4/work/@_opt/_deps (0:0 1:1 28 1 14273 1423229361 0x53:0x1)
-# ** Warning: (vsim-56) Problem with optimized design dependency file "Z:/.win/git/digitaldesign/Lab4/work/@_opt/_deps" - file open failed.
+# ** Warning: (vsim-56) Problem with optimized design dependency file "Z:/.win/git/digitaldesign/Lab4/work/@_opt/_deps" - file is corrupted.
 # 
-# No such file or directory. (errno = ENOENT)
+# do_read(): BLOCKFILE ERROR (read): unexpected end-of-file
+# ** Warning: (vsim-56) Problem with optimized design dependency file "Z:/.win/git/digitaldesign/Lab4/work/@_opt1/_deps" - file is corrupted.
+# 
 # ** Note: (vsim-3812) Design is being optimized...
 # 
-# ** Note: (vopt-143) Recognized 1 FSM in architecture body "procController(Behavioral)".
-# 
 # Loading std.standard
 # Loading std.textio(body)
 # Loading ieee.std_logic_1164(body)
@@ -262,21 +95,6 @@ vsim -voptargs=+acc work.testbenchlab4
 # Loading ieee.std_logic_unsigned(body)
 # Loading work.testbenchlab4(behavioral)#1
 # Loading work.eda322_processor(arch)#1
-# Loading work.mux2to1(structure)#1
-# Loading work.and8(dataflow)#1
-# Loading work.or8(dataflow)#1
-# Loading work.not8(dataflow)#1
-# Loading work.procbus(arch)#1
-# Loading work.regn(behavioral)#1
-# Loading work.regn(behavioral)#2
-# Loading work.regn(behavioral)#3
-# Loading work.mem_array(arch)#1
-# Loading work.mem_array(arch)#2
-# Loading work.alu_wrca(arch)#1
-# Loading work.rca(structural)#1
-# Loading work.fa(dataflow)#1
-# Loading work.cmp(dataflow)#1
-# Loading work.proccontroller(behavioral)#1
 add wave -position insertpoint  \
 sim:/testbenchlab4/test_time_step \
 sim:/testbenchlab4/CLK \
@@ -294,25 +112,30 @@ sim:/testbenchlab4/disp2seg \
 sim:/testbenchlab4/errSig2seg \
 sim:/testbenchlab4/ovf \
 sim:/testbenchlab4/zero
+add wave -position insertpoint  \
+sim:/testbenchlab4/EDA322_dut/data_mem/MEM_SIGNAL
 run
 add wave -position insertpoint  \
-sim:/testbenchlab4/EDA322_dut/data_mem/DATA_WIDTH \
-sim:/testbenchlab4/EDA322_dut/data_mem/ADDR_WIDTH \
-sim:/testbenchlab4/EDA322_dut/data_mem/INIT_FILE \
-sim:/testbenchlab4/EDA322_dut/data_mem/ADDR \
-sim:/testbenchlab4/EDA322_dut/data_mem/DATAIN \
-sim:/testbenchlab4/EDA322_dut/data_mem/CLK \
-sim:/testbenchlab4/EDA322_dut/data_mem/WE \
-sim:/testbenchlab4/EDA322_dut/data_mem/OUTMEM \
-sim:/testbenchlab4/EDA322_dut/data_mem/MEM_SIGNAL
+sim:/testbenchlab4/EDA322_dut/pController/opcode \
+sim:/testbenchlab4/EDA322_dut/pController/aluMd \
+sim:/testbenchlab4/EDA322_dut/pController/current_state \
+sim:/testbenchlab4/EDA322_dut/pController/next_state \
+sim:/testbenchlab4/EDA322_dut/pController/v_control \
+sim:/testbenchlab4/EDA322_dut/pController/A \
+sim:/testbenchlab4/EDA322_dut/pController/B \
+sim:/testbenchlab4/EDA322_dut/pController/C \
+sim:/testbenchlab4/EDA322_dut/pController/D
 restart
 # do_read(): BLOCKFILE ERROR (read): unexpected end-of-file
-# doVOpenFlatFile(): INTERNAL ERROR: page load failed for file Z:/.win/git/digitaldesign/Lab4/work/@_opt/_deps (0:0 1:1 28 1 14273 1423229361 0x53:0x1)
-# ** Warning: (vsim-56) Problem with optimized design dependency file "Z:/.win/git/digitaldesign/Lab4/work/@_opt/_deps" - file open failed.
+# ** Warning: (vsim-56) Problem with optimized design dependency file "Z:/.win/git/digitaldesign/Lab4/work/@_opt/_deps" - file is corrupted.
 # 
-# No such file or directory. (errno = ENOENT)
+# do_read(): BLOCKFILE ERROR (read): unexpected end-of-file
+# ** Warning: (vsim-56) Problem with optimized design dependency file "Z:/.win/git/digitaldesign/Lab4/work/@_opt1/_deps" - file is corrupted.
+# 
 # ** Note: (vsim-8009) Loading existing optimized design _opt2
 # 
+add wave -position insertpoint  \
+sim:/testbenchlab4/instr2seg
 run
-# End time: 14:35:24 on Feb 06,2015, Elapsed time: 0:11:10
-# Errors: 0, Warnings: 3
+# End time: 10:23:21 on Feb 10,2015, Elapsed time: 0:15:31
+# Errors: 0, Warnings: 4
