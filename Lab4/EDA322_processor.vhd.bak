@@ -28,7 +28,7 @@ ARCHITECTURE arch OF EDA322_processor IS
     SIGNAL Instruction, InstrMemOut, zeroVector_12 : STD_LOGIC_VECTOR(11 DOWNTO 0);
     SIGNAL nxtpc, pc, Addr, BusOut, MemDataOut, oneVector_8 : STD_LOGIC_VECTOR(7 DOWNTO 0);
     SIGNAL MemDataOutReged, OutFromAcc, inAcc, PCIncrOut, aluOut : STD_LOGIC_VECTOR(7 DOWNTO 0);
-    SIGNAL FlagInp, aluToFlag, fregout : STD_LOGIC_VECTOR(3 DOWNTO 0);
+    SIGNAL aluToFlag, fregout : STD_LOGIC_VECTOR(3 DOWNTO 0);
     SIGNAL aluMd : STD_LOGIC_VECTOR(1 DOWNTO 0);
     SIGNAL neq, eq, pcSel, pcLd, instrLd, addrMd, dmWr, dataLd, flagLd, accSel : STD_LOGIC;
     SIGNAL accLd, im2bus, dmRd, acc2bus, ext2bus, dispLd, zeroLogic, oneLogic, dummy : STD_LOGIC;
@@ -136,7 +136,7 @@ muxAddr  : mux2to1 port map (Instruction(7 DOWNTO 0), MemDataOutReged, addrMd, A
 muxAlu   : mux2to1 port map (aluOut, BusOut, accSel, inAcc);
 
 -- Buzz
-procBus1   : procBus port map (Instruction(7 DOWNTO 0), MemDataOutReged, OutFromAcc, externalIn, BusOut, im2bus, dmRd, acc2bus, ext2bus, errSig2Seg);
+procBus1   : procBus port map (Instruction(7 DOWNTO 0), externalIn, OutFromAcc,MemDataOutReged, BusOut, im2bus, ext2bus, acc2bus, dmRd, errSig2Seg);
 
 -- Registers
 fetch : regn generic map (N => 8) port map (nxtpc, pcLd, ARESETN, CLK, pc);
