@@ -95,6 +95,8 @@ begin
             next_state <= FE;
         when ME =>
             next_state <= FE;
+        when others =>
+
     end case;
 end process;
 

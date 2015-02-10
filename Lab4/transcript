@@ -1,32 +1,18 @@
-# Reading C:/Progs/questasim64_10.3a/tcl/vsim/pref.tcl
-# //  Questa Sim-64
-# //  Version 10.3a win64 Apr 14 2014
-# //
-# //  Copyright 1991-2014 Mentor Graphics Corporation
-# //  All Rights Reserved.
-# //
-# //  THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION
-# //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
-# //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
-# //
-# OpenFile Z:/.win/git/digitaldesign/Lab4/Lab4.mpf
-# Loading project Lab4
-quit -sim
+# Compile of mem_array.vhd was successful.
 vsim -gui work.testbenchlab4
 # vsim -gui work.testbenchlab4
-# Start time: 09:48:20 on Feb 10,2015
-# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
-# 
+# Start time: 11:26:18 on Feb 10,2015
 # do_read(): BLOCKFILE ERROR (read): unexpected end-of-file
-# ** Warning: (vsim-56) Problem with optimized design dependency file "Z:/.win/git/digitaldesign/Lab4/work/@_opt1/_deps" - file is corrupted.
+# ** Warning: (vsim-56) Problem with optimized design dependency file "Z:/.win/git/digitaldesign/Lab4/work/@_opt/_deps" - file is corrupted.
 # 
-# Error loading design
-# End time: 09:48:26 on Feb 10,2015, Elapsed time: 0: 0: 6
-vsim -gui work.testbenchlab4
-# vsim -gui work.testbenchlab4
-# Start time: 09:48:50 on Feb 10,2015
+# ** Error: (vsim-7) Failed to open  file "Z:/.win/git/digitaldesign/Lab4/work/@_opt1/_deps" in read mode.
+# 
+# No such file or directory. (errno = ENOENT)
+# ** Warning: (vsim-56) Problem with optimized design dependency file "Z:/.win/git/digitaldesign/Lab4/work/@_opt1/_deps" - file open failed.
+# 
+# No such file or directory. (errno = ENOENT)
 # do_read(): BLOCKFILE ERROR (read): unexpected end-of-file
-# ** Warning: (vsim-56) Problem with optimized design dependency file "Z:/.win/git/digitaldesign/Lab4/work/@_opt1/_deps" - file is corrupted.
+# ** Warning: (vsim-56) Problem with optimized design dependency file "Z:/.win/git/digitaldesign/Lab4/work/@_opt2/_deps" - file is corrupted.
 # 
 # ** Note: (vsim-3812) Design is being optimized...
 # 
@@ -38,54 +24,111 @@ vsim -gui work.testbenchlab4
 # Loading ieee.std_logic_unsigned(body)
 # Loading work.testbenchlab4(behavioral)#1
 # Loading work.eda322_processor(arch)#1
-run 700ns
 add wave -position insertpoint  \
-sim:/testbenchlab4/errSig2seg
+sim:/testbenchlab4/EDA322_dut/data_mem/MEM_SIGNAL
 add wave -position insertpoint  \
-sim:/testbenchlab4/test_time_step \
-sim:/testbenchlab4/CLK \
-sim:/testbenchlab4/ARESETN \
-sim:/testbenchlab4/master_load_enable \
-sim:/testbenchlab4/pc2seg \
-sim:/testbenchlab4/addr2seg \
-sim:/testbenchlab4/instr2seg \
-sim:/testbenchlab4/dMemOut2seg \
-sim:/testbenchlab4/aluOut2seg \
-sim:/testbenchlab4/acc2seg \
-sim:/testbenchlab4/flag2seg \
-sim:/testbenchlab4/busOut2seg \
-sim:/testbenchlab4/disp2seg \
-sim:/testbenchlab4/errSig2seg \
-sim:/testbenchlab4/ovf \
-sim:/testbenchlab4/zero
+sim:/testbenchlab4/EDA322_dut/pController/opcode
+add wave -position insertpoint  \
+sim:/testbenchlab4/EDA322_dut/pController/current_state
+run
+# Compile of procController.vhd was successful.
+restart
+# do_read(): BLOCKFILE ERROR (read): unexpected end-of-file
+# ** Warning: (vsim-56) Problem with optimized design dependency file "Z:/.win/git/digitaldesign/Lab4/work/@_opt/_deps" - file is corrupted.
+# 
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# 
+# do_read(): BLOCKFILE ERROR (read): unexpected end-of-file
+# ** Warning: (vsim-56) Problem with optimized design dependency file "Z:/.win/git/digitaldesign/Lab4/work/@_opt1/_deps" - file is corrupted.
+# 
+# Compile of regn.vhd was successful.
+# Compile of alu_wRCA.vhd was successful.
+# Compile of and8.vhd was successful.
+# Compile of cmp.vhd was successful.
+# Compile of EDA322_processor.vhd was successful.
+# Compile of FA.vhd was successful.
+# Compile of mem_array.vhd was successful.
+# Compile of mux2to1.vhd was successful.
+# Compile of mux4to1.vhd was successful.
+# Compile of not8.vhd was successful.
+# Compile of or8.vhd was successful.
+# Compile of procBus.vhd was successful.
+# Compile of procController.vhd was successful.
+# Compile of RCA.vhd was successful.
+# Compile of prep.vhd was successful.
+# Compile of Testbenchlab4.vhd was successful.
+# 16 compiles, 0 failed with no errors.
+# Load canceled
+vsim -gui work.testbenchlab4
+# vsim -gui work.testbenchlab4
+# do_read(): BLOCKFILE ERROR (read): unexpected end-of-file
+# ** Warning: (vsim-56) Problem with optimized design dependency file "Z:/.win/git/digitaldesign/Lab4/work/@_opt/_deps" - file is corrupted.
+# 
+# do_read(): BLOCKFILE ERROR (read): unexpected end-of-file
+# ** Warning: (vsim-56) Problem with optimized design dependency file "Z:/.win/git/digitaldesign/Lab4/work/@_opt1/_deps" - file is corrupted.
+# 
+# do_read(): BLOCKFILE ERROR (read): unexpected end-of-file
+# ** Warning: (vsim-56) Problem with optimized design dependency file "Z:/.win/git/digitaldesign/Lab4/work/@_opt2/_deps" - file is corrupted.
+# 
+# ** Note: (vsim-3812) Design is being optimized...
+# 
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.std_logic_arith(body)
+# Loading ieee.std_logic_unsigned(body)
+# Loading work.testbenchlab4(behavioral)#1
+# Loading work.eda322_processor(arch)#1
+run
+add wave -position insertpoint  \
+sim:/testbenchlab4/instr2seg
 restart
 # ** Note: (vsim-8009) Loading existing optimized design _opt
 # 
 run
-quit -sim
-# End time: 09:50:45 on Feb 10,2015, Elapsed time: 0: 1:55
-quit -sim
+add wave -position insertpoint  \
+sim:/testbenchlab4/acc2seg
+restart
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# 
+run
+add wave -position insertpoint  \
+sim:/testbenchlab4/EDA322_dut/pc
+add wave -position insertpoint  \
+sim:/testbenchlab4/EDA322_dut/InstrMemOut
+add wave -position insertpoint  \
+sim:/testbenchlab4/EDA322_dut/Instruction
+restart
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# 
+run
+restart
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# 
+# ** Fatal: (vsim-3551) TEXTIO : Read past end of file "data_mem.mif".
+#    Time: 0 ns  Iteration: 0  Instance: /testbenchlab4/EDA322_dut/data_mem File: Z:/.win/git/digitaldesign/Lab4/mem_array.vhd Line: 29
+# FATAL ERROR while loading design
+# Compile of regn.vhd was successful.
+# Compile of alu_wRCA.vhd was successful.
+# Compile of and8.vhd was successful.
+# Compile of cmp.vhd was successful.
+# Compile of EDA322_processor.vhd was successful.
+# Compile of FA.vhd was successful.
+# Compile of mem_array.vhd was successful.
+# Compile of mux2to1.vhd was successful.
+# Compile of mux4to1.vhd was successful.
+# Compile of not8.vhd was successful.
+# Compile of or8.vhd was successful.
+# Compile of procBus.vhd was successful.
 # Compile of procController.vhd was successful.
+# Compile of RCA.vhd was successful.
+# Compile of prep.vhd was successful.
+# Compile of Testbenchlab4.vhd was successful.
+# 16 compiles, 0 failed with no errors.
 vsim -gui work.testbenchlab4
 # vsim -gui work.testbenchlab4
-# Start time: 10:07:37 on Feb 10,2015
-# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
-# 
-# do_read(): BLOCKFILE ERROR (read): unexpected end-of-file
-# ** Warning: (vsim-56) Problem with optimized design dependency file "Z:/.win/git/digitaldesign/Lab4/work/@_opt/_deps" - file is corrupted.
-# 
-# Error loading design
-# End time: 10:07:42 on Feb 10,2015, Elapsed time: 0: 0: 5
-vsim -gui work.testbenchlab4
-# vsim -gui work.testbenchlab4
-# Start time: 10:07:50 on Feb 10,2015
-# do_read(): BLOCKFILE ERROR (read): unexpected end-of-file
-# ** Warning: (vsim-56) Problem with optimized design dependency file "Z:/.win/git/digitaldesign/Lab4/work/@_opt/_deps" - file is corrupted.
-# 
-# do_read(): BLOCKFILE ERROR (read): unexpected end-of-file
-# ** Warning: (vsim-56) Problem with optimized design dependency file "Z:/.win/git/digitaldesign/Lab4/work/@_opt1/_deps" - file is corrupted.
-# 
-# ** Note: (vsim-3812) Design is being optimized...
+# ** Note: (vsim-8009) Loading existing optimized design _opt
 # 
 # Loading std.standard
 # Loading std.textio(body)
@@ -95,47 +138,54 @@ vsim -gui work.testbenchlab4
 # Loading ieee.std_logic_unsigned(body)
 # Loading work.testbenchlab4(behavioral)#1
 # Loading work.eda322_processor(arch)#1
-add wave -position insertpoint  \
-sim:/testbenchlab4/test_time_step \
-sim:/testbenchlab4/CLK \
-sim:/testbenchlab4/ARESETN \
-sim:/testbenchlab4/master_load_enable \
-sim:/testbenchlab4/pc2seg \
-sim:/testbenchlab4/addr2seg \
-sim:/testbenchlab4/instr2seg \
-sim:/testbenchlab4/dMemOut2seg \
-sim:/testbenchlab4/aluOut2seg \
-sim:/testbenchlab4/acc2seg \
-sim:/testbenchlab4/flag2seg \
-sim:/testbenchlab4/busOut2seg \
-sim:/testbenchlab4/disp2seg \
-sim:/testbenchlab4/errSig2seg \
-sim:/testbenchlab4/ovf \
-sim:/testbenchlab4/zero
-add wave -position insertpoint  \
-sim:/testbenchlab4/EDA322_dut/data_mem/MEM_SIGNAL
+# ** Fatal: (vsim-3551) TEXTIO : Read past end of file "data_mem.mif".
+#    Time: 0 ns  Iteration: 0  Instance: /testbenchlab4/EDA322_dut/data_mem File: Z:/.win/git/digitaldesign/Lab4/mem_array.vhd Line: 29
+# FATAL ERROR while loading design
+# Error loading design
+# End time: 11:52:58 on Feb 10,2015, Elapsed time: 0:26:40
+vsim -gui work.testbenchlab4
+# vsim -gui work.testbenchlab4
+# Start time: 11:53:06 on Feb 10,2015
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# 
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.std_logic_arith(body)
+# Loading ieee.std_logic_unsigned(body)
+# Loading work.testbenchlab4(behavioral)#1
+# Loading work.eda322_processor(arch)#1
+# ** Fatal: (vsim-3551) TEXTIO : Read past end of file "data_mem.mif".
+#    Time: 0 ns  Iteration: 0  Instance: /testbenchlab4/EDA322_dut/data_mem File: Z:/.win/git/digitaldesign/Lab4/mem_array.vhd Line: 29
+# FATAL ERROR while loading design
+# Error loading design
+# End time: 11:53:07 on Feb 10,2015, Elapsed time: 0: 0: 1
+# Compile of mem_array.vhd was successful.
+vsim -gui work.testbenchlab4
+# vsim -gui work.testbenchlab4
+# Start time: 11:53:47 on Feb 10,2015
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# 
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.std_logic_arith(body)
+# Loading ieee.std_logic_unsigned(body)
+# Loading work.testbenchlab4(behavioral)#1
+# Loading work.eda322_processor(arch)#1
 run
-add wave -position insertpoint  \
-sim:/testbenchlab4/EDA322_dut/pController/opcode \
-sim:/testbenchlab4/EDA322_dut/pController/aluMd \
-sim:/testbenchlab4/EDA322_dut/pController/current_state \
-sim:/testbenchlab4/EDA322_dut/pController/next_state \
-sim:/testbenchlab4/EDA322_dut/pController/v_control \
-sim:/testbenchlab4/EDA322_dut/pController/A \
-sim:/testbenchlab4/EDA322_dut/pController/B \
-sim:/testbenchlab4/EDA322_dut/pController/C \
-sim:/testbenchlab4/EDA322_dut/pController/D
+# Compile of mem_array.vhd was successful.
 restart
-# do_read(): BLOCKFILE ERROR (read): unexpected end-of-file
-# ** Warning: (vsim-56) Problem with optimized design dependency file "Z:/.win/git/digitaldesign/Lab4/work/@_opt/_deps" - file is corrupted.
+# ** Note: (vsim-8009) Loading existing optimized design _opt
 # 
-# do_read(): BLOCKFILE ERROR (read): unexpected end-of-file
-# ** Warning: (vsim-56) Problem with optimized design dependency file "Z:/.win/git/digitaldesign/Lab4/work/@_opt1/_deps" - file is corrupted.
-# 
-# ** Note: (vsim-8009) Loading existing optimized design _opt2
-# 
-add wave -position insertpoint  \
-sim:/testbenchlab4/instr2seg
 run
-# End time: 10:23:21 on Feb 10,2015, Elapsed time: 0:15:31
-# Errors: 0, Warnings: 4
+add wave -position insertpoint  \
+sim:/testbenchlab4/ARESETN
+restart
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# 
+run
+# End time: 11:58:58 on Feb 10,2015, Elapsed time: 0: 5:11
+# Errors: 0, Warnings: 0
