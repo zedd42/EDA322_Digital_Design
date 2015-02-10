@@ -18,8 +18,8 @@ begin
 --        tmp <= (A(I) xor B(I)) or tmp;
 --    end generate GEN;
 
-    EQ  <= tmp;
-    NEQ <= not tmp;
+    EQ  <= not tmp;
+    NEQ <= tmp;
 end dataflow;
 
 

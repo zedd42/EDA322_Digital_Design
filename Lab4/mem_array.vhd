@@ -36,14 +36,16 @@ ARCHITECTURE arch of mem_array is
     SIGNAL MEM_SIGNAL : MEMORY_ARRAY := init_memory_wfile(INIT_FILE);
 
 BEGIN
+
+    OUTMEM <= MEM_SIGNAL(to_integer(unsigned(ADDR))); 
+    
     RW: PROCESS (CLK)
     BEGIN
         IF rising_edge(CLK) THEN
             IF WE = '1' THEN
                 MEM_SIGNAL(to_integer(unsigned(ADDR))) <= DATAIN;
-            ELSE
-                OUTMEM <= MEM_SIGNAL(to_integer(unsigned(ADDR)));
-            END IF;
+            END IF;        
         END IF;
     END PROCESS RW;
+
 END arch;

@@ -62,7 +62,7 @@ begin
 if ARESETN = '0' then
 	current_state <= FE;
 else
-    if rising_edge(clk) then
+    if (CLK='1' and CLK'EVENT) then
         if master_load_enable = '1' then
 		    current_state <= next_state;
         end if;
@@ -77,7 +77,7 @@ begin
         when FE =>
             next_state <= DE;
         when DE =>
-            if(((A and not B) and not C) or ((A and not B) and not D)) = '1'  then
+            if(((A and not B) and not C) or ((A and not B) and not D)) = '1' then
                     next_state <= DES;
             elsif(((((not A and not B) or (not A and not C)) or 
                   (not A and not D)) or (A and B and C and D))) = '1' then

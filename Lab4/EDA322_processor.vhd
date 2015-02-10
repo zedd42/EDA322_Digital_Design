@@ -157,7 +157,7 @@ alu : alu_wRCA port map (OutFromAcc, BusOut, aluMd, aluOut, aluToFlag(3), aluToF
 adder : RCA port map (pc, "00000001", '0', PCIncrOut, dummy);
 
 -- MOTTHA CONTROLLER!
-pController : procController port map (master_load_enable, Instruction(11 DOWNTO 8), neq, eq, CLK, ARESETN, pcSel, pcLd, instrLd, addrMd, dmWr, dataLd, flagLd, accSel, accLd, im2bus, dmRd, acc2bus, ext2bus, dispLd, aluMd);
+pController : procController port map (master_load_enable, Instruction(11 DOWNTO 8), fregout(1), fregout(0), CLK, ARESETN, pcSel, pcLd, instrLd, addrMd, dmWr, dataLd, flagLd, accSel, accLd, im2bus, dmRd, acc2bus, ext2bus, dispLd, aluMd);
 
 -- Zigzag dizzplayzz
 pc2seg <= pc;
@@ -168,9 +168,9 @@ aluOut2seg <= aluout;
 acc2seg <= outfromacc;
 busout2seg <= busout;
 flag2seg <= fregout;
+
 eq <= fregout(0);
 neq <= fregout(1);
 zero <= fregout(2);
 ovf <= fregout(3);
-
 END arch;
