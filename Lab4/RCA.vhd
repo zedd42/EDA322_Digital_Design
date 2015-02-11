@@ -12,7 +12,8 @@ end RCA;
 architecture structural of RCA is
     component FA
         port (a, b, cin : in    STD_LOGIC;
-              sum, cout : out   STD_LOGIC              );
+              sum, cout : out   STD_LOGIC              
+              );
     end component;
 
     signal c1, c2, c3, c4, c5, c6, c7   :   STD_LOGIC;

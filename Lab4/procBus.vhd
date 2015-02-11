@@ -16,7 +16,6 @@ ENTITY procBus IS
 END procBus;
 
 ARCHITECTURE arch OF procBus IS
-    SIGNAL xERR, nERR :  STD_LOGIC;
     SIGNAL sel        :  STD_LOGIC_VECTOR(1 DOWNTO 0);
 
 BEGIN
