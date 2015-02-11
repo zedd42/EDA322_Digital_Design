@@ -1,2 +1,6 @@
-*.bak
-work
+# Ignore everything
+*
+!*/
+
+# Don't ignore
+!.gitignore

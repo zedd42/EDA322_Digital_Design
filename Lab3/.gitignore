@@ -1,0 +1,7 @@
+!.gitignore
+
+!.vhd
+!.mif
+!.do
+!.txt
+!.mpf
