@@ -84,6 +84,8 @@ begin
                     next_state <= EX;
              elsif((((not A and B) and C) and D)) = '1' then
                     next_state <= ME;
+             else
+                    next_state <= FE;
             end if;
         when DES =>
             if((A and not B) and not C) = '1' then
