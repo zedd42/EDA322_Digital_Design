@@ -17,7 +17,7 @@ architecture arch of alu_wRCA is
 
     -- structural -- Subtraction or Addition
     signal rcaout, B : STD_LOGIC_VECTOR(7 DOWNTO 0);
-    signal CIN, tmp  : STD_LOGIC;
+    signal CIN       : STD_LOGIC;
 
     component RCA is
         port (A, B  :   in  STD_LOGIC_VECTOR(7 DOWNTO 0);
@@ -35,7 +35,6 @@ architecture arch of alu_wRCA is
 
 begin
     -- Init declarations
-
     nandOut <= not (ALU_inA and ALU_inB);
     notOut  <= not ALU_inA;
 
@@ -58,8 +57,8 @@ begin
                    notOut   when others;
 
     -- dataflow -- isZero
-    isOutZero <= rcaout(0) or rcaout(1) or rcaout(2) or rcaout(3) or 
-                 rcaout(4) or rcaout(5) or rcaout(6) or rcaout(7);
+    isOutZero <= not (rcaout(0) or rcaout(1) or rcaout(2) or rcaout(3) or 
+                      rcaout(4) or rcaout(5) or rcaout(6) or rcaout(7));
 end arch;
 
 

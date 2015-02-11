@@ -15,7 +15,7 @@ BEGIN
     BEGIN
         IF ARESETN = '0' THEN
             res <= (OTHERS => '0');
-       ELSIF rising_edge(CLK) THEN
+        ELSIF CLK='1' and CLK'EVENT THEN
            IF loadEnable = '1' THEN
                res <= input;
            END IF;

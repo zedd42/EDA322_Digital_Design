@@ -95,14 +95,6 @@ QuestaSim-64 vcom 10.3c Compiler 2014.07 Jul 19 2014
 -- Compiling entity cmp
 -- Compiling architecture dataflow of cmp
 
-} {} {}} Z:/.win/git/digitaldesign/Lab4/or8.vhd {1 {vcom -work work -2002 -explicit -vopt -stats=none Z:/.win/git/digitaldesign/Lab4/or8.vhd
-QuestaSim-64 vcom 10.3c Compiler 2014.07 Jul 19 2014
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Compiling entity or8
--- Compiling architecture dataflow of or8
-
 } {} {}} Z:/.win/git/digitaldesign/Lab4/not8.vhd {1 {vcom -work work -2002 -explicit -vopt -stats=none Z:/.win/git/digitaldesign/Lab4/not8.vhd
 QuestaSim-64 vcom 10.3c Compiler 2014.07 Jul 19 2014
 -- Loading package STANDARD
@@ -110,6 +102,14 @@ QuestaSim-64 vcom 10.3c Compiler 2014.07 Jul 19 2014
 -- Loading package std_logic_1164
 -- Compiling entity not8
 -- Compiling architecture dataflow of not8
+
+} {} {}} Z:/.win/git/digitaldesign/Lab4/or8.vhd {1 {vcom -work work -2002 -explicit -vopt -stats=none Z:/.win/git/digitaldesign/Lab4/or8.vhd
+QuestaSim-64 vcom 10.3c Compiler 2014.07 Jul 19 2014
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity or8
+-- Compiling architecture dataflow of or8
 
 } {} {}} Z:/.win/git/digitaldesign/Lab4/Testbenchlab4.vhd {1 {vcom -work work -2002 -explicit -vopt -stats=none Z:/.win/git/digitaldesign/Lab4/Testbenchlab4.vhd
 QuestaSim-64 vcom 10.3c Compiler 2014.07 Jul 19 2014
