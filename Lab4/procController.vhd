@@ -71,34 +71,41 @@ end if;
 end process;
 
 process(current_state, opcode)
-begin
-    
+begin    
     case current_state is
         when FE =>
             next_state <= DE;
         when DE =>
-            if(((A and not B) and not C) or ((A and not B) and not D)) = '1' then
-                    next_state <= DES;
-            elsif(((((not A and not B) or (not A and not C)) or 
-                  (not A and not D)) or (A and B and C and D))) = '1' then
-                    next_state <= EX;
-             elsif((((not A and B) and C) and D)) = '1' then
-                    next_state <= ME;
-             else
-                    next_state <= FE;
-            end if;
+            case opcode is
+            when "0000" => next_state <= EX;
+            when "0001" => next_state <= EX;
+            when "0010" => next_state <= EX;
+            when "0011" => next_state <= EX;
+            when "0100" => next_state <= EX;
+            when "0101" => next_state <= EX;
+            when "0110" => next_state <= EX;
+            when "0111" => next_state <= ME;
+            when "1000" => next_state <= DES;
+            when "1001" => next_state <= DES;
+            when "1010" => next_state <= DES;
+            when "1011" => next_state <= FE;
+            when "1100" => next_state <= FE;
+            when "1101" => next_state <= FE;
+            when "1110" => next_state <= FE;
+            when "1111" => next_state <= EX;
+            when others => next_state <= FE;
+            end case;
         when DES =>
-            if((A and not B) and not C) = '1' then
-                next_state <= EX;
-            elsif(((A and not B) and C) and not D) = '1' then
-                next_state <= ME;
-            end if;
+            case opcode is
+            when "1000" => next_state <= EX;
+            when "1001" => next_state <= EX;
+            when "1010" => next_state <= ME;
+            when others => next_state <= FE;
+            end case;
         when EX =>
             next_state <= FE;
         when ME =>
             next_state <= FE;
-        when others =>
-
     end case;
 end process;
 
