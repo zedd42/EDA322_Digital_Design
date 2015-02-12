@@ -130,6 +130,9 @@ zeroLogic <= '0';
 oneVector_8 <= "00000001";
 zeroVector_12 <= "000000000000";
 
+-- MOTTHA CONTROLLER!
+pController : procController port map (master_load_enable, Instruction(11 DOWNTO 8), fregout(1), fregout(0), CLK, ARESETN, pcSel, pcLd, instrLd, addrMd, dmWr, dataLd, flagLd, accSel, accLd, im2bus, dmRd, acc2bus, ext2bus, dispLd, aluMd);
+
 -- Multiplexorzz
 muxPCInc : mux2to1 port map (PCIncrOut, busout, pcSel, nxtpc);
 muxAddr  : mux2to1 port map (Instruction(7 DOWNTO 0), MemDataOutReged, addrMd, Addr);
@@ -155,9 +158,6 @@ alu : alu_wRCA port map (OutFromAcc, BusOut, aluMd, aluOut, aluToFlag(3), aluToF
 
 -- RCA
 adder : RCA port map (pc, "00000001", '0', PCIncrOut, dummy);
-
--- MOTTHA CONTROLLER!
-pController : procController port map (master_load_enable, Instruction(11 DOWNTO 8), fregout(1), fregout(0), CLK, ARESETN, pcSel, pcLd, instrLd, addrMd, dmWr, dataLd, flagLd, accSel, accLd, im2bus, dmRd, acc2bus, ext2bus, dispLd, aluMd);
 
 -- Zigzag dizzplayzz
 pc2seg <= pc;
