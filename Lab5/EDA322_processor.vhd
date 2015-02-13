@@ -76,8 +76,8 @@ ARCHITECTURE arch OF EDA322_processor IS
         Port ( ALU_inA, ALU_inB : IN  STD_LOGIC_VECTOR(7 DOWNTO 0);
                Operation        : IN  STD_LOGIC_VECTOR(1 DOWNTO 0);
                ALU_out          : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
-               Carry, isOutZero : OUT STD_LOGIC;
-               NotEq, Eq         : OUT STD_LOGIC
+               Carry, NotEq     : OUT STD_LOGIC;
+               Eq, isOutZero    : OUT STD_LOGIC
              );
     END COMPONENT alu_wRCA;
     
@@ -131,7 +131,7 @@ oneVector_8 <= "00000001";
 zeroVector_12 <= "000000000000";
 
 -- MOTTHA CONTROLLER!
-pController : procController port map (master_load_enable, Instruction(11 DOWNTO 8), fregout(1), fregout(0), CLK, ARESETN, pcSel, pcLd, instrLd, addrMd, dmWr, dataLd, flagLd, accSel, accLd, im2bus, dmRd, acc2bus, ext2bus, dispLd, aluMd);
+pController : procController port map (master_load_enable, Instruction(11 DOWNTO 8), fregout(2), fregout(1), CLK, ARESETN, pcSel, pcLd, instrLd, addrMd, dmWr, dataLd, flagLd, accSel, accLd, im2bus, dmRd, acc2bus, ext2bus, dispLd, aluMd);
 
 -- Multiplexorzz
 muxPCInc : mux2to1 port map (PCIncrOut, busout, pcSel, nxtpc);
@@ -169,8 +169,8 @@ acc2seg <= outfromacc;
 busout2seg <= busout;
 flag2seg <= fregout;
 
-eq <= fregout(0);
-neq <= fregout(1);
-zero <= fregout(2);
+zero <= fregout(0);
+eq <= fregout(1);
+neq <= fregout(2);
 ovf <= fregout(3);
 END arch;

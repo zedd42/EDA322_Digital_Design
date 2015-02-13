@@ -8,18 +8,15 @@ entity cmp is
 end cmp;
 
 architecture dataflow of cmp is
-    signal tmp : STD_LOGIC;
 
 begin
-  tmp <= (A(0) xor B(0)) or (A(1) xor B(1)) or (A(2) xor B(2)) or 
+  NEQ <= (A(0) xor B(0)) or (A(1) xor B(1)) or (A(2) xor B(2)) or 
           (A(3) xor B(3)) or (A(4) xor B(4)) or (A(5) xor B(5)) or
           (A(6) xor B(6)) or (A(7) xor B(7));
---    GEN: for I in 0 to 7 generate
---        tmp <= (A(I) xor B(I)) or tmp;
---    end generate GEN;
 
-    EQ  <= not tmp;
-    NEQ <= tmp;
+    EQ  <= not ((A(0) xor B(0)) or (A(1) xor B(1)) or (A(2) xor B(2)) or 
+          (A(3) xor B(3)) or (A(4) xor B(4)) or (A(5) xor B(5)) or
+          (A(6) xor B(6)) or (A(7) xor B(7)));
 end dataflow;
 
 

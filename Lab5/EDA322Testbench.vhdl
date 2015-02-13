@@ -237,9 +237,9 @@ verifyFlag: process(clk)
 begin
     if (not flagEOF and aresetn = '1' and flag2seg /= "0000" and clk'event and clk = '0') then
         if (flag2seg /= (flagsignal(3 downto 0))) then 
---            flagBool <= flagBool and false;
---            report "Flag ERROR"
---            severity error;
+            flagBool <= flagBool and false;
+            report "Flag ERROR"
+            severity error;
         else
             flagBool <= flagBool and true;
         end if;

@@ -5,8 +5,8 @@ entity alu_wRCA is
     port ( ALU_inA, ALU_inB :   in  STD_LOGIC_VECTOR(7 DOWNTO 0);
            Operation        :   in  STD_LOGIC_VECTOR(1 DOWNTO 0);
            ALU_out          :   out STD_LOGIC_VECTOR(7 DOWNTO 0);
-           Carry, isOutZero :   out STD_LOGIC;
-           NotEq, Eq        :   out STD_LOGIC
+           Carry, NotEq     :   out STD_LOGIC;
+           Eq, isOutZero    :   out STD_LOGIC
          );
 end alu_wRCA;
 
