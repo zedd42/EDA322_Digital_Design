@@ -30,8 +30,9 @@ component EDA322_processor is
           );
 end component;
 
-signal test_time_step : integer := 0;
+constant clkperiod: time := 10 ns;
 
+signal test_time_step : integer := 0;
 signal CLK:  std_logic := '0';
 signal ARESETN:  std_logic := '0';
 signal master_load_enable:  std_logic := '0';
@@ -62,18 +63,34 @@ file dmemFile: text open read_mode is "dMemOuttrace.txt";
 file pcFile: text open read_mode is "pctrace.txt";
 file flagFile: text open read_mode is "flagtrace.txt";
 
+signal accEOF : boolean := false;
+signal dispEOF : boolean := false;
+signal dmemEOF : boolean := false;
+signal flagEOF : boolean := false;
+signal pcEOF : boolean := false;
 
+signal accCounter : integer := 0;
+signal dispCounter : integer := 0;
+signal dmemCounter : integer := 0;
+signal flagCounter : integer := 0;
+signal pcCounter : integer := 0;
+
+signal accBool : boolean := true;
+signal dispBool : boolean := true;
+signal dmemBool : boolean := true;
+signal flagBool : boolean := true;
+signal pcBool : boolean := true;
 
 BEGIN
 EDA322_dut : EDA322_processor port map (
-           externalIn => "00000000",
-	   CLK => CLK,
-	   master_load_enable => master_load_enable,
-	   ARESETN => ARESETN,
-           pc2seg => pc2seg, -- 8 bit
-           instr2seg => instr2seg, -- 12 bit
-           Addr2seg => addr2seg, --8 bit
-           dMemOut2seg => dMemOut2seg, -- 8 bit
+                externalIn => "00000000",
+                CLK => CLK,
+                master_load_enable => master_load_enable,
+                ARESETN => ARESETN,
+                pc2seg => pc2seg, -- 8 bit
+                instr2seg => instr2seg, -- 12 bit
+                Addr2seg => addr2seg, --8 bit
+                dMemOut2seg => dMemOut2seg, -- 8 bit
            aluOut2seg => aluOut2seg, -- 8 bit
            acc2seg => acc2seg, --8 bit
            flag2seg => flag2seg, -- 4bit
@@ -86,7 +103,7 @@ EDA322_dut : EDA322_processor port map (
 
 
 -- Get the party started
-CLK <= not CLK after 5 ns; -- CLK with period of 10ns
+CLK <= not CLK after clkperiod/2; -- CLK with period of 100ns
 
 process (CLK)
 begin
@@ -107,12 +124,13 @@ readAcc: PROCESS
     variable accData: bit_vector(7 downto 0);
 begin    
     for i in 1 to 30 loop
-        wait until (clk'event and clk = '1');
+        wait until (aresetn = '1' and clk'event and clk = '1');
         readline(accFile, accLine);
         read(accLine, accData);
-        accSignal <= to_stdlogicvector(accData);
         wait until (acc2seg'ACTIVE);
+        accSignal <= to_stdlogicvector(accData);
     end loop;
+    accEOF <= true;
     wait;
 end process;
 
@@ -121,11 +139,13 @@ readDisp: PROCESS
     variable data: bit_vector(7 downto 0);
 begin    
     for i in 1 to 10 loop
-        wait until (clk'event and clk = '1');
+        wait until (aresetn = '1' and clk'event and clk = '1');
         readline(dispFile, fline);
         read(fline, data);
+        wait until(disp2seg'ACTIVE);
         dispSignal <= to_stdlogicvector(data);
     end loop;
+    dispEOF <= true;
     wait;
 end process;
 
@@ -134,11 +154,13 @@ readdMem: PROCESS
     variable data: bit_vector(7 downto 0);
 begin    
     for i in 1 to 20 loop
-        wait until (clk'event and clk = '1');
+        wait until (aresetn = '1' and clk'event and clk = '1');
         readline(dMemFile, fline);
         read(fline, data);
+        wait until (dMemOut2seg'active);
         dMemSignal <= to_stdlogicvector(data);
     end loop;
+    dmemEOF <= true;
     wait;
 end process;
 
@@ -147,11 +169,13 @@ readFlag: PROCESS
     variable data: bit_vector(7 downto 0);
 begin    
     for i in 1 to 20 loop
-        wait until (clk'event and clk = '1');
+        wait until (aresetn = '1' and clk'event and clk = '1');
         readline(flagfile, fline);
         read(fline, data);
+        wait until (flag2seg'active);
         flagSignal <= to_stdlogicvector(data);
     end loop;
+    flagEOF <= true;
     wait;
 end process;
 
@@ -160,30 +184,99 @@ readPC: PROCESS
     variable data: bit_vector(7 downto 0);
 begin    
     for i in 1 to 66 loop
-        wait until (clk'event and clk = '1');
+        wait until (aresetn = '1' and clk'event and clk = '1');
         readline(pcFile, fline);
         read(fline, data);
+        wait until (pc2seg'active);
         pcSignal <= to_stdlogicvector(data);
     end loop;
+    pcEOF <= true;
     wait;
 end process;
 
-verify: process(clk)
-variable errormsg:line;
+verifyAcc: process(acc2seg)
 begin
-    if (clk'event and clk = '0') then
-        if --(pc2seg  /= pcsignal) or
-           (acc2seg /= accsignal) 
-          -- (disp2seg /= dispsignal) or
-         --  (dmemout2seg /= dmemsignal) or
-        --   (flag2seg /= flagsignal(3 downto 0)) 
-then
-            report "ERROR"
-            severity note;
+    if (not accEOF and aresetn = '1' and acc2seg /= "00000000" and clk'event and clk = '0') then
+        if (acc2seg /= accsignal) then 
+            accBool <= accBool and false;
+            report "Acc ERROR"
+            severity error;
         else
-            report "ALIVE"
-            severity note;
+            accBool <= accBool and true;
         end if;
     end if;
 end process;
+
+verifyDisp: process(clk)
+begin
+    if (not dispEOF and aresetn = '1' and disp2seg /= "00000000" and clk'event and clk = '0') then
+        if (disp2seg /= dispsignal) then 
+            dispBool <= dispBool and false;
+            report "Disp ERROR"
+            severity error;
+        else
+            dispBool <= dispBool and true;
+        end if;
+    end if;
+end process;
+
+verifydMem: process(clk)
+begin
+    if (not dmemEOF and aresetn = '1' and disp2seg /= "00000000" and clk'event and clk = '0') then
+        if (dmemout2seg /= dmemsignal) then 
+            dmemBool <= dmemBool and false;
+            report "dMem ERROR"
+            severity error;
+        else
+            dmemBool <= dmemBool and true;
+        end if;
+    end if;
+end process;
+
+verifyFlag: process(clk)
+begin
+    if (not flagEOF and aresetn = '1' and flag2seg /= "0000" and clk'event and clk = '0') then
+        if (flag2seg /= (flagsignal(3 downto 0))) then 
+--            flagBool <= flagBool and false;
+--            report "Flag ERROR"
+--            severity error;
+        else
+            flagBool <= flagBool and true;
+        end if;
+    end if;
+end process;
+
+verifyPC: process(clk)
+begin
+    if (not pcEOF and aresetn = '1' and pc2seg /= "00000000" and clk'event and clk = '0') then
+        if (pc2seg /= pcsignal) then 
+            pcBool <= pcBool and false;    
+            report "PC ERROR"
+            severity error;
+        else
+            pcBool <= pcBool and true;
+        end if;
+    pcCounter <= pcCounter + 1;
+    end if;
+end process;
+
+endProcess: process(clk)
+begin
+    if accEOF and dispEOF and dmemEOF and flagEOF and pcEOF then
+        if not accBool or
+        not dispBool or
+        not dmemBool or
+        not flagBool or
+        not pcBool then
+            report "NOT CORRECT"
+            severity note;
+        else
+            report "TEST SUCCEEDED"
+            severity note;    
+        end if;
+        report "TEST DONE"
+        severity failure;    
+    end if;
+end process;
+        
 end Behavioral;
