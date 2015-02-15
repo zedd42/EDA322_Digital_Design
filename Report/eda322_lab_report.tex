@@ -1,7 +1,14 @@
 \documentclass[a4paper,11pt]{article}
 \usepackage{fancyhdr}
 \usepackage[utf8]{inputenc}
-%\setlength{\headheight}{11pt}
+\usepackage{color}
+\usepackage{pgf}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{listings}
+\usetikzlibrary{arrows, automata}
+\lstset{keywordstyle=\color{blue},language=VHDL}
+\setlength{\headheight}{11pt}
 
 \lhead
 \rhead
@@ -13,7 +20,7 @@
 %-----------------------------------------------------------
 \begin{titlepage}
 
-\title{\Huge{Lab report} \\[0.1cm] \Large{Digital Design (EDA322)} \\ [0.4cm] \Large{ \emph{Writing Guidelines}} \\[0.4cm]}
+\title{\Huge{Lab report} \\[0.1cm] \Large{Digital Design (EDA322)}}
 \author{\large{\emph{Group 01}} \\[0.2cm] Erik Thorsell1 \\[0.05cm] Robert Gustafsson \\[0.1cm]}
 \maketitle
 \thispagestyle{empty}
@@ -24,16 +31,17 @@
 \pagenumbering{roman}
 \tableofcontents
 \clearpage
-%%%%%%%%%%%%%%%%
-% Introduction
 \pagenumbering{arabic}
 \setcounter{page}{1}
-\section{Introduction}
-(max: 1 page)
-\\\\
-This part will introduce the reader to the report. 
 
-At the beginning, describe what the purpose of this lab report is. Then describe briefly what each section discusses and finally summarize the most important conclusions. 
+\section{Introduction}
+Understanding the complex architecure of a modern central processing unit can 
+seem difficult, at best. This report aims to give a brief introduction to 
+the functionality, development process and finished version of the ChAcc 
+processor. The report covers the development of: the ALU and its parts, 
+the design of the registers and memory components, the bus and the controller 
+unit. The finished product was later tested exstensively and programmed onto an 
+FPGA (Field-Programmable Gate Array). The last two sections covers this.
 
 \section{Method}
 \subsection{Arithmetic and Logic Unit (ALU)}
@@ -54,7 +62,15 @@ an RCA is simply a chain of full adders that each takes three bits as input
 and returns the sum of them aswell as a carry out. These inputs are the two 
 bits that are to be added aswell as a carry in. In our case the inputs to the 
 ALU are composed of two eight bit, unsigned, numbers leaving us with total 
-of eight full adders in the chain.\\\\
+of eight full adders in the chain.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.25]{FA.png}
+    \caption{A full adder, decscribed with logical gates.}
+    \label{FA}
+\end{figure}
+
 \noindent
 Using the dataflow design for our full adders the logic was pretty straight 
 forward. The truth table, given in the laboration description, for a full 
@@ -70,7 +86,15 @@ least significant bit of the sum as well as a first carry out. The second to
 least significant bits of each input is then send to the second full adder 
 along with the carry out from the first full adder. This is repeated eight 
 times and the carry out of the eigth full adder is the carry out of the RCA. 
-The correctness of the RCA was easily verified by the use of a ''do-file''.\\\\
+The correctness of the RCA was easily verified by the use of a ''do-file''.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\linewidth]{RCA.png}
+    \caption{A ripple carry adder, composed out of 4 full adders.}
+    \label{RCA}
+\end{figure}
+
 \noindent
 The comparison operation compares two operands and calculates wether or not 
 they are equal. When this is done the corresponding flag (Equal, EQ or Not 
@@ -98,11 +122,7 @@ the operands as well as adding a carry in to the RCA input solves this. The
 nand operation is self explained and is achieved by inverting an and with the 
 two operands. The not operation returns the first operand ({\it ALU\_inA}) 
 inverted. {\it isOutZero} is done by performing a bitwise or of the output 
-from the multiplexer.\\\\
-\noindent
-
-(max: 2 pages)
-\\\\
+from the multiplexer.
 
 \subsection{Top-level Design}
 Implementing the top-level design of the ChAcc processor included the 
@@ -116,7 +136,21 @@ the clock or the reset signal, firstly checks if the register is to be reseted
 or not. The register will be reset if and only if the reset signal is 0. 
 However if the reset signal is 1 the process checks if the clock signal was 
 caused by a rising edge and if that is the case the register will be written 
-to if, and only if, the registers load signal is 1.\\\\
+to if, and only if, the registers load signal is 1.
+
+\begin{lstlisting}[frame=single]
+PROCESS(ARESETN, CLK)
+    BEGIN
+        IF ARESETN = '0' THEN
+            output <= (OTHERS => '0');
+        ELSIF rising_edge(CLK) THEN
+            IF loadEnable = '1' THEN
+                output <= input;
+            END IF;
+        END IF;
+END PROCESS;
+\end{lstlisting}
+
 \noindent
 A register holds only one signal at the time so for larger portions of data 
 the ChAcc has two memories - one for the instructions and one for the data. 
@@ -130,14 +164,31 @@ extra logic to incorperate the four control signals into one bit. We mimized
 the expression with the four signals and opted to default to the EXTDATA 
 signal. Two or gates were needed to get the desired functionality.
 
-(max: 2 pages)
-\\\\
-Describe what you did in lab 3. In addition, describe how you implemented the bus using the mux and any extra logic or the tri-state buffers. Describe briefly how you implemented the storage elements that are used by the ChAcc processor. Show one snapshot of the simulation waveform where you write something to a memory location and then read from it. Remember to always explain your design choices and mention any assumptions. Finally, make use of figures and tables. 
-
 \subsection{Controller}
-(max: 2 pages)
-\\\\
-Describe what you did in lab4. More specifically, show the \emph{Finite-state machine} (FSM) of the controller by presenting the diagram you drew. Which design decisions did you make and why? Also include few waveforms, where you show that the controller runs correctly for some particular instructions using the provided testbench. Remember to always explain your design choices and mention any assumptions. Finally, make use of figures and tables. 
+While designing the top level of the ChAcc processor we were provided with a 
+{\it mock controller}, that acted purely as a place holder. However when that 
+asignment was done we were to implement our very own controller. The 
+controller is used to pass the correct instructions to the correct components 
+of the ChAcc processor at the right time. In order to accomplish this we 
+implemented a Mealy machine, divided into three processes. A Mealy machine is 
+an FSM (Finite-State Machine) whose output values depends both on the current 
+state - as well as the current input - of the machine. A complete diagram of 
+the FSM, as well as code examples for the three processes, can be found in 
+the appendix.\\\\
+\noindent
+The ChAcc processor's specification documentet provided describes the working 
+of the controller, and the document also specifies which signals are to be set 
+and reset during which operations. This information is crucial in order to 
+implement the controller and was of great use to us.\\\\
+\noindent
+When the controller was implemented we were provided with a testbench to be 
+run in the simulation software. The testbench tested a couple of operations 
+e.g. adding, subtracting, reading and writing from memory, etc. Unfortunately 
+our processor did not pass the test on our first attempt and we spend many 
+hours trying to figure out why. The problem was finally solved by rewriting 
+our FSM. Our first implementation made use of some logical minimization in 
+order decide what state to enter, however the software seemed not to approve 
+of this and our final implementation uses a simple case statement instead.
 
 \subsection{Processor's Testbench}
 (max: 2 pages)
@@ -168,9 +219,84 @@ After looking at your results, draw conclusions and describe briefly the learnin
 \begin{appendix}
 
 \section{Appendix}
-(max: 4 pages)
-\\\\
-In the appendix, you can include extra figures or tables that don't fit in the main body of the lab report. 
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[->, >=stealth', shorten >=1pt, auto, node distance = 4cm, semithick]
+    \node[initial, state]   (FE)            {$FE$};
+    \node[state]   (DE)   [below of=FE]     {$DE$};
+    \node[state]   (DES)  [below of=DE]      {$DES$};
+    \node[state]   (EX)   [left of=DE]     {$EX$};
+    \node[state]   (ME)   [below right of=DE]     {$ME$};
+
+    \path (FE) edge [bend left] node {} (DE)
+          (DE) edge [] node {} (DES)
+          (DE) edge [bend left] node {} (FE)
+          (DE) edge [] node {} (EX)
+          (DE) edge [] node {} (ME)
+          (DES) edge [bend left] node {} (EX)
+          (DES) edge [bend right] node {} (ME)
+          (EX) edge [bend left] node {} (FE)
+          (ME) edge [bend right] node {} (FE);
+\end{tikzpicture}
+\caption{Mealy Finite-State Machine}
+\end{figure}
+
+\begin{lstlisting}[frame=single]
+PROCESS(CLK, ARESETN)
+BEGIN
+IF ARESETN = '0' THEN
+    current_state <= FE;
+ELSE
+    IF (rising_edge(CLK) THEN
+        IF master_load_enable = '1' THEN
+            current_state <= next_state;
+        END IF;
+    END IF;
+END IF;
+END PROCESS    
+\end{lstlisting}
+
+\begin{lstlisting}[frame=single]
+PROCESS(current_state, opcode)
+BEGIN
+CASE current_state IS
+    WHEN FE =>
+        next_state <= DE;
+    WHEN DE =>
+        CASE opcode IS
+            WHEN "0000" => next_state <= EX;
+            WHEN "...." => next_state <= ..;
+        END CASE;
+    WHEN DES =>
+        CASE opcode IS
+            ...
+        END CASE;
+    WHEN ...
+END CASE;
+END PROCESS    
+\end{lstlisting}
+
+\begin{lstlisting}[frame=single]
+PROCESS(current_state, opcode)
+BEGIN
+CASE opcode IS
+    WHEN "0000" =>
+        CASE current_state IS
+            WHEN FE =>
+              v_control <= (2 => '1', others => '0');
+            WHEN DE =>
+              v_control <= (2 | 5 => '1', 
+                            others => '0');
+            WHEN EX =>
+              v_control <= (1 | 2 | 6 | 8 | 10 => '1', 
+                            others => '0');
+        END CASE;
+    WHEN .... =>
+END CASE;
+END PROCESS    
+\end{lstlisting}
+
 
 \end{appendix}
 

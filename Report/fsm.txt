@@ -1,0 +1,25 @@
+%\documentclass{article}
+%\usepackage{pgf}
+%\usepackage{tikz}
+%\usetikzlibrary{arrows, automata}
+%\usepackage[latin1]{inputenc}
+
+%\begin{document}
+\begin{tikzpicture}[->, >=stealth', shorten >=1pt, auto, node distance = 4cm, semithick]
+    \node[initial, state]   (FE)            {$FE$};
+    \node[state]   (DE)   [below of=FE]     {$DE$};
+    \node[state]   (DES)  [below of=DE]      {$DES$};
+    \node[state]   (EX)   [left of=DE]     {$EX$};
+    \node[state]   (ME)   [below right of=DE]     {$ME$};
+
+    \path (FE) edge [bend left] node {} (DE)
+          (DE) edge [] node {} (DES)
+          (DE) edge [bend left] node {} (FE)
+          (DE) edge [] node {} (EX)
+          (DE) edge [] node {} (ME)
+          (DES) edge [bend left] node {} (EX)
+          (DES) edge [bend right] node {} (ME)
+          (EX) edge [bend left] node {} (FE)
+          (ME) edge [bend right] node {} (FE);
+\end{tikzpicture}
+%\end{document}
