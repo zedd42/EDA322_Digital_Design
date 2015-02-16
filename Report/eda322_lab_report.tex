@@ -5,10 +5,11 @@
 \usepackage{pgf}
 \usepackage{tikz}
 \usepackage{graphicx}
+\usepackage{multirow}
 \usepackage{listings}
 \usetikzlibrary{arrows, automata}
 \lstset{keywordstyle=\color{blue},language=VHDL}
-\setlength{\headheight}{11pt}
+\setlength{\headheight}{5pt}
 
 \lhead
 \rhead
@@ -16,7 +17,7 @@
 %\parindent 0em
 
 \begin{document}
-\pagestyle{empty}
+%\pagestyle{empty}
 %-----------------------------------------------------------
 \begin{titlepage}
 
@@ -191,9 +192,91 @@ order decide what state to enter, however the software seemed not to approve
 of this and our final implementation uses a simple case statement instead.
 
 \subsection{Processor's Testbench}
-(max: 2 pages)
-\\\\
-Describe what you did in lab5. More specifically, describe how you made the testbench to verify that your processor design was functionally correct. For example, you can specify how you generated inputs to the processor during the testing, how you were reading the expected outputs and how you compare the expected outputs with the actual outputs. Also mention if your processor design was working correctly from the beginning and if not describe how you backtrack the bugs. Remember to always explain your design choices and mention any assumptions. Finally, make use of figures and tables. 
+In order to test the correctness of our implementation of the ChAcc processor 
+we created a testbench. We were with provided two files to initialize our 
+memories with, as well as five files to compare the output of our ChAcc 
+processor with.\\\\
+\noindent
+The testbench is divided into three parts. A reading part, a comparison part 
+and a round up part. For each ''comparision file'' we created one reading 
+process and one comparison process. The reading process simply reads each 
+line of the provided file and transforms the given row into a standard 
+logic vector which can be compared to the output of the ChAcc processor. 
+When the reading process is done a boolean that was initialized to false 
+is set to true, this is to show that we have reached the end of the file.
+
+\begin{lstlisting}[frame=single]
+readAcc: PROCESS
+    VARIABLE accLine : LINE;
+    VARIABLE accData : BIT_VECTOR(7 DOWNTO 0);
+BEGIN
+    FOR i IN 1 TO 30 LOOP
+        WAIT UNTIL (ARESETN = '1' AND rising_edge(CLK);
+            READLINE(accFile, AccLine);
+            READ(accLine, accData);
+            WAIT UNTIL (acc2seg'ACTIVE);
+               accSignal <= TO_STDLOGICVECTOR(accData);
+    END LOOP;
+    accEOF <= true;
+    WAIT;
+END PROCESS;
+\end{lstlisting}
+
+\noindent
+The comparison process checks if we have reached the end of the file 
+corresponding to the process. If that is not the case we compare the 
+output from the read file with the signal from the ChAcc processor. 
+If they differ an error has occured and we report this to the user, 
+the testbench also terminates due to the severity of the error.\\\\
+If no errors occur throughout the comparison process we simply move 
+on and we wait for the other processes to finish.
+
+\begin{lstlisting}[frame=single]
+verifyAcc : PROCESS(CLK)
+BEGIN
+    IF (not accEOF and ARESETN = '1' 
+        and falling_edge(CLK)) THEN
+        IF (acc2seg /= accSignal) THEN
+                accBool <= accBool and false;
+                REPORT "Acc ERROR"
+                SEVERITY ERROR;
+        ELSE
+            accBool <= accBool and true;
+        END IF;
+    END IF;
+END PROCESS
+\end{lstlisting}
+
+\noindent
+When all the comparisons are done the test is complete. The 
+end process makes sure that all the comparisons were true and 
+prints a note that tells the user that the test succeeded. When 
+this is done the testbench terminates with the message ''TEST DONE''.\\\\
+\noindent
+Since every iteration of the comparison process also checks the 
+validness of the signal there is really no need to check the validness 
+of all the booleans but you should always cover your bases.
+
+\begin{lstlisting}[frame=single]
+endProcess : PROCESS(CLK)
+    IF accEOF and dispEOF and dmemEOF and 
+       flagEOF and pcEOF THEN
+        IF NOT accBool OR
+           NOT dispBool OR
+           NOT dmemBool OR
+           NOT flagBool OR
+           NOT pcBool THEN
+               REPORT "NOT CORRECT"
+               SEVERITY NOTE;
+           ELSE
+               REPORT "TEST SUCCEEDED"
+               SEVERITY NOTE;
+        END IF;
+        REPORT "TEST DONE"
+        SEVERITY FAILURE;
+    END IF;
+END PROCESS
+\end{lstlisting}
 
 \subsection{ChAcc on Nexys 3 board \emph{(Optional)}}
 (max: 2 pages)
@@ -225,7 +308,7 @@ After looking at your results, draw conclusions and describe briefly the learnin
 \begin{tikzpicture}[->, >=stealth', shorten >=1pt, auto, node distance = 4cm, semithick]
     \node[initial, state]   (FE)            {$FE$};
     \node[state]   (DE)   [below of=FE]     {$DE$};
-    \node[state]   (DES)  [below of=DE]      {$DES$};
+    \node[state]   (DES)  [below of=DE]      {$DE^*$};
     \node[state]   (EX)   [left of=DE]     {$EX$};
     \node[state]   (ME)   [below right of=DE]     {$ME$};
 
@@ -239,9 +322,9 @@ After looking at your results, draw conclusions and describe briefly the learnin
           (EX) edge [bend left] node {} (FE)
           (ME) edge [bend right] node {} (FE);
 \end{tikzpicture}
-\caption{Mealy Finite-State Machine}
+\caption{Mealy Finite-State Machine.}
 \end{figure}
-
+\vspace{1cm}
 \begin{lstlisting}[frame=single]
 PROCESS(CLK, ARESETN)
 BEGIN
@@ -256,6 +339,68 @@ ELSE
 END IF;
 END PROCESS    
 \end{lstlisting}
+\vspace{1pt}
+\center {\it The first third of the FSM.}
+
+\newpage
+
+\begin{tabular}{|l|l|l|}
+\hline
+\multicolumn{3}{ |c| }{Mealy FSM} \\
+\hline
+State & Opcode & Signals \\ \hline
+\hline
+\multirow{7}{*}{FE} 
+& 000X, 0101, 0110, 100X, 1111 & instrLd \\
+& 0010 & instrLd, aluMd(0) \\
+& 0011 & instrLd, aluMd(1) \\
+& 0100 & instrLd, aluMd(1), aluMd(0) \\
+& 0111, 1010 & instrLd, acc2bus \\
+& 1011 & instrLd, ext2bus \\
+& 1100 - 1110 & instrLd, im2bus \\
+\hline
+\multirow{9}{*}{DE} 
+& 000X, 0101, 0110, 1001 & instrLd, dataLd \\
+& 0010 & instrLd, dataLd, aluMd(0) \\
+& 0011 & instrLd, dataLd, aluMd(1) \\
+& 0100 & instrLd, dataLd, aluMd(1), \\
+&      & aluMd(0) \\
+& 0111 & instrLd, acc2bus \\
+& 1010 & instrLd, dataLd, acc2bus \\
+& 1011 & pcLd, instrLd, dmWr, ext2bus \\
+& 110X, 1110 & pcSel$^*$, pcLd, instrLd, im2bus \\
+& 1111 & instrLd \\
+\hline
+\multirow{2}{*}{DE*} 
+& 100X & instrLd, addrMd, dataLd\\
+& 1010 & instrLd, acc2bus \\
+\hline
+\multirow{9}{*}{EX} 
+& 000X & pcLd, instrLd, flagLd, accLd, \\
+&      & dmRd \\
+& 0010 & pcLd, instrLd, flagLd, accLd, \\
+&      & dmRd, aluMd(0) \\
+& 0011 & pcLd, instrLd, flagLd, accLd, \\
+&      & dmRd, aluMd(1) \\
+& 0100 & pcLd, instrLd, flagLd, accLd, \\ 
+&      & aluMd(1), aluMd(0) \\
+& 0101 & pcLd, instrLd, flagLd, dmRd \\
+& 0110 & pcLd, instrLd, accSel, accLd, \\
+&      & dmRd \\
+& 1000 & pcLd, flagLd, accLd, dmRd \\
+& 1001 & pcLd, flagLd, accSel, accLd, \\
+&      & dmRd \\
+& 1111 & pcLd, instrLd, dispLd \\
+\hline
+\multirow{2}{*}{ME}
+& 0111 & pcLd, instrLd, dmWr, acc2bus \\
+& 1010 & pcLd, instrLd, addrMd, \\
+&      & dmWr, acc2bus \\
+\hline
+\end{tabular}
+\center {\it The complete table of states and corresponding signals.}
+
+\newpage
 
 \begin{lstlisting}[frame=single]
 PROCESS(current_state, opcode)
@@ -276,7 +421,8 @@ CASE current_state IS
 END CASE;
 END PROCESS    
 \end{lstlisting}
-
+\center {\it The second part of the FSM.}
+\vspace{30pt}
 \begin{lstlisting}[frame=single]
 PROCESS(current_state, opcode)
 BEGIN
@@ -296,7 +442,10 @@ CASE opcode IS
 END CASE;
 END PROCESS    
 \end{lstlisting}
+\center {\it The third part of the FSM.}
+\vspace{25pt}
 
+\newpage
 
 \end{appendix}
 

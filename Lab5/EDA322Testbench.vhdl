@@ -87,19 +87,19 @@ EDA322_dut : EDA322_processor port map (
                 CLK => CLK,
                 master_load_enable => master_load_enable,
                 ARESETN => ARESETN,
-                pc2seg => pc2seg, -- 8 bit
-                instr2seg => instr2seg, -- 12 bit
-                Addr2seg => addr2seg, --8 bit
-                dMemOut2seg => dMemOut2seg, -- 8 bit
-           aluOut2seg => aluOut2seg, -- 8 bit
-           acc2seg => acc2seg, --8 bit
-           flag2seg => flag2seg, -- 4bit
-           busOut2seg => busOut2seg, -- 8 bit
-	   disp2seg => disp2seg, -- 8 bit
-	   errSig2seg => errSig2seg, -- 1 bit -- to LED
-	   ovf => ovf, --1 bit -- to LED
-	   zero => zero -- 1 bit -- to LED
-	  );
+                pc2seg => pc2seg, 
+                instr2seg => instr2seg, 
+                Addr2seg => addr2seg, 
+                dMemOut2seg => dMemOut2seg, 
+                aluOut2seg => aluOut2seg, 
+                acc2seg => acc2seg, 
+                flag2seg => flag2seg, 
+                busOut2seg => busOut2seg, 
+                disp2seg => disp2seg,
+                errSig2seg => errSig2seg, 
+                ovf => ovf, 
+                zero => zero 
+            );
 
 
 -- Get the party started
@@ -114,7 +114,7 @@ begin
 		master_load_enable <= not master_load_enable;
 	end if;
 	if test_time_step = 2 then
-		ARESETN <= '1'; -- release reset
+		ARESETN <= '1'; 
 	end if;
 end process;   
 
