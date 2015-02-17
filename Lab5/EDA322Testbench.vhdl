@@ -51,11 +51,11 @@ signal ovf: std_logic;
 signal zero: std_logic;
 
 
-signal accSignal : std_logic_vector(7 downto 0);
-signal dispSignal : std_logic_vector(7 downto 0);
-signal dMemSignal : std_logic_vector(7 downto 0);
-signal pcSignal : std_logic_vector(7 downto 0);
-signal flagSignal : std_logic_vector(7 downto 0);
+signal accSignal : std_logic_vector(7 downto 0) := "00000000";
+signal dispSignal : std_logic_vector(7 downto 0) := "00000000";
+signal dMemSignal : std_logic_vector(7 downto 0) := "00000000";
+signal pcSignal : std_logic_vector(7 downto 0) := "00000000";
+signal flagSignal : std_logic_vector(7 downto 0) := "00000000";
 
 file accFile: text open read_mode is "acctrace.txt";
 file dispFile: text open read_mode is "disptrace.txt";
@@ -63,23 +63,11 @@ file dmemFile: text open read_mode is "dMemOuttrace.txt";
 file pcFile: text open read_mode is "pctrace.txt";
 file flagFile: text open read_mode is "flagtrace.txt";
 
-signal accEOF : boolean := false;
-signal dispEOF : boolean := false;
-signal dmemEOF : boolean := false;
-signal flagEOF : boolean := false;
-signal pcEOF : boolean := false;
-
 signal accCounter : integer := 0;
 signal dispCounter : integer := 0;
 signal dmemCounter : integer := 0;
 signal flagCounter : integer := 0;
 signal pcCounter : integer := 0;
-
-signal accBool : boolean := true;
-signal dispBool : boolean := true;
-signal dmemBool : boolean := true;
-signal flagBool : boolean := true;
-signal pcBool : boolean := true;
 
 BEGIN
 EDA322_dut : EDA322_processor port map (
@@ -118,7 +106,7 @@ begin
 	end if;
 end process;   
 
--- READING PROCESSES
+-- READING PROCESSESZ:/.win/git/digitaldesign/Lab5/EDA322Testbench.vhdl
 readAcc: PROCESS
     variable accLine: line;
     variable accData: bit_vector(7 downto 0);
@@ -130,7 +118,6 @@ begin
         wait until (acc2seg'ACTIVE);
         accSignal <= to_stdlogicvector(accData);
     end loop;
-    accEOF <= true;
     wait;
 end process;
 
@@ -145,7 +132,6 @@ begin
         wait until(disp2seg'ACTIVE);
         dispSignal <= to_stdlogicvector(data);
     end loop;
-    dispEOF <= true;
     wait;
 end process;
 
@@ -160,7 +146,6 @@ begin
         wait until (dMemOut2seg'active);
         dMemSignal <= to_stdlogicvector(data);
     end loop;
-    dmemEOF <= true;
     wait;
 end process;
 
@@ -175,7 +160,6 @@ begin
         wait until (flag2seg'active);
         flagSignal <= to_stdlogicvector(data);
     end loop;
-    flagEOF <= true;
     wait;
 end process;
 
@@ -190,93 +174,81 @@ begin
         wait until (pc2seg'active);
         pcSignal <= to_stdlogicvector(data);
     end loop;
-    pcEOF <= true;
     wait;
 end process;
 
 verifyAcc: process(acc2seg)
 begin
-    if (not accEOF and aresetn = '1' and acc2seg /= "00000000" and clk'event and clk = '0') then
+    if (aresetn = '1' and clk'event and clk = '0') then
         if (acc2seg /= accsignal) then 
-            accBool <= accBool and false;
             report "Acc ERROR"
             severity error;
-        else
-            accBool <= accBool and true;
         end if;
     end if;
 end process;
 
-verifyDisp: process(clk)
+verifyDisp: process(disp2seg)
 begin
-    if (not dispEOF and aresetn = '1' and disp2seg /= "00000000" and clk'event and clk = '0') then
+    if disp2seg = 144 then
+        report "TEST SUCCEEDED"
+        severity failure;
+    end if;
+    if (aresetn = '1' and clk'event and clk = '0') then
         if (disp2seg /= dispsignal) then 
-            dispBool <= dispBool and false;
             report "Disp ERROR"
             severity error;
-        else
-            dispBool <= dispBool and true;
-        end if;
+        end if;    
     end if;
 end process;
 
-verifydMem: process(clk)
+verifydMem: process(dmemout2seg)
 begin
-    if (not dmemEOF and aresetn = '1' and disp2seg /= "00000000" and clk'event and clk = '0') then
+    if (aresetn = '1' and clk'event and clk = '0') then
         if (dmemout2seg /= dmemsignal) then 
-            dmemBool <= dmemBool and false;
             report "dMem ERROR"
             severity error;
-        else
-            dmemBool <= dmemBool and true;
         end if;
     end if;
 end process;
 
-verifyFlag: process(clk)
+verifyFlag: process(flag2seg)
 begin
-    if (not flagEOF and aresetn = '1' and flag2seg /= "0000" and clk'event and clk = '0') then
+    if (aresetn = '1' and clk'event and clk = '0') then
         if (flag2seg /= (flagsignal(3 downto 0))) then 
-            flagBool <= flagBool and false;
             report "Flag ERROR"
             severity error;
-        else
-            flagBool <= flagBool and true;
         end if;
     end if;
 end process;
 
-verifyPC: process(clk)
+verifyPC: process(pc2seg)
 begin
-    if (not pcEOF and aresetn = '1' and pc2seg /= "00000000" and clk'event and clk = '0') then
+    if (aresetn = '1' and clk'event and clk = '0') then
         if (pc2seg /= pcsignal) then 
-            pcBool <= pcBool and false;    
             report "PC ERROR"
             severity error;
-        else
-            pcBool <= pcBool and true;
         end if;
     pcCounter <= pcCounter + 1;
     end if;
 end process;
 
-endProcess: process(clk)
-begin
-    if accEOF and dispEOF and dmemEOF and flagEOF and pcEOF then
-        if not accBool or
-        not dispBool or
-        not dmemBool or
-        not flagBool or
-        not pcBool then
-            report "NOT CORRECT"
-            severity note;
-        else
-            report "TEST SUCCEEDED"
-            severity note;    
-        end if;
-        report "TEST DONE"
-        severity failure;    
-    end if;
-end process;
+--endProcess: process(clk)
+--begin
+--    if disp2seg = 144 then
+--        if not accBool or
+--        not dispBool or
+--        not dmemBool or
+--        not flagBool or
+--        not pcBool then
+--            report "NOT CORRECT"
+--            severity note;
+--        else
+--            report "TEST SUCCEEDED"
+--            severity note;    
+--        end if;
+--        report "TEST DONE"
+--        severity failure;    
+--    end if;
+--end process;
         
 end Behavioral;
