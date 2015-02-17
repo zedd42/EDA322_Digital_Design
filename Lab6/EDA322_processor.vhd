@@ -150,8 +150,8 @@ Disp  : regn generic map (N => 8) port map (OutFromAcc, dispLd, ARESETN, CLK, di
 Freg  : regn generic map (N => 4) port map (alutoflag, flagLd, ARESETN, CLK, fregout);
 
 -- Memoriezz
-inst_mem : mem_array generic map (DATA_WIDTH => 12, ADDR_WIDTH => 8, INIT_FILE => "lab6inst_mem.mif") port map (pc, "000000000000", CLK, '0', InstrMemOut);
-data_mem : mem_array generic map (DATA_WIDTH => 8, ADDR_WIDTH => 8, INIT_FILE => "lab6data_mem.mif") port map (Addr, BusOut, CLK, dmWr, MemDataOut);
+inst_mem : mem_array generic map (DATA_WIDTH => 12, ADDR_WIDTH => 8, INIT_FILE => "inst_mem.mif") port map (pc, "000000000000", CLK, '0', InstrMemOut);
+data_mem : mem_array generic map (DATA_WIDTH => 8, ADDR_WIDTH => 8, INIT_FILE => "data_mem.mif") port map (Addr, BusOut, CLK, dmWr, MemDataOut);
 
 -- ALUZUZU
 alu : alu_wRCA port map (OutFromAcc, BusOut, aluMd, aluOut, aluToFlag(3), aluToFlag(2), aluToFlag(1), aluToFlag(0));

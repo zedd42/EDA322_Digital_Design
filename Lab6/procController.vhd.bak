@@ -272,7 +272,7 @@ begin
                 when others =>
             end case;
 
-       when others =>
+       when "1111" =>
             case current_state is
                 when FE =>
                     v_control <= (2 => '1', others => '0');
@@ -282,6 +282,8 @@ begin
                     v_control <= (1 | 2 | 13 => '1', others => '0');
                 when others =>
             end case;
+        when others =>
+            null;
     end case; 
 end process;
 
