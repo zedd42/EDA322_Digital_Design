@@ -1,0 +1,17 @@
+a) 
+prepProcess : PROCESS(output, expected_output)
+BEGIN
+    IF output =/= expected_output THEN
+        REPORT "Outputs differ"
+        SEVERITY FAILURE;
+    END IF;
+END PROCESS;
+
+b)
+pc2seg      : 8 bit - pctrace.txt
+dMemOut2seg : 8 bit - dMemOuttrace.txt
+acc2Seg     : 8 bit - acctrace.txt
+flag2seg    : 4 bit - flagtrace.txt
+disp2seg    : 8 bit - disptrace.txt
+
+
