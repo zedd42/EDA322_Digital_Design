@@ -25,13 +25,13 @@ END EDA322_processor;
 
 ARCHITECTURE arch OF EDA322_processor IS
     
-    SIGNAL Instruction, InstrMemOut, zeroVector_12 : STD_LOGIC_VECTOR(11 DOWNTO 0);
-    SIGNAL nxtpc, pc, Addr, BusOut, MemDataOut, oneVector_8 : STD_LOGIC_VECTOR(7 DOWNTO 0);
+    SIGNAL Instruction, InstrMemOut : STD_LOGIC_VECTOR(11 DOWNTO 0);
+    SIGNAL nxtpc, pc, Addr, BusOut, MemDataOut : STD_LOGIC_VECTOR(7 DOWNTO 0);
     SIGNAL MemDataOutReged, OutFromAcc, inAcc, PCIncrOut, aluOut : STD_LOGIC_VECTOR(7 DOWNTO 0);
     SIGNAL aluToFlag, fregout : STD_LOGIC_VECTOR(3 DOWNTO 0);
     SIGNAL aluMd : STD_LOGIC_VECTOR(1 DOWNTO 0);
     SIGNAL neq, eq, pcSel, pcLd, instrLd, addrMd, dmWr, dataLd, flagLd, accSel : STD_LOGIC;
-    SIGNAL accLd, im2bus, dmRd, acc2bus, ext2bus, dispLd, zeroLogic, oneLogic, dummy : STD_LOGIC;
+    SIGNAL accLd, im2bus, dmRd, acc2bus, ext2bus, dispLd, dummy : STD_LOGIC;
 
     COMPONENT procController IS
         Port ( 	master_load_enable : in STD_LOGIC;
@@ -125,13 +125,9 @@ ARCHITECTURE arch OF EDA322_processor IS
     END COMPONENT regn;
     
 BEGIN
-oneLogic <= '1';
-zeroLogic <= '0';
-oneVector_8 <= "00000001";
-zeroVector_12 <= "000000000000";
 
 -- MOTTHA CONTROLLER!
-pController : procController port map (master_load_enable, Instruction(11 DOWNTO 8), fregout(2), fregout(1), CLK, ARESETN, pcSel, pcLd, instrLd, addrMd, dmWr, dataLd, flagLd, accSel, accLd, im2bus, dmRd, acc2bus, ext2bus, dispLd, aluMd);
+pController : procController port map (master_load_enable, Instruction(11 DOWNTO 8), neq, eq, CLK, ARESETN, pcSel, pcLd, instrLd, addrMd, dmWr, dataLd, flagLd, accSel, accLd, im2bus, dmRd, acc2bus, ext2bus, dispLd, aluMd);
 
 -- Multiplexorzz
 muxPCInc : mux2to1 port map (PCIncrOut, busout, pcSel, nxtpc);
@@ -150,8 +146,8 @@ Disp  : regn generic map (N => 8) port map (OutFromAcc, dispLd, ARESETN, CLK, di
 Freg  : regn generic map (N => 4) port map (alutoflag, flagLd, ARESETN, CLK, fregout);
 
 -- Memoriezz
-inst_mem : mem_array generic map (DATA_WIDTH => 12, ADDR_WIDTH => 8, INIT_FILE => "lab6inst_mem.mif") port map (pc, "000000000000", CLK, '0', InstrMemOut);
-data_mem : mem_array generic map (DATA_WIDTH => 8, ADDR_WIDTH => 8, INIT_FILE => "lab6data_mem.mif") port map (Addr, BusOut, CLK, dmWr, MemDataOut);
+inst_mem : mem_array generic map (DATA_WIDTH => 12, ADDR_WIDTH => 8, INIT_FILE => "lab4inst_mem.mif") port map (pc, "000000000000", CLK, '0', InstrMemOut);
+data_mem : mem_array generic map (DATA_WIDTH => 8, ADDR_WIDTH => 8, INIT_FILE => "lab4data_mem.mif") port map (Addr, BusOut, CLK, dmWr, MemDataOut);
 
 -- ALUZUZU
 alu : alu_wRCA port map (OutFromAcc, BusOut, aluMd, aluOut, aluToFlag(3), aluToFlag(2), aluToFlag(1), aluToFlag(0));

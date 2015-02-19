@@ -30,32 +30,25 @@ architecture Behavioral of procController is
     type state_type is (FE, DE, DES, EX, ME);
     signal current_state, next_state : state_type;
     signal v_control : STD_LOGIC_VECTOR(15 DOWNTO 0);
-    signal A, B, C, D : STD_LOGIC;
 
 begin
 
-    A <= opcode(3);
-    B <= opcode(2);
-    C <= opcode(1);
-    D <= opcode(0);
-
-    pcsel    <= v_control(0);
-    pcld     <= v_control(1);
-    instrld  <= v_control(2);
-    addrmd   <= v_control(3);
-    dmwr     <= v_control(4);
-    datald   <= v_control(5);
-    flagld   <= v_control(6);
-    accsel   <= v_control(7);
-    accld    <= v_control(8);
-    im2bus   <= v_control(9);
-    dmrd     <= v_control(10);
-    acc2bus  <= v_control(11);
-    ext2bus  <= v_control(12);
-    displd   <= v_control(13);
-    alumd(1) <= v_control(14);
-    alumd(0) <= v_control(15);
-
+    pcsel    <= v_control(0) and (master_load_enable);
+    pcld     <= v_control(1) and (master_load_enable );
+    instrld  <= v_control(2) and (master_load_enable);
+    addrmd   <= v_control(3) and (master_load_enable);
+    dmwr     <= v_control(4) and (master_load_enable);
+    datald   <= v_control(5) and (master_load_enable);
+    flagld   <= v_control(6) and (master_load_enable);
+    accsel   <= v_control(7) and (master_load_enable);
+    accld    <= v_control(8) and (master_load_enable );
+    im2bus   <= v_control(9) and (master_load_enable );
+    dmrd     <= v_control(10) and (master_load_enable);
+    acc2bus  <= v_control(11) and (master_load_enable );
+    ext2bus  <= v_control(12) and (master_load_enable );
+    displd   <= v_control(13) and (master_load_enable);
+    alumd(1) <= v_control(14) and (master_load_enable);
+    alumd(0) <= v_control(15) and (master_load_enable);
 
 process(CLK, ARESETN)
 begin
@@ -104,12 +97,12 @@ begin
             end case;
         when EX =>
             next_state <= FE;
-        when ME =>
+        when others =>
             next_state <= FE;
     end case;
 end process;
 
-process(current_state, opcode)
+process(current_state, opcode, neq, eq)
 begin
     case opcode is
         when "0000" =>
@@ -121,6 +114,7 @@ begin
                 when EX =>
                     v_control <= (1 | 2 | 6 | 8 | 10 => '1', others => '0');
                 when others =>
+					     v_control <= (others => '0');
             end case;
         when "0001" =>
             case current_state is
@@ -131,6 +125,7 @@ begin
                 when EX =>
                     v_control <= (1 | 2 | 6 | 8 | 10 => '1', others => '0');
                 when others =>
+					     v_control <= (others => '0');					 
             end case;
 
        when "0010" =>
@@ -142,6 +137,7 @@ begin
                 when EX =>
                     v_control <= (1 | 2 | 6 | 8 | 10 | 15 => '1', others => '0');
                 when others =>
+					     v_control <= (others => '0');
             end case;
 
        when "0011" =>
@@ -153,6 +149,7 @@ begin
                 when EX =>
                     v_control <= (1 | 2 | 6 | 8 | 10 | 14 => '1', others => '0');
                 when others =>
+					     v_control <= (others => '0');					
             end case;
 
        when "0100" =>
@@ -164,6 +161,7 @@ begin
                 when EX =>
                     v_control <= (1 | 2 | 6 | 8 | 10 | 14 | 15 => '1', others => '0');
                 when others =>
+					     v_control <= (others => '0');					 
             end case;
 
        when "0101" =>
@@ -175,6 +173,7 @@ begin
                 when EX =>
                     v_control <= (1 | 2 | 6 | 10 => '1', others => '0');
                 when others =>
+					     v_control <= (others => '0');					 
             end case;
 
        when "0110" =>
@@ -186,6 +185,7 @@ begin
                 when EX =>
                     v_control <= (1 | 2 | 7 | 8 | 10 => '1', others => '0');
                 when others =>
+					     v_control <= (others => '0');					 
             end case;
 
        when "0111" =>
@@ -197,6 +197,7 @@ begin
                 when ME =>
                     v_control <= (1 | 4 | 2 | 11 => '1', others => '0');
                 when others =>
+					     v_control <= (others => '0');					 
             end case;
 
        when "1000" =>
@@ -210,6 +211,7 @@ begin
                 when EX =>
                     v_control <= (1 | 2 | 6 | 8 | 10 => '1', others => '0');
                 when others =>
+					     v_control <= (others => '0');					 
             end case;
 
        when "1001" =>
@@ -223,6 +225,7 @@ begin
                 when EX =>
                     v_control <= (1 | 2 | 7 | 8 | 10 => '1', others => '0');
                 when others =>
+					     v_control <= (others => '0');					 
             end case;
 
        when "1010" =>
@@ -234,6 +237,7 @@ begin
                 when ME =>
                     v_control <= (1 | 2 | 3 | 4 | 11 => '1', others => '0');
                 when others =>
+					     v_control <= (others => '0');					 
             end case;
 
        when "1011" =>
@@ -243,6 +247,7 @@ begin
                 when DE =>
                     v_control <= (1 | 2 | 4 | 12 => '1', others => '0');
                 when others =>
+					     v_control <= (others => '0');					 
             end case;
 
        when "1100" =>
@@ -252,6 +257,7 @@ begin
                 when DE =>
                     v_control <= (0 | 1 | 2 | 9 => '1', others => '0');
                 when others =>
+					     v_control <= (others => '0');					 
             end case;
 
        when "1101" =>
@@ -261,6 +267,7 @@ begin
                 when DE =>
                     v_control <= (0 => eq, 1 | 2 | 9 => '1', others => '0');
                 when others =>
+					     v_control <= (others => '0');					 
             end case;
 
        when "1110" =>
@@ -270,6 +277,7 @@ begin
                 when DE =>
                     v_control <= (0 => neq, 1 | 2 | 9 => '1', others => '0');
                 when others =>
+					     v_control <= (others => '0');					 
             end case;
 
        when others =>
@@ -281,6 +289,7 @@ begin
                 when EX =>
                     v_control <= (1 | 2 | 13 => '1', others => '0');
                 when others =>
+					     v_control <= (others => '0');					 
             end case;
     end case; 
 end process;
