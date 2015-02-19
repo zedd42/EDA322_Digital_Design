@@ -7,11 +7,16 @@ force ADDR 2#00000000
 force DATAIN 2#00000000
 run 50ns
 
-force ADDR 2#00000001
+force WE 1 
 run 50ns
 
-force ADDR 2#00000010
+force WE 0
+force DATAIN 2#11111111
 run 50ns
 
-force ADDR 2#00000011
+force WE 1
 run 50ns
+
+force WE 0
+run 50ns
+

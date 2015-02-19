@@ -197,13 +197,14 @@ we created a testbench. We were with provided two files to initialize our
 memories with, as well as five files to compare the output of our ChAcc 
 processor with.\\\\
 \noindent
-The testbench is divided into three parts. A reading part, a comparison part 
-and a round up part. For each ''comparision file'' we created one reading 
+The testbench is divided into two parts. A reading part and a comparison part. 
+For each ''comparision file'' we created one reading 
 process and one comparison process. The reading process simply reads each 
 line of the provided file and transforms the given row into a standard 
 logic vector which can be compared to the output of the ChAcc processor. 
-When the reading process is done a boolean that was initialized to false 
-is set to true, this is to show that we have reached the end of the file.
+The testbench is progammed to end when the display register outputs the 
+decimal number 144, a simple if statement checks the disp2seg signal and if 
+the signal equals 144 the test is declared succsessful.  
 
 \begin{lstlisting}[frame=single]
 readAcc: PROCESS
@@ -217,63 +218,27 @@ BEGIN
             WAIT UNTIL (acc2seg'ACTIVE);
                accSignal <= TO_STDLOGICVECTOR(accData);
     END LOOP;
-    accEOF <= true;
     WAIT;
 END PROCESS;
 \end{lstlisting}
 
 \noindent
-The comparison process checks if we have reached the end of the file 
-corresponding to the process. If that is not the case we compare the 
+The comparison process compares the 
 output from the read file with the signal from the ChAcc processor. 
 If they differ an error has occured and we report this to the user, 
 the testbench also terminates due to the severity of the error.\\\\
-If no errors occur throughout the comparison process we simply move 
-on and we wait for the other processes to finish.
+The files with data differs in length so ff no errors occur throughout 
+the comparison process for one process we simply wait for the other processess 
+to continue and for disp2seg to reach decimal 144.
 
 \begin{lstlisting}[frame=single]
 verifyAcc : PROCESS(CLK)
 BEGIN
-    IF (not accEOF and ARESETN = '1' 
-        and falling_edge(CLK)) THEN
+    IF (ARESETN = '1' AND falling_edge(CLK)) THEN
         IF (acc2seg /= accSignal) THEN
-                accBool <= accBool and false;
-                REPORT "Acc ERROR"
-                SEVERITY ERROR;
-        ELSE
-            accBool <= accBool and true;
+            REPORT "Acc ERROR"
+            SEVERITY ERROR;
         END IF;
-    END IF;
-END PROCESS
-\end{lstlisting}
-
-\noindent
-When all the comparisons are done the test is complete. The 
-end process makes sure that all the comparisons were true and 
-prints a note that tells the user that the test succeeded. When 
-this is done the testbench terminates with the message ''TEST DONE''.\\\\
-\noindent
-Since every iteration of the comparison process also checks the 
-validness of the signal there is really no need to check the validness 
-of all the booleans but you should always cover your bases.
-
-\begin{lstlisting}[frame=single]
-endProcess : PROCESS(CLK)
-    IF accEOF and dispEOF and dmemEOF and 
-       flagEOF and pcEOF THEN
-        IF NOT accBool OR
-           NOT dispBool OR
-           NOT dmemBool OR
-           NOT flagBool OR
-           NOT pcBool THEN
-               REPORT "NOT CORRECT"
-               SEVERITY NOTE;
-           ELSE
-               REPORT "TEST SUCCEEDED"
-               SEVERITY NOTE;
-        END IF;
-        REPORT "TEST DONE"
-        SEVERITY FAILURE;
     END IF;
 END PROCESS
 \end{lstlisting}
