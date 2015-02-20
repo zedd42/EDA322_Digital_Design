@@ -3,8 +3,8 @@
 \contentsline {subsection}{\numberline {2.1}Arithmetic and Logic Unit (ALU)}{1}
 \contentsline {subsection}{\numberline {2.2}Top-level Design}{3}
 \contentsline {subsection}{\numberline {2.3}Controller}{4}
-\contentsline {subsection}{\numberline {2.4}Processor's Testbench}{4}
-\contentsline {subsection}{\numberline {2.5}ChAcc on Nexys 3 board \emph {(Optional)}}{6}
-\contentsline {subsection}{\numberline {2.6}Performance, Area and Power Analysis \emph {(Optional)}}{6}
+\contentsline {subsection}{\numberline {2.4}Processor's Testbench}{5}
+\contentsline {subsection}{\numberline {2.5}ChAcc on Nexys 3 board}{6}
+\contentsline {subsection}{\numberline {2.6}Performance, Area and Power Analysis \emph {(Optional)}}{7}
 \contentsline {section}{\numberline {3}Analysis}{7}
-\contentsline {section}{\numberline {A}Appendix}{8}
+\contentsline {section}{\numberline {A}Appendix}{9}
