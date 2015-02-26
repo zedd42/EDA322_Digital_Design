@@ -309,29 +309,60 @@ $$ \text{Final Efficiency} =
 {\bf Performance}\\
 \noindent
 Firstly we optimized for performance. The only property of interest to us was 
-to increase the frequency of the processor's clock as much as possible. By 
-choosing ``optimize for speed'' in the processor properties, along with some 
-other settings we went on trying to narrow our timing constriaints. Starting 
-with the suggested ``7ns'' we lowered the constraint value until we eventually 
-got errors telling us that our processor did not meet the given timing 
-constraints. The final constraint we entered was 4.95ns which yielded a 
-frequency of 202 MHz.\\\\
+to increase the frequency of the processor's clock as much as possible. The 
+following settings were used that differs from the default settings under the 
+Synthesize - XST Process Properties:
+
+\begin{itemize}
+\item Optimization Goal - Speed
+\item Optimization Effort - High
+\item Generate RTL Schematic - No
+\item Case - Upper
+\item FSM Encoding Algorithm - Speed1
+\end{itemize}
+
+Starting with the suggested ``7ns'' we lowered the constraint value until we 
+eventually got errors telling us that our processor did not meet the given 
+timing constraints. The final constraint we entered was 4.95ns which yielded 
+a frequency of 202 MHz.\\\\
 \noindent
 {\bf Area}\\
 \noindent
 When optimizing for area we wanted our processor to use as few slices as 
 possible. The performance optimization used 67 slices but changing the 
 processor properties to optimize for area made the processor use only 54 
-slices instead. By doing this the power consumption dropped from 0.249 W to 
-0.118 W. However, the clock speed was significantly slower: 105 MHz.\\\\
+slices instead. The following settings were used that differs from the 
+default settings under the Synthesize - XST Process Properties:
+
+\begin{itemize}
+\item Optimization Goal - Area
+\item Optimization Effort - High
+\item Generate RTL Schematic - No
+\item Case - Upper
+\item FSM Encoding Algorithm - Compact
+\end{itemize}
+
+By doing this the power consumption dropped from 0.249 W to 0.118 W. 
+However, the clock speed was significantly slower: 105 MHz.\\\\
 \noindent
 {\bf Power}\\
 \noindent
 Aiming to optimze for power efficiency we went through all the settings we 
-had previously gone through and ticked every box with "power efficiency" next 
+had previously gone through and ticked every box with ``power efficiency'' next 
 to it. We also had in mind that a fast processor would be a processor in need 
-of much power why we opted to choose ``slower'' settings as well. When done 
-we got a power consumption of 0.117 W, 0.001 W less than for the area 
+of much power why we opted to choose ``slower'' settings as well. The following 
+settings were used that differs from the default settings under the 
+Synthesize - XST Process Properties:
+
+\begin{itemize}
+\item Optimization Goal - Area
+\item Optimization Effort - High
+\item Power Reduction
+\item Generate RTL Schematic - No
+\item Case - Upper
+\end{itemize}
+
+When done we got a power consumption of 0.117 W, 0.001 W less than for the area 
 optimized implementation. However, we did get a clock frequency of 118 MHz 
 and this implementation used only 52 slices. In other words, this was by far 
 our best implementation yet in terms of over all efficiency.\\\\
@@ -340,9 +371,22 @@ our best implementation yet in terms of over all efficiency.\\\\
 \noindent
 With our acquired knowledge we tried to optimize our processor to reach as 
 high of an overall score as possible. Since our power optimization had yielded 
-the best overall score yet we used it as a base and tried to increase the 
-clock frequency while managing to keep our area small and our power consumption 
-low. We did eventually reach a total score of $1.97*10^7$ which we found 
+the best overall score yet we used it as a base and a lab instructor showed us 
+some additional settings that could be used. These were the setting used that 
+differs from the settings used for power optimization from the Implement Design 
+Process Properties:
+
+\begin{itemize}
+\item Placer Extra Effort - Normal
+\item Power Reduction - Extra Effort
+\item Extra Effort (Highest PAR level only) - Normal
+\item Power Reduction
+\end{itemize}
+
+When these settings had been changed we tried to increase the clock frequency 
+while managing to keep our area small and our power consumption 
+low. By lowering the value of the timing constraint we did eventually reach a 
+clock frequency of 126 MHz and a total score of $1.97*10^7$ which we found 
 satisfying and concluded our quest to be over. Worth noticing is that the area 
 decreased even more and our final implementation used only 51 slices.\\\\
 \noindent 
