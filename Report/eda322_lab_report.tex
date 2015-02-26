@@ -6,6 +6,7 @@
 \usepackage{tikz}
 \usepackage{graphicx}
 \usepackage{multirow}
+\usepackage{amsmath}
 \usepackage{listings}
 \usetikzlibrary{arrows, automata}
 \lstset{keywordstyle=\color{blue},language=VHDL}
@@ -22,7 +23,7 @@
 \begin{titlepage}
 
 \title{\Huge{Lab report} \\[0.1cm] \Large{Digital Design (EDA322)}}
-\author{\large{\emph{Group 01}} \\[0.2cm] Erik Thorsell1 \\[0.05cm] Robert Gustafsson \\[0.1cm]}
+\author{\large{\emph{Group XYZ?!}} \\[0.2cm] Erik Thorsell1 \\[0.05cm] Robert Gustafsson \\[0.1cm]}
 \maketitle
 \thispagestyle{empty}
 \end{titlepage}
@@ -41,8 +42,9 @@ seem difficult, at best. This report aims to give a brief introduction to
 the functionality, development process and finished version of the ChAcc 
 processor. The report covers the development of: the ALU and its parts, 
 the design of the registers and memory components, the bus and the controller 
-unit. The finished product was later tested exstensively and programmed onto an 
-FPGA (Field-Programmable Gate Array). The last two sections covers this.
+unit. The finished product was later tested exstensively, programmed onto an 
+FPGA (Field-Programmable Gate Array) and optimized. The last two sections 
+covers this.
 
 \section{Method}
 \subsection{Arithmetic and Logic Unit (ALU)}
@@ -98,8 +100,8 @@ The correctness of the RCA was easily verified by the use of a ''do-file''.
 
 \noindent
 The comparison operation compares two operands and calculates wether or not 
-they are equal. When this is done the corresponding flag (Equal, EQ or Not 
-Equal, NEQ) is asserted. Implementing the component was straight forward and 
+they are equal. When this is done the corresponding flag (Equal (EQ) or Not 
+Equal (NEQ)) is asserted. Implementing the component was straight forward and 
 since the instructions specifies one must not use the behavioral design style 
 we opted to use the dataflow style. A {\it for .. generate} statement was used 
 to improve readability aswell as reduce the amount of code in the file. A 
@@ -137,7 +139,7 @@ the clock or the reset signal, firstly checks if the register is to be reseted
 or not. The register will be reset if and only if the reset signal is 0. 
 However if the reset signal is 1 the process checks if the clock signal was 
 caused by a rising edge and if that is the case the register will be written 
-to if, and only if, the registers load signal is 1.
+to if, and only if, the registers load signal is 1.\\
 
 \begin{lstlisting}[frame=single]
 PROCESS(ARESETN, CLK)
@@ -156,10 +158,10 @@ END PROCESS;
 A register holds only one signal at the time so for larger portions of data 
 the ChAcc has two memories - one for the instructions and one for the data. 
 ChAcc has two memories instead of one since it follows the Hardvard 
-architecture. however making use of generics - as with the register - we only 
+architecture; however making use of generics - as with the register - we only 
 had to implement one, and when implementing the top-level design we 
 instanciated the two memories with generic maps and different init files. 
-The picture below shows read/write operations to a memory.\\\\
+The picture below shows read/write operations to a memory.
 
 \begin{figure}[h]
     \centering
@@ -218,7 +220,7 @@ The testbench is divided into two parts. A reading part and a comparison part.
 For each ''comparision file'' we created one reading 
 process and one comparison process. The reading process simply reads each 
 line of the provided file and transforms the given row into a standard 
-logic vector which can be compared to the output of the ChAcc processor. 
+logic vector which can be compared to the output of the ChAcc processor.\\
 
 \begin{lstlisting}[frame=single]
 readAcc: PROCESS
@@ -249,7 +251,7 @@ the test is declared succsessful.\\\\
 \noindent
 The files with data differs in length so if no errors occur throughout 
 the comparison process for one process we simply wait for the other 
-processess to continue and for disp2seg to reach decimal 144.
+processess to continue and for disp2seg to reach decimal 144.\\
 
 \begin{lstlisting}[frame=single]
 verifyAcc : PROCESS(CLK)
@@ -293,16 +295,83 @@ since the program is written as a loop. When stepping through the program
 the program counter increments from 0 to 6 and then goes back to 0.\\\\
 \noindent
 
-\subsection{Performance, Area and Power Analysis \emph{(Optional)}}
-(max: 2 pages)
-\\\\
-To be announced in the Lab7PM.
+\subsection{Performance, Area and Power Analysis}
+Optimizing our implementation of the ChAcc processor was done using the 
+same software as was used in the sixth task. Briefly, what was done, was a 
+three step optimization each focusing on one specific property of the 
+implementation. When estimating the over all performance of the processor 
+a formula was used provided by the examinator.
+
+$$ \text{Final Efficiency} = 
+\frac{\text{Clock Frequency(MHz)}}{\text{Power(Watt)*Area(Slices)}}$$
+
+\noindent
+{\bf Performance}\\
+\noindent
+Firstly we optimized for performance. The only property of interest to us was 
+to increase the frequency of the processor's clock as much as possible. By 
+choosing ``optimize for speed'' in the processor properties, along with some 
+other settings we went on trying to narrow our timing constriaints. Starting 
+with the suggested ``7ns'' we lowered the constraint value until we eventually 
+got errors telling us that our processor did not meet the given timing 
+constraints. The final constraint we entered was 4.95ns which yielded a 
+frequency of 202 MHz.\\\\
+\noindent
+{\bf Area}\\
+\noindent
+When optimizing for area we wanted our processor to use as few slices as 
+possible. The performance optimization used 67 slices but changing the 
+processor properties to optimize for area made the processor use only 54 
+slices instead. By doing this the power consumption dropped from 0.249 W to 
+0.118 W. However, the clock speed was significantly slower: 105 MHz.\\\\
+\noindent
+{\bf Power}\\
+\noindent
+Aiming to optimze for power efficiency we went through all the settings we 
+had previously gone through and ticked every box with "power efficiency" next 
+to it. We also had in mind that a fast processor would be a processor in need 
+of much power why we opted to choose ``slower'' settings as well. When done 
+we got a power consumption of 0.117 W, 0.001 W less than for the area 
+optimized implementation. However, we did get a clock frequency of 118 MHz 
+and this implementation used only 52 slices. In other words, this was by far 
+our best implementation yet in terms of over all efficiency.\\\\
+\noindent
+{\bf Optimized}\\
+\noindent
+With our acquired knowledge we tried to optimize our processor to reach as 
+high of an overall score as possible. Since our power optimization had yielded 
+the best overall score yet we used it as a base and tried to increase the 
+clock frequency while managing to keep our area small and our power consumption 
+low. We did eventually reach a total score of $1.97*10^7$ which we found 
+satisfying and concluded our quest to be over. Worth noticing is that the area 
+decreased even more and our final implementation used only 51 slices.\\\\
+\noindent 
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+\multicolumn{5}{ |c| }{Metric} \\
+\hline
+Design & Perf. (MHz) & Area (Slices) & Power (W) & Overall ($10^7$) \\ \hline
+\hline
+\multirow{1}{*}{Perform.-opt.} 
+ & 202 & 67 & 0.249 & 1.2 \\
+\hline
+\multirow{1}{*}{Area-opt.} 
+ & 105 & 54 & 0.118 & 1.66 \\
+\hline
+\multirow{1}{*}{Power-opt.} 
+ & 118 & 52 & 0.117 & 1.94 \\
+\hline
+\multirow{1}{*}{Efficiency-opt.} 
+ & 126 & 51 & 0.126 & 1.97 \\
+\hline
+\end{tabular}
 
 \section{Analysis}
 With all labs completed it is - first of all - very interesting to see what 
 we have created. At first it seemed like a far fetched goal to implement our 
-very own control processing unit, but after four weeks we have a fully 
-working unit programmed unto an actual silicon chip. Arithmetic and logical 
+very own control processing unit, but after five weeks we had a fully 
+working unit programmed unto an actual silicon chip and after one more week 
+we have even been able to optimize it a bit. Arithmetic and logical 
 operations works flawlessly, we have implemented working memory components 
 such as registers and memory arrays, a bus has been implemented to send data 
 around the data path and everything is controlled by a controller. Last but 
@@ -331,14 +400,8 @@ reasoning.\\\\
 \noindent
 Finally, the labs have taught us a lot and even though we have barely 
 scratched the surface of VHDL we have gained a good foundation to keep 
-building from. 
+building from.\\\\
 
-
-Summarize your results after performing all the labs (2, 3, 4 and 5).
-
-Mention and discuss interesting findings and observations, as well as difficulties in completing some of the tasks of the four last labs.
-
-After looking at your results, draw conclusions and describe briefly the learning outcome, that is what have you learnt by performing these labs?  
 
 % Appendix
 \newpage
